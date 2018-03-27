@@ -7,7 +7,7 @@ import {MatButtonModule, MatIconModule} from '@angular/material'
 import { AppComponent } from './app.component';
 import { ReservasComponent } from './reservas/reservas.component';
 import { EdificiosComponent } from './edificios/edificios.component';
-import { SalasComponent } from './salas/salas.component';
+import { SalasComponent } from './edificios/salas/salas.component';
 import { AppRoutingModule } from './app-routing.module';
 
 

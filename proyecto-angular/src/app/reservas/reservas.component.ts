@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-reservas',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reservas.component.css']
 })
 export class ReservasComponent implements OnInit {
-
+  minDate;
   constructor() { }
 
   ngOnInit() {
+    this.minDate = new Date();    
   }
 
-}
+    onSubmit(form: NgForm){
+    console.log(form);
+    }
+  }

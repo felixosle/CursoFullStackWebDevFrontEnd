@@ -1,14 +1,8 @@
-<p>
-  edificios works!
-</p>
 <section>
-  <form fxLayout="column" fxLayoutAlign="center center">
+  <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
     <mat-form-field>
-      <input type="email" matInput placeholder="Correo electrónico">
     </mat-form-field>
-    <mat-form-field>
-      <input type="password" matInput placeholder="Contraseña">
-    </mat-form-field>
-
+    
+    <button type="submit" mat-raised-button color="accent"><mat-icon>home</mat-icon>Aceptar</button>
   </form>
 </section>

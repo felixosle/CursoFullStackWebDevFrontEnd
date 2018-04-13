@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cabecera',
@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cabecera.component.css']
 })
 export class CabeceraComponent implements OnInit {
-
+  @Output() sidenavToggle = new EventEmitter<void>();
+  
   constructor() { }
 
   ngOnInit() {
   }
 
+  onToggleSidenav() {
+    this.sidenavToggle.emit();
+  }
 }

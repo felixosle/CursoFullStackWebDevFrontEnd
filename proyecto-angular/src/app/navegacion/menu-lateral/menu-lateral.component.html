@@ -1,3 +1,18 @@
-<p>
-  menu-lateral works!
-</p>
+<mat-nav-list>
+    <a mat-list-item routerLink="/login" (click)="onClose()">
+      <mat-icon>face</mat-icon>
+      <span class="nav-caption">Login</span>
+    </a>
+    <a mat-list-item routerLink="/edificios" (click)="onClose()">
+      <mat-icon>domain</mat-icon>
+      <span class="nav-caption">Edificios</span>
+    </a>
+    <a mat-list-item routerLink="/reservas" (click)="onClose()">
+      <mat-icon>event</mat-icon>
+      <span class="nav-caption">Reservas</span>
+    </a>
+    <a mat-list-item routerLink="/logout" (click)="onClose()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span class="nav-caption">Salir</span>
+    </a>    
+</mat-nav-list>

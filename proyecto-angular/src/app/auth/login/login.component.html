@@ -1,27 +1,34 @@
 <!-- Ejemplo de Formulario Angular basado en Plantilla (Template Driven Form)-->
-<section>
-  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <mat-form-field>
-      <input type="email" 
-      matInput placeholder="Correo electrónico" 
-      ngModel name="email"
-      email
-      required
-      #emailInput="ngModel">
-      <mat-error *ngIf="emailInput.hasError('required')">Este campo no puede estar vacío</mat-error>
-      <mat-error *ngIf="!emailInput.hasError('required')">Formato de email incorrecto</mat-error>
-    </mat-form-field>
-
-    <mat-form-field hintLabel="Mínimo 6 caracteres">
-      <input type="password" 
-      matInput placeholder="Contraseña" 
-      ngModel name="password"
-      required
-      minlength="6"
-      #pwInput="ngModel">
-      <mat-hint align="end">{{ pwInput.value?.length}} / 6</mat-hint>
-    </mat-form-field>
-    <br>
-    <button type="submit" mat-raised-button color="accent" [disabled]="f.invalid"><mat-icon>home</mat-icon>Aceptar</button>
+<section fxLayoutAlign="center">    
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-card   fxLayout="column" fxLayoutAlign="center center">
+      <mat-card-title>Inicio de sesión</mat-card-title>
+      <mat-card-content>
+        <mat-form-field fxLayoutAlign="center">
+          <input type="email" 
+            matInput placeholder="Correo electrónico" 
+            ngModel name="email"
+            email
+            required
+            #emailInput="ngModel">
+          <mat-error *ngIf="emailInput.hasError('required')">Este campo no puede estar vacío</mat-error>
+          <mat-error *ngIf="!emailInput.hasError('required')">Formato de email incorrecto</mat-error>
+        </mat-form-field>
+        <mat-form-field hintLabel="Mínimo 6 caracteres">
+            <input type="password" 
+            matInput placeholder="Contraseña" 
+            ngModel name="password"
+            required
+            minlength="6"
+            #pwInput="ngModel">
+            <mat-hint align="end">{{ pwInput.value?.length}} / 6</mat-hint>
+          </mat-form-field>
+          <br>
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="submit" mat-raised-button color="accent" [disabled]="f.invalid"><mat-icon>home</mat-icon>Aceptar</button>
+      </mat-card-actions>
+  </mat-card>
   </form>
 </section>
+

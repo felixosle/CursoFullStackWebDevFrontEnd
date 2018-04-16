@@ -27,6 +27,7 @@ import { NuevaReservaComponent } from './reservas/nueva-reserva/nueva-reserva.co
 import { ReservaDetalleComponent } from './reservas/reserva-detalle/reserva-detalle.component';
 import { EdificioDetalleComponent } from './edificios/edificio-detalle/edificio-detalle.component';
 import { SalaDetalleComponent } from './edificios/salas/sala-detalle/sala-detalle.component';
+import { LogoutComponent } from './auth/logout/logout.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { SalaDetalleComponent } from './edificios/salas/sala-detalle/sala-detall
     NuevaReservaComponent,
     ReservaDetalleComponent,
     EdificioDetalleComponent,
-    SalaDetalleComponent
+    SalaDetalleComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

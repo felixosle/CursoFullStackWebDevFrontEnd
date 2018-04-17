@@ -15,5 +15,6 @@ export class CabeceraComponent implements OnInit {
 
   onToggleSidenav() {
     this.sidenavToggle.emit();
+    //este evento lo recibirá dinámicamente app.component.html en (sidenavToggle)="sidenav.toggle()"
   }
 }

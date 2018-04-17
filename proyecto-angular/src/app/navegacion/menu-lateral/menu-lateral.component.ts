@@ -14,6 +14,7 @@ export class MenuLateralComponent implements OnInit {
 
   onClose() {
     this.closeSidenav.emit();
+     //este evento lo recibirá dinámicamente app.component.html en (closeSidenav)="sidenav.close()"
   }
 
 }

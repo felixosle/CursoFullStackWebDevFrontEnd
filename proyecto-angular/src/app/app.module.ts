@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 //Imports de Angular Material:
 import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,
   MatDatepickerModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule, 
-  MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule } from '@angular/material';
+  MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule } from '@angular/material';
 
   //Imports relacionados con moment.js:
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MatMomentDateModule} from '@angular/material-moment-adapter';
@@ -53,7 +53,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
     MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, 
     MatMomentDateModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule,
     MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule,
-    FlexLayoutModule,
+    FlexLayoutModule, MatTableModule,
     FormsModule
   ],
   providers: [

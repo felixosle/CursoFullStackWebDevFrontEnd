@@ -1,109 +1,109 @@
+//Los servicios "mock" son para hacer pruebas con datos locales (cuando aún no tenemos servicios restful para probar)
 import { Edificio } from '../model/edificio';
 
 export class EdificioMockService{
-    edificios: Edificio[] = [
-        {   "edificioId": 1,
+    private edificios: Edificio[] = [
+        {   "id": 1,
             "nombre": "EUM 1",
-            "titularidad": "PR",
-            "direccion": {
-                "tipoVia": "CALLE",
-                "nombreVia": "FRANCESCO SCRIMIERI",
-                "numeroVia": "SN",
-                "codigoPostal": "47014",
-                "poblacion": {
-                    "poblacionId": 7467,
-                    "poblacion": "Valladolid",
-                    "latitud": "41.653363",
-                    "longitud": "-4.728874",
-                    "provincia": {
-                        "provinciaId": 40,
-                        "provincia": "Valladolid"
-                    }
+            "codVia": "CALLE",
+            "nombreVia": "FRANCESCO SCRIMIERI",
+            "numeroVia": "SN",
+            "poblacion": {
+                "id": 7467,
+                "poblacion": "Valladolid",
+                "latitud": "41.653363",
+                "longitud": "-4.728874",
+                "provincia": {
+                    "id": 40,
+                    "provincia": "Valladolid",
+                    "provinciaseo":"VA"
                 }
-            }
+            },          
+            "codPostal": "47014",
+            "titularidad":"PR"
         },
-        {
-            "edificioId": 2,
+        
+        {   "id": 2,
             "nombre": "EUM 2",
-            "titularidad": "PR",
-            "direccion": {
-                "tipoVia": "CALLE",
-                "nombreVia": "RIGOBERTO CORTEJOSO",
-                "numeroVia": "14",
-                "codigoPostal": "47014",
-                "poblacion": {
-                    "poblacionId": 7467,
-                    "poblacion": "Valladolid",
-                    "latitud": "41.653363",
-                    "longitud": "-4.728874",
-                    "provincia": {
-                        "provinciaId": 40,
-                        "provincia": "Valladolid"
-                    }
+            "codVia": "CALLE",
+            "nombreVia": "RIGOBERTO CORTEJOSO",
+            "numeroVia": "14",
+            "poblacion": {
+                "id": 7467,
+                "poblacion": "Valladolid",
+                "latitud": "41.653363",
+                "longitud": "-4.728874",
+                "provincia": {
+                    "id": 40,
+                    "provincia": "Valladolid",
+                    "provinciaseo":"VA"
                 }
-            }
+            },          
+            "codPostal": "47014",
+            "titularidad":"PR"
         },
-        {
-            "edificioId": 3,
+
+        {   "id": 3,
             "nombre": "PRESIDENCIA",
-            "titularidad": "PR",
-            "direccion": {
-                "tipoVia": "CALLE",
-                "nombreVia": "SANTIAGO ALBA",
-                "numeroVia": "1",
-                "codigoPostal": "47008",
-                "poblacion": {
-                    "poblacionId": 7467,
-                    "poblacion": "Valladolid",
-                    "latitud": "41.653363",
-                    "longitud": "-4.728874",
-                    "provincia": {
-                        "provinciaId": 40,
-                        "provincia": "Valladolid"
-                    }
+            "codVia": "CALLE",
+            "nombreVia": "SANTIAGO ALBA",
+            "numeroVia": "1",
+            "poblacion": {
+                "id": 7467,
+                "poblacion": "Valladolid",
+                "latitud": "41.653363",
+                "longitud": "-4.728874",
+                "provincia": {
+                    "id": 40,
+                    "provincia": "Valladolid",
+                    "provinciaseo":"VA"
                 }
-            }
+            },          
+            "codPostal": "47008",
+            "titularidad":"PR"
         },
-        {
-            "edificioId": 4,
+        {   "id": 4,
             "nombre": "HOSPITAL MILITAR",
-            "titularidad": "PR",
-            "direccion": {
-                "tipoVia": "PASEO",
-                "nombreVia": "ZORRILLA",
-                "numeroVia": "1",
-                "codigoPostal": "47007",
-                "poblacion": {
-                    "poblacionId": 7467,
-                    "poblacion": "Valladolid",
-                    "latitud": "41.653363",
-                    "longitud": "-4.728874",
-                    "provincia": {
-                        "provinciaId": 40,
-                        "provincia": "Valladolid"
-                    }
+            "codVia": "PASEO",
+            "nombreVia": "ZORRILLA",
+            "numeroVia": "1",
+            "poblacion": {
+                "id": 7467,
+                "poblacion": "Valladolid",
+                "latitud": "41.653363",
+                "longitud": "-4.728874",
+                "provincia": {
+                    "id": 40,
+                    "provincia": "Valladolid",
+                    "provinciaseo":"VA"
                 }
-            }
+            },          
+            "codPostal": "47008",
+            "titularidad":"PR"
         },
-        {
-            "edificioId": 5,
+
+        {   "id": 5,
             "nombre": "EDUCACION",
-            "titularidad": "PR",
-            "direccion": {
-                "tipoVia": "AVENIDA",
-                "nombreVia": "MONASTERIO DEL PRADO",
-                "numeroVia": "SN",
-                "codigoPostal": "47014",
-                "poblacion": {
-                    "poblacionId": 7467,
-                    "poblacion": "Valladolid",
-                    "latitud": "41.653363",
-                    "longitud": "-4.728874",
-                    "provincia": {
-                        "provinciaId": 40,
-                        "provincia": "Valladolid"
-                    }
+            "codVia": "AVENIDA",
+            "nombreVia": "MONASTERIO DEL PRADO",
+            "numeroVia": "SN",
+            "poblacion": {
+                "id": 7467,
+                "poblacion": "Valladolid",
+                "latitud": "41.653363",
+                "longitud": "-4.728874",
+                "provincia": {
+                    "id": 40,
+                    "provincia": "Valladolid",
+                    "provinciaseo":"VA"
                 }
-            }
+            },          
+            "codPostal": "47014",
+            "titularidad":"PR"
         }
     ];
+    getEdificios(){
+        return this.edificios.slice();
+        //slice() proporciona una copia de los datos (para que los datos originales no se modifiquen)
+    }
+}

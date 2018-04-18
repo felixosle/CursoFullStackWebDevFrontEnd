@@ -1,6 +1,37 @@
 <section>
-  <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
-    Listado de Edificios  
-    <button type="submit" mat-raised-button color="accent"><mat-icon>home</mat-icon>Aceptar</button>
-  </form>
+  <br>
+  <div >
+  <mat-form-field fxLayoutAlign="center center">
+    <input matInput type="text" (keyup)="filtrar($event.target.value)" placeholder="Filtro">
+  </mat-form-field>
+  </div>
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.nombre}}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="codPostal">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Código Postal</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.codPostal }}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="titularidad">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Titularidad</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.titularidad }}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="poblacion">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Población</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.poblacion.poblacion }}</mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+  
+  <mat-paginator [pageSize]="3" [pageSizeOptions]="[1, 5, 10, 20]">
+  </mat-paginator>
 </section>

@@ -3,17 +3,19 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ApiModule } from './api.module';
+import { EdificioMockService } from './edificios/edificio.mock.service'
 
 //Imports de Angular Material:
 import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,
   MatDatepickerModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule, 
-  MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule } from '@angular/material';
+  MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule, 
+  MatSortModule, MatPaginatorModule} from '@angular/material';
 
   //Imports relacionados con moment.js:
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MatMomentDateModule} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
-
+//Imports creados con ng g c:
 import { AppComponent } from './app.component';
 import { ReservasComponent } from './reservas/reservas.component';
 import { EdificiosComponent } from './edificios/edificios.component';
@@ -54,10 +56,11 @@ import { LogoutComponent } from './auth/logout/logout.component';
     MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, 
     MatMomentDateModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule,
     MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule,
-    FlexLayoutModule, MatTableModule,
+    FlexLayoutModule, MatTableModule, MatSortModule, MatPaginatorModule,
     FormsModule
   ],
   providers: [
+    EdificioMockService,
     {provide: MAT_DATE_LOCALE, useValue: 'es'},
   ],
   bootstrap: [AppComponent]

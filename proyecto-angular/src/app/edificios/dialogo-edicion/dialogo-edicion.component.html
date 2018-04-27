@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Detalles de elemento {{ datosPasados.nombre }}</h1>
+<mat-dialog-content>  
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-form-field fxFlex="60%">
+      <input matInput placeholder="Nombre" required>
+    </mat-form-field>        
+    <mat-form-field fxFlex="35%">
+      <input matInput placeholder="Código Postal">
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-form-field fxFlex="25%">
+      <input matInput placeholder="Titularidad">
+    </mat-form-field>
+    <mat-form-field fxFlex="70%">
+      <input matInput placeholder="Población">
+    </mat-form-field>
+  </div>    
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center">
+  <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="true">Aceptar</button>
+  <button mat-button [mat-dialog-close]="false">Cancelar</button>
+</mat-dialog-actions>

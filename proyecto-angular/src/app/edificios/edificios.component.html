@@ -26,6 +26,22 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Población</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.poblacion.poblacion }}</mat-cell>
     </ng-container>
+
+    <!-- columna "Editar" -->
+    <ng-container matColumnDef="editar">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element" >
+          <button type="button" mat-button (click)="onEdit(element)"><mat-icon>edit</mat-icon></button>  
+      </mat-cell>
+    </ng-container> 
+  
+  <!-- columna "Borrar" -->
+  <ng-container matColumnDef="borrar">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element" >
+        <button type="button" mat-button (click)="onDelete(element.id)"><mat-icon>delete</mat-icon></button> 
+      </mat-cell>
+  </ng-container> 
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

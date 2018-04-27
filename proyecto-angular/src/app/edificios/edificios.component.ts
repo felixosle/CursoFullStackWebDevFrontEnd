@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EdificioMockService } from './edificio.mock.service'
 import { Edificio } from '../model/edificio';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
+import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-confirmacion.component';
+import { DialogoEdicionComponent } from './dialogo-edicion/dialogo-edicion.component';
 
 @Component({
   selector: 'app-edificios',
@@ -11,13 +13,14 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 })
 export class EdificiosComponent implements OnInit, AfterViewInit {
   edificios: Edificio []=[];
-  displayedColumns = ['nombre', 'codPostal', 'titularidad', 'poblacion'];
+  edificioSeleccionado: Edificio=null;
+  displayedColumns = ['nombre', 'codPostal', 'titularidad', 'poblacion', 'editar', 'borrar'];
   dataSource = new MatTableDataSource<Edificio>();
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
-  constructor(private edificioMockService: EdificioMockService) { }
+  constructor(private edificioMockService: EdificioMockService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.edificios = this.edificioMockService.getEdificios();
@@ -38,5 +41,35 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
 
   filtrar(valorFiltro: string){
     this.dataSource.filter = valorFiltro.trim().toLowerCase();
+  }
+
+  onEdit(element){
+    console.log("Editando elemento " + element.nombre);
+    const dialogRef = this.dialog.open(DialogoEdicionComponent, {
+      data: {Edificio: element}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log("Pulsó Sí");
+      } else {
+        console.log("Pulsó No");
+      }
+    });
+  }
+
+  onDelete(element){
+    console.log("Borrando elemento " + element.nombre);
+    const dialogRef = this.dialog.open(DialogoConfirmacionComponent, {
+      data: {Edificio: element}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log("Pulsó Sí");
+      } else {
+        console.log("Pulsó No");
+      }
+    });
   }
 }

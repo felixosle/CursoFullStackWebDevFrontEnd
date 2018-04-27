@@ -31,6 +31,8 @@ import { ReservaDetalleComponent } from './reservas/reserva-detalle/reserva-deta
 import { EdificioDetalleComponent } from './edificios/edificio-detalle/edificio-detalle.component';
 import { SalaDetalleComponent } from './edificios/salas/sala-detalle/sala-detalle.component';
 import { LogoutComponent } from './auth/logout/logout.component';
+import { DialogoConfirmacionComponent } from './edificios/dialogo-confirmacion/dialogo-confirmacion.component';
+import { DialogoEdicionComponent } from './edificios/dialogo-edicion/dialogo-edicion.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { LogoutComponent } from './auth/logout/logout.component';
     ReservaDetalleComponent,
     EdificioDetalleComponent,
     SalaDetalleComponent,
-    LogoutComponent
+    LogoutComponent,
+    DialogoConfirmacionComponent,
+    DialogoEdicionComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +67,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
     EdificioMockService,
     {provide: MAT_DATE_LOCALE, useValue: 'es'},
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogoConfirmacionComponent,DialogoEdicionComponent]
 })
 export class AppModule { }

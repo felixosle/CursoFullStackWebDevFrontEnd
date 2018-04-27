@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Confirmación de borrado</h1>
+<mat-dialog-content>
+  <p>¿Seguro que desea borrar el elemento {{ datosPasados.numero }} ?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true">Sí</button>
+  <button mat-button [mat-dialog-close]="false">No</button>
+</mat-dialog-actions>

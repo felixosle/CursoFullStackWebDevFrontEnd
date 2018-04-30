@@ -1,20 +1,20 @@
-<h1 mat-dialog-title>Detalles de elemento {{ datosPasados.nombre }}</h1>
+<h1 mat-dialog-title>Detalles de elemento {{ this.datosPasados.nombre }}</h1>
 <mat-dialog-content>  
   <div fxLayout="row" fxLayoutAlign="space-around center">
     <mat-form-field fxFlex="60%">
-      <input matInput placeholder="Nombre" required>
+      <input matInput [(ngModel)]="this.datosPasados.nombre" placeholder="Nombre" required>
     </mat-form-field>        
     <mat-form-field fxFlex="35%">
-      <input matInput placeholder="Código Postal">
+      <input matInput [(ngModel)]="this.datosPasados.codPostal" placeholder="Código Postal">
     </mat-form-field>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="space-around center">
     <mat-form-field fxFlex="25%">
-      <input matInput placeholder="Titularidad">
+      <input matInput [(ngModel)]="this.datosPasados.titularidad" placeholder="Titularidad">
     </mat-form-field>
     <mat-form-field fxFlex="70%">
-      <input matInput placeholder="Población">
+      <input matInput [(ngModel)]="this.datosPasados.poblacion.poblacion" placeholder="Población">
     </mat-form-field>
   </div>    
 

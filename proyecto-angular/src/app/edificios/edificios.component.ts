@@ -44,31 +44,33 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   }
 
   onEdit(element){
-    console.log("Editando elemento " + element.nombre);
+    this.edificioSeleccionado = element;
+    console.log("Editando elemento " + this.edificioSeleccionado.nombre );
     const dialogRef = this.dialog.open(DialogoEdicionComponent, {
-      data: {Edificio: element}
+      data: this.edificioSeleccionado
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("Pulsó Sí");
+        console.log("Pulsó Aceptar");
       } else {
-        console.log("Pulsó No");
+        console.log("Pulsó Cancelar");
       }
     });
   }
 
   onDelete(element){
-    console.log("Borrando elemento " + element.nombre);
+    this.edificioSeleccionado = element;
+    console.log("Borrando elemento " + this.edificioSeleccionado.nombre);
     const dialogRef = this.dialog.open(DialogoConfirmacionComponent, {
-      data: {Edificio: element}
+      data: this.edificioSeleccionado
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("Pulsó Sí");
+        console.log("Pulsó Aceptar");
       } else {
-        console.log("Pulsó No");
+        console.log("Pulsó Cancelar");
       }
     });
   }

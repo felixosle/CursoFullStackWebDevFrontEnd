@@ -27,6 +27,14 @@
       <mat-cell *matCellDef="let element">{{ element.poblacion.poblacion }}</mat-cell>
     </ng-container>
 
+    <!-- columna "Ver Salas" -->
+    <ng-container matColumnDef="verSalas">
+      <mat-header-cell *matHeaderCellDef>Ver Salas</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button type="button" mat-button (click)="onVerSalas(element)"><mat-icon>airline_seat_recline_normal</mat-icon></button>  
+      </mat-cell>
+    </ng-container> 
+
     <!-- columna "Editar" -->
     <ng-container matColumnDef="editar">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>

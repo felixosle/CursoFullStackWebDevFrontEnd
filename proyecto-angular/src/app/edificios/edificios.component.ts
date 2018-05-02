@@ -79,5 +79,6 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
     this.edificioSeleccionado = element;
     console.log("Viendo salas elemento " + this.edificioSeleccionado.nombre);
     
+    
   }
 }

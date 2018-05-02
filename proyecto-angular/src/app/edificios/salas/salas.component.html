@@ -1,3 +1,49 @@
-<p>
-  salas works!
-</p>
+<section>
+  <br>
+  <div fxLayout="row">
+    <button type="button" mat-button fxFlex="10%" routerLink="/edificios"><mat-icon matTooltip="Volver a Edificios" matTooltipPosition="right">arrow_back</mat-icon></button>
+    <div fxFlex="30%"></div>
+    <h3 fxFlex="30%">Salas del Edificio X</h3>
+    </div>
+    <div >
+    <mat-form-field fxLayoutAlign="center center">
+      <input matInput type="text" (keyup)="filtrar($event.target.value)" placeholder="Filtro">
+    </mat-form-field>
+  </div>
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.nombre}}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="descripcion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.descripcion }}</mat-cell>
+    </ng-container>    
+     
+    <!-- columna "Editar" -->
+    <ng-container matColumnDef="editar">
+      <mat-header-cell *matHeaderCellDef>Editar</mat-header-cell>
+      <mat-cell *matCellDef="let element" >
+          <button type="button" mat-button (click)="onEdit(element)"><mat-icon>edit</mat-icon></button>  
+      </mat-cell>
+    </ng-container> 
+  
+  <!-- columna "Borrar" -->
+  <ng-container matColumnDef="borrar">
+      <mat-header-cell *matHeaderCellDef>Borrar</mat-header-cell>
+      <mat-cell *matCellDef="let element" >
+        <button type="button" mat-button (click)="onDelete(element)"><mat-icon>delete</mat-icon></button> 
+      </mat-cell>
+  </ng-container> 
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+  
+  <mat-paginator [pageSize]="3" [pageSizeOptions]="[1, 5, 10, 20]">
+  </mat-paginator>
+</section>
+

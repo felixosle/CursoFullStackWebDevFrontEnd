@@ -9,7 +9,7 @@ import { EdificioMockService } from './edificios/edificio.mock.service'
 import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,
   MatDatepickerModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule, 
   MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule, 
-  MatSortModule, MatPaginatorModule} from '@angular/material';
+  MatSortModule, MatPaginatorModule, MatTooltipModule} from '@angular/material';
 
   //Imports relacionados con moment.js:
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MatMomentDateModule} from '@angular/material-moment-adapter';
@@ -60,7 +60,7 @@ import { DialogoEdicionComponent } from './edificios/dialogo-edicion/dialogo-edi
     MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, 
     MatMomentDateModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule,
     MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule,
-    FlexLayoutModule, MatTableModule, MatSortModule, MatPaginatorModule,
+    FlexLayoutModule, MatTableModule, MatSortModule, MatPaginatorModule, MatTooltipModule,
     FormsModule
   ],
   providers: [
@@ -68,6 +68,6 @@ import { DialogoEdicionComponent } from './edificios/dialogo-edicion/dialogo-edi
     {provide: MAT_DATE_LOCALE, useValue: 'es'},
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogoConfirmacionComponent,DialogoEdicionComponent]
+  entryComponents: [DialogoConfirmacionComponent,DialogoEdicionComponent,SalaDetalleComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 //Los servicios "mock" son para hacer pruebas con datos locales (cuando aún no tenemos servicios restful para probar)
 import { Edificio } from '../model/edificio';
+import { Sala } from '../model/sala';
 
 export class EdificioMockService{
     private edificios: Edificio[] = [
@@ -102,8 +103,68 @@ export class EdificioMockService{
             "titularidad":"PR"
         }
     ];
+
+    private salas: Sala[] = [
+        {
+            "id": 1,
+            "nombre": "Sala 1",
+            "descripcion": "Sala de reuniones nº 1",
+            "capacidad": 10,
+            "localizacion": "string",
+            "tipo": {
+            "id": 1111111,
+            "nombre": "Sala de reunión"
+            
+        },
+        "edificio": {
+            "id": 1111111,
+            "nombre": "E.U.M. I"            
+            }
+        }, 
+        
+        {
+            "id": 2,
+            "nombre": "Sala 2",
+            "descripcion": "Sala de reuniones nº 2",
+            "capacidad": 10,
+            "localizacion": "string",
+            "tipo": {
+            "id": 1,
+            "nombre": "Sala de reunión"
+            
+        },
+        "edificio": {
+            "id": 1,
+            "nombre": "E.U.M. I"            
+            }
+        },
+
+        {
+            "id": 3,
+            "nombre": "Sala 3",
+            "descripcion": "Sala de reuniones nº 3",
+            "capacidad": 10,
+            "localizacion": "string",
+            "tipo": {
+            "id": 1,
+            "nombre": "Sala de reunión"
+            
+        },
+        "edificio": {
+            "id": 1,
+            "nombre": "E.U.M. I"            
+            }
+        }
+
+    ];
+
     getEdificios(){
         return this.edificios.slice();
+        //slice() proporciona una copia de los datos (para que los datos originales no se modifiquen)
+    }
+
+    getSalas(){
+        return this.salas.slice();
         //slice() proporciona una copia de los datos (para que los datos originales no se modifiquen)
     }
 }

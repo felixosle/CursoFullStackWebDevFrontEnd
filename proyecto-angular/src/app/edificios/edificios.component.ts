@@ -4,7 +4,7 @@ import { EdificioMockService } from './edificio.mock.service'
 import { Edificio } from '../model/edificio';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
-import { DialogoEdicionComponent } from './dialogo-edicion/dialogo-edicion.component';
+import { EdificioDetalleComponent } from './edificio-detalle/edificio-detalle.component';
 
 @Component({
   selector: 'app-edificios',
@@ -46,7 +46,7 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   onEdit(element){
     this.edificioSeleccionado = element;
     console.log("Editando elemento " + this.edificioSeleccionado.nombre );
-    const dialogRef = this.dialog.open(DialogoEdicionComponent, {
+    const dialogRef = this.dialog.open(EdificioDetalleComponent, {
       data: this.edificioSeleccionado
     });
 

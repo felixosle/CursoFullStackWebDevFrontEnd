@@ -3,11 +3,11 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 
 @Component({
-  selector: 'app-dialogo-edicion',
-  templateUrl: './dialogo-edicion.component.html',
-  styleUrls: ['./dialogo-edicion.component.css']
+  selector: 'app-edificio-detalle',
+  templateUrl: './edificio-detalle.component.html',
+  styleUrls: ['./edificio-detalle.component.css']
 })
-export class DialogoEdicionComponent implements OnInit {
+export class EdificioDetalleComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any, private dialog: MatDialog) { }
   

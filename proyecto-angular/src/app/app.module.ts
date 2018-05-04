@@ -31,7 +31,7 @@ import { ReservaDetalleComponent } from './reservas/reserva-detalle/reserva-deta
 import { SalaDetalleComponent } from './edificios/salas/sala-detalle/sala-detalle.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { DialogoConfirmacionComponent } from './comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
-import { DialogoEdicionComponent } from './edificios/dialogo-edicion/dialogo-edicion.component';
+import { EdificioDetalleComponent } from './edificios/edificio-detalle/edificio-detalle.component';
 
 
 @NgModule({
@@ -49,7 +49,7 @@ import { DialogoEdicionComponent } from './edificios/dialogo-edicion/dialogo-edi
     SalaDetalleComponent,
     LogoutComponent,
     DialogoConfirmacionComponent,
-    DialogoEdicionComponent
+    EdificioDetalleComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +66,6 @@ import { DialogoEdicionComponent } from './edificios/dialogo-edicion/dialogo-edi
     {provide: MAT_DATE_LOCALE, useValue: 'es'},
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogoConfirmacionComponent,DialogoEdicionComponent,SalaDetalleComponent]
+  entryComponents: [DialogoConfirmacionComponent,EdificioDetalleComponent,SalaDetalleComponent]
 })
 export class AppModule { }

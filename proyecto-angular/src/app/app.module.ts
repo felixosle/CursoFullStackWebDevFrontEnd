@@ -32,6 +32,8 @@ import { SalaDetalleComponent } from './edificios/salas/sala-detalle/sala-detall
 import { LogoutComponent } from './auth/logout/logout.component';
 import { DialogoConfirmacionComponent } from './comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { EdificioDetalleComponent } from './edificios/edificio-detalle/edificio-detalle.component';
+import { NuevoEdificioComponent } from './edificios/nuevo-edificio/nuevo-edificio.component';
+import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { EdificioDetalleComponent } from './edificios/edificio-detalle/edificio-
     SalaDetalleComponent,
     LogoutComponent,
     DialogoConfirmacionComponent,
-    EdificioDetalleComponent
+    EdificioDetalleComponent,
+    NuevoEdificioComponent,
+    NuevaSalaComponent
   ],
   imports: [
     BrowserModule,

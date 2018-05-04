@@ -6,6 +6,8 @@ import { EdificiosComponent } from './edificios/edificios.component';
 import { SalasComponent } from './edificios/salas/salas.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
+import { NuevoEdificioComponent } from './edificios/nuevo-edificio/nuevo-edificio.component';
+import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.component';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent },
@@ -13,8 +15,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'reservas', component: ReservasComponent},
   { path: 'edificios', component: EdificiosComponent},
+  { path: 'nuevoEdificio', component: NuevoEdificioComponent},
   { path: 'salas', component: SalasComponent },
   { path: 'logout', component: LogoutComponent},
+  { path: 'nuevaSala', component: NuevaSalaComponent}
 ];
 
 @NgModule({

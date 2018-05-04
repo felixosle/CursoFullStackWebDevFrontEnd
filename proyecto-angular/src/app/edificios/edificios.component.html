@@ -1,10 +1,8 @@
 <section>
-  <br>
-  <div >
-  <mat-form-field fxLayoutAlign="center center">
+  <br>    
+  <mat-form-field fxLayoutAlign="center">
     <input matInput type="text" (keyup)="filtrar($event.target.value)" placeholder="Filtro">
-  </mat-form-field>
-  </div>
+  </mat-form-field>    
 
   <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="nombre">
@@ -56,6 +54,12 @@
 
   </mat-table>
   
-  <mat-paginator [pageSize]="3" [pageSizeOptions]="[1, 5, 10, 20]">
-  </mat-paginator>
+  <div fxLayoutAlign="center">
+    <mat-paginator [pageSize]="3" [pageSizeOptions]="[1, 5, 10, 20]"></mat-paginator>
+  </div>
+  
+  <div fxLayoutAlign="end">
+    <button mat-fab color="primary" routerLink="/nuevoEdificio" matTooltip="Añadir Edificio Nuevo" matTooltipPosition="left"><mat-icon>add</mat-icon></button>
+  </div>
+
 </section>

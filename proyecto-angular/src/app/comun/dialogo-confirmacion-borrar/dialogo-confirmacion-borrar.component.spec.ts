@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogoConfirmacionComponent } from './dialogo-confirmacion.component';
+import { DialogoConfirmacionComponent } from './dialogo-confirmacion-borrar.component';
 
 describe('DialogoConfirmacionComponent', () => {
   let component: DialogoConfirmacionComponent;

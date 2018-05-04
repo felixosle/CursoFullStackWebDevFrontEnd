@@ -24,14 +24,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
-import { CabeceraComponent } from './navegacion/cabecera/cabecera.component';
-import { MenuLateralComponent } from './navegacion/menu-lateral/menu-lateral.component';
+import { CabeceraComponent } from './comun/navegacion/cabecera/cabecera.component';
+import { MenuLateralComponent } from './comun/navegacion/menu-lateral/menu-lateral.component';
 import { NuevaReservaComponent } from './reservas/nueva-reserva/nueva-reserva.component';
 import { ReservaDetalleComponent } from './reservas/reserva-detalle/reserva-detalle.component';
-import { EdificioDetalleComponent } from './edificios/edificio-detalle/edificio-detalle.component';
 import { SalaDetalleComponent } from './edificios/salas/sala-detalle/sala-detalle.component';
 import { LogoutComponent } from './auth/logout/logout.component';
-import { DialogoConfirmacionComponent } from './edificios/dialogo-confirmacion/dialogo-confirmacion.component';
+import { DialogoConfirmacionComponent } from './comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { DialogoEdicionComponent } from './edificios/dialogo-edicion/dialogo-edicion.component';
 
 
@@ -47,7 +46,6 @@ import { DialogoEdicionComponent } from './edificios/dialogo-edicion/dialogo-edi
     MenuLateralComponent,
     NuevaReservaComponent,
     ReservaDetalleComponent,
-    EdificioDetalleComponent,
     SalaDetalleComponent,
     LogoutComponent,
     DialogoConfirmacionComponent,

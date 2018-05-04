@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { EdificioMockService } from './edificio.mock.service'
 import { Edificio } from '../model/edificio';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
-import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-confirmacion.component';
+import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { DialogoEdicionComponent } from './dialogo-edicion/dialogo-edicion.component';
 
 @Component({
@@ -59,6 +59,8 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
     });
   }
 
+  // El método onDelete no es visible actualmente, está como ejemplo de borrado desde la tabla
+  // para hacerlo visible, habría que incluir la columna , 'borrar' en displayedColumns (unas líneas más arriba)
   onDelete(element){
     this.edificioSeleccionado = element;
     console.log("Borrando elemento " + this.edificioSeleccionado.nombre);
@@ -68,9 +70,9 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("Pulsó Aceptar");
+        console.log("Pulsó Aceptar " + this.edificioSeleccionado.nombre);
       } else {
-        console.log("Pulsó Cancelar");
+        console.log("Pulsó Cancelar " + this.edificioSeleccionado.nombre);
       }
     });
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
-import { DialogoConfirmacionComponent } from '../dialogo-confirmacion/dialogo-confirmacion.component';
+import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 
 @Component({
   selector: 'app-dialogo-edicion',
@@ -15,7 +15,7 @@ export class DialogoEdicionComponent implements OnInit {
   }
 
   onDelete(element){
-    console.log("Borrando elemento " );
+    console.log("Borrando elemento " + this.datosPasados.nombre);
     const dialogRef = this.dialog.open(DialogoConfirmacionComponent, {
       data: this.datosPasados
     });

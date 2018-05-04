@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
-import { DialogoConfirmacionComponent } from '../../dialogo-confirmacion/dialogo-confirmacion.component';
+import { DialogoConfirmacionComponent } from '../../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 
 @Component({
   selector: 'app-sala-detalle',

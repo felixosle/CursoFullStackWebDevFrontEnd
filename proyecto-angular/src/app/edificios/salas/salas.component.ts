@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { EdificioMockService } from '../edificio.mock.service'
 import { Sala } from '../../model/sala';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
-import { DialogoConfirmacionComponent } from '../dialogo-confirmacion/dialogo-confirmacion.component';
+import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { SalaDetalleComponent } from './sala-detalle/sala-detalle.component';
 
 @Component({
@@ -48,9 +48,9 @@ export class SalasComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("Pulsó Aceptar");
+        console.log("Pulsó Aceptar cambios de " + this.salaSeleccionada.nombre);        
       } else {
-        console.log("Pulsó Cancelar");
+        console.log("Pulsó Cancelar cambios de " + this.salaSeleccionada.nombre);
       }
     });
   }

@@ -9,7 +9,7 @@ import { EdificioMockService } from './edificios/edificio.mock.service'
 import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,
   MatDatepickerModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule, 
   MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule, 
-  MatSortModule, MatPaginatorModule, MatTooltipModule} from '@angular/material';
+  MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule} from '@angular/material';
 
   //Imports relacionados con moment.js:
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MatMomentDateModule} from '@angular/material-moment-adapter';
@@ -59,8 +59,8 @@ import { DialogoEdicionComponent } from './edificios/dialogo-edicion/dialogo-edi
     AppRoutingModule,
     MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, 
     MatMomentDateModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule,
-    MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule,
-    FlexLayoutModule, MatTableModule, MatSortModule, MatPaginatorModule, MatTooltipModule,
+    MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, FlexLayoutModule,
+    MatTableModule, MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule,
     FormsModule
   ],
   providers: [

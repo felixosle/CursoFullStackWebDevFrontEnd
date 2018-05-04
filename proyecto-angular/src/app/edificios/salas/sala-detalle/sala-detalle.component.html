@@ -1,4 +1,21 @@
-<h1 mat-dialog-title>Detalles de {{ this.datosPasados.nombre }}</h1>
+<div fxLayout="row">  
+  <h1 fxFlex="90%" fxLayoutAlign="center" mat-dialog-title>Detalles de {{ this.datosPasados.nombre }}</h1>
+  <div fxLayoutAlign="end">
+    <button type="button" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button type="button" mat-menu-item>
+        <mat-icon>block</mat-icon>
+        <span>Desactivar</span>
+      </button>
+      <button type="button" mat-menu-item (click)="onDelete(element)">
+        <mat-icon>delete</mat-icon>
+        <span>Borrar</span>
+      </button>
+    </mat-menu>
+   </div>
+</div>
 <mat-dialog-content>  
   <div fxLayout="row" fxLayoutAlign="space-around center">
     <mat-form-field fxFlex="60%">

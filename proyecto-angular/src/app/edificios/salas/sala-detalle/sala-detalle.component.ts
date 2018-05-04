@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { DialogoConfirmacionComponent } from '../../dialogo-confirmacion/dialogo-confirmacion.component';
 
 @Component({
   selector: 'app-sala-detalle',
@@ -8,9 +9,23 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class SalaDetalleComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any, private dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  onDelete(element){
+    console.log("Cargado Diálogo Borrando "+ this.datosPasados.nombre);
+    const dialogRef = this.dialog.open(DialogoConfirmacionComponent, {
+      data: this.datosPasados
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log("Confirmó Borrar " + this.datosPasados.nombre);
+      } else {
+        console.log("Canceló Borrar "+ this.datosPasados.nombre);
+      }
+    });
+  }
 }

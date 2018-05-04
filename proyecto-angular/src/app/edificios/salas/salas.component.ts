@@ -14,7 +14,7 @@ export class SalasComponent implements OnInit, AfterViewInit {
 
   salas: Sala []=[];
   salaSeleccionada: Sala=null;
-  displayedColumns = ['nombre', 'descripcion', 'editar', 'borrar'];
+  displayedColumns = ['nombre', 'descripcion', 'editar'];
   dataSource = new MatTableDataSource<Sala>();
 
   @ViewChild(MatSort) sort: MatSort;
@@ -64,9 +64,9 @@ export class SalasComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("Pulsó Aceptar");
+        console.log("Pulsó Aceptar borrar "+ this.salaSeleccionada.nombre);
       } else {
-        console.log("Pulsó Cancelar");
+        console.log("Pulsó Cancelar borrar "+ this.salaSeleccionada.nombre);
       }
     });
   }

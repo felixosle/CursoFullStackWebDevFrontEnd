@@ -14,7 +14,7 @@ import { DialogoEdicionComponent } from './dialogo-edicion/dialogo-edicion.compo
 export class EdificiosComponent implements OnInit, AfterViewInit {
   edificios: Edificio []=[];
   edificioSeleccionado: Edificio=null;
-  displayedColumns = ['nombre', 'poblacion', 'codPostal', 'verSalas', 'titularidad', 'editar', 'borrar'];
+  displayedColumns = ['nombre', 'poblacion', 'codPostal', 'verSalas', 'titularidad', 'editar'];
   dataSource = new MatTableDataSource<Edificio>();
 
   @ViewChild(MatSort) sort: MatSort;
@@ -52,9 +52,9 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("Pulsó Aceptar");
+        console.log("Pulsó Aceptar cambios de edición");
       } else {
-        console.log("Pulsó Cancelar");
+        console.log("Pulsó Cancelar cambios de edición");
       }
     });
   }

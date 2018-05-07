@@ -463,17 +463,17 @@ export class DefaultService {
      * Busca reservas
      * Búsqueda de reservas
      * @param searchString Pasa una cadena opcional para buscar reservas
-     * @param skip Número de registros que salta en cada paginación
+     * @param offset Número de registros que salta en cada paginación
      * @param limit Número máximo de registros devueltos
      */
-    public getReservas(searchString?: string, skip?: number, limit?: number): Observable<Array<Reserva>> {
+    public getReservas(searchString?: string, offset?: number, limit?: number): Observable<Array<Reserva>> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (searchString !== undefined) {
             queryParameters = queryParameters.set('searchString', <any>searchString);
         }
-        if (skip !== undefined) {
-            queryParameters = queryParameters.set('skip', <any>skip);
+        if (offset !== undefined) {
+            queryParameters = queryParameters.set('offset', <any>offset);
         }
         if (limit !== undefined) {
             queryParameters = queryParameters.set('limit', <any>limit);

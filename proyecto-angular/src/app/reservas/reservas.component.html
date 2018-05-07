@@ -1,19 +1,57 @@
-<div fxLayoutAlign="center center">
-  Listado de reservas
-</div>
 <section>
-  <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <mat-form-field>
-      <input
-        matInput
-        placeholder="Fecha de la Reserva"
-        [matDatepicker]="picker"
-        [min]="minDate">
-      <mat-datepicker-toggle
-        matSuffix
-        [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <button type="submit" mat-raised-button color="accent"><mat-icon>done</mat-icon>Aceptar</button>
-  </form>
+  <div fxLayoutAlign="center center">
+    Listado de reservas
+  </div>
+
+  <br>    
+  <mat-form-field fxLayoutAlign="center">
+    <input matInput type="text" (keyup)="filtrar($event.target.value)" placeholder="Filtro">
+  </mat-form-field>    
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="sala">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Sala</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.sala.nombre }}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="edificio">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Edificio</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.sala.edificio.nombre }}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="fecha">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.fechaReserva | date: "dd/MM/yyyy" }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="usuario">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.usuario }}</mat-cell>
+    </ng-container>
+
+    <!-- columna "Editar" -->
+    <ng-container matColumnDef="editar">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element" >
+          <button type="button" mat-button (click)="onEdit(element)"><mat-icon>edit</mat-icon></button>  
+      </mat-cell>
+    </ng-container> 
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+  
+  <div fxLayoutAlign="center">
+    <mat-paginator [pageSize]="3" [pageSizeOptions]="[1, 5, 10, 20]"></mat-paginator>
+  </div>
+
+  <div fxLayoutAlign="end">
+    <button mat-fab color="primary" routerLink="/nuevaReserva" matTooltip="Añadir Reserva Nueva" matTooltipPosition="left"><mat-icon>add</mat-icon></button>
+  </div>
 </section>

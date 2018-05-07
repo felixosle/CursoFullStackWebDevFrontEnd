@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ApiModule } from './api.module';
 import { EdificioMockService } from './edificios/edificio.mock.service'
+import { ReservaMockService } from './reservas/reserva.mock.service'
 
 //Imports de Angular Material:
 import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,
@@ -67,9 +68,10 @@ import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.comp
   ],
   providers: [
     EdificioMockService,
+    ReservaMockService,
     {provide: MAT_DATE_LOCALE, useValue: 'es'},
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogoConfirmacionComponent,EdificioDetalleComponent,SalaDetalleComponent]
+  entryComponents: [DialogoConfirmacionComponent,EdificioDetalleComponent,SalaDetalleComponent,ReservaDetalleComponent]
 })
 export class AppModule { }

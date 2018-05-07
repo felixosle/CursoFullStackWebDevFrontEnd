@@ -21,12 +21,4 @@ export interface Provincia {
      * Nombre de la Provincia
      */
     provincia: string;
-    /**
-     * Nombre de la provincia sin acentos ni mayúsculas
-     */
-    provinciaseo: string;
-    /**
-     * Nombre de la provincia en 3 letras maýusculas (como el formato de aeropuertos)
-     */
-    provincia3?: string;
 }

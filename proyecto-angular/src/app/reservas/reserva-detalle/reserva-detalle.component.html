@@ -1,3 +1,53 @@
-<p>
-  reserva-detalle works!
-</p>
+<div fxLayout="row">  
+  <h1 fxFlex="90%" fxLayoutAlign="center" mat-dialog-title>Detalles de reserva: {{ this.datosPasados.id }}</h1>
+<div fxLayoutAlign="end">
+  <button type="button" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button type="button" mat-menu-item>
+      <mat-icon>block</mat-icon>
+      <span>Desactivar</span>
+    </button>
+    <button type="button" mat-menu-item (click)="onDelete(element)">
+      <mat-icon>delete</mat-icon>
+      <span>Borrar</span>
+    </button>
+  </mat-menu>
+</div>
+</div>
+<mat-dialog-content>  
+<div fxLayout="row" fxLayoutAlign="space-around center">
+  <mat-form-field fxFlex="25%">
+    <input matInput [(ngModel)]="this.datosPasados.sala.edificio.nombre" placeholder="Edificio">
+  </mat-form-field>
+   
+  <mat-form-field fxFlex="35%">
+    <input matInput [(ngModel)]="this.datosPasados.sala.nombre" placeholder="Sala">
+  </mat-form-field>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="space-around center">
+  <mat-form-field fxFlex="20%">
+    <input matInput [(ngModel)]="this.datosPasados.usuario" placeholder="Usuario" required>
+  </mat-form-field> 
+  <mat-form-field fxFlex="35%">
+    <input
+      matInput
+      [(ngModel)]="this.datosPasados.fechaReserva"
+      placeholder="Fecha de la Reserva"
+      [matDatepicker]="picker"
+      [min]="minDate">
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>  
+</div>    
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center">
+<button type="submit" mat-raised-button color="primary" [mat-dialog-close]="true">Aceptar</button>
+<button mat-button [mat-dialog-close]="false">Cancelar</button>
+</mat-dialog-actions>

@@ -16,8 +16,7 @@ export class EdificioMockService{
                 "longitud": "-4.728874",
                 "provincia": {
                     "id": 40,
-                    "provincia": "Valladolid",
-                    "provinciaseo":"VA"
+                    "provincia": "Valladolid"
                 }
             },          
             "codPostal": "47014",
@@ -37,7 +36,6 @@ export class EdificioMockService{
                 "provincia": {
                     "id": 40,
                     "provincia": "Valladolid",
-                    "provinciaseo":"VA"
                 }
             },          
             "codPostal": "47014",
@@ -57,7 +55,6 @@ export class EdificioMockService{
                 "provincia": {
                     "id": 40,
                     "provincia": "Valladolid",
-                    "provinciaseo":"VA"
                 }
             },          
             "codPostal": "47008",
@@ -76,7 +73,6 @@ export class EdificioMockService{
                 "provincia": {
                     "id": 40,
                     "provincia": "Valladolid",
-                    "provinciaseo":"VA"
                 }
             },          
             "codPostal": "47008",
@@ -96,7 +92,6 @@ export class EdificioMockService{
                 "provincia": {
                     "id": 40,
                     "provincia": "Valladolid",
-                    "provinciaseo":"VA"
                 }
             },          
             "codPostal": "47014",

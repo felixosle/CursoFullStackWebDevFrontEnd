@@ -79,7 +79,7 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
 
   onVerSalas(element){
     this.edificioSeleccionado = element;
-    console.log("Viendo salas elemento " + this.edificioSeleccionado.nombre);
+    console.log("Viendo salas del edificio: " + this.edificioSeleccionado.nombre);
     
     
   }

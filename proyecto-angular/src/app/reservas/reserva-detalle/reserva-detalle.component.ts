@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 
 @Component({
   selector: 'app-reserva-detalle',
@@ -6,10 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reserva-detalle.component.css']
 })
 export class ReservaDetalleComponent implements OnInit {
+  minDate;
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.minDate = new Date();
+  }
+
+  onDelete(element){
+    console.log("Borrando elemento " + this.datosPasados.id);
+    const dialogRef = this.dialog.open(DialogoConfirmacionComponent, {
+      data: this.datosPasados
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log("Pulsó Aceptar Borrar " + this.datosPasados.id);
+      } else {
+        console.log("Pulsó Cancelar Borrar "+ this.datosPasados.id);
+      }
+    });
   }
 
 }

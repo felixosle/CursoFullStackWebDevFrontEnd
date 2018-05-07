@@ -8,12 +8,14 @@ import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { NuevoEdificioComponent } from './edificios/nuevo-edificio/nuevo-edificio.component';
 import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.component';
+import { NuevaReservaComponent } from './reservas/nueva-reserva/nueva-reserva.component';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent },
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent},
   { path: 'reservas', component: ReservasComponent},
+  { path: 'nuevaReserva', component: NuevaReservaComponent},
   { path: 'edificios', component: EdificiosComponent},
   { path: 'nuevoEdificio', component: NuevoEdificioComponent},
   { path: 'salas', component: SalasComponent },

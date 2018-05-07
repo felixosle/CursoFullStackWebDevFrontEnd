@@ -24,13 +24,9 @@ export interface Poblacion {
      */
     poblacion: string;
     /**
-     * Nombre de la Población sin acentos ni mayúsculas
-     */
-    poblacionseo?: string;
-    /**
      * Código postal de la Población
      */
-    postal?: number;
+    postal?: string;
     /**
      * Latitud de la Población (geoposicionamiento)
      */

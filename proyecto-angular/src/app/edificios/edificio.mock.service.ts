@@ -150,8 +150,13 @@ export class EdificioMockService{
             "nombre": "E.U.M. I"            
             }
         }
-
     ];
+
+    provincias = [
+        {id: 40, provincia: 'Valladolid'},
+        {id: 30, provincia: 'Palencia'},
+        {id: 20, provincia: 'León'}
+      ];
 
     getEdificios(){
         return this.edificios.slice();
@@ -162,4 +167,9 @@ export class EdificioMockService{
         return this.salas.slice();
         //slice() proporciona una copia de los datos (para que los datos originales no se modifiquen)
     }
+
+    getProvincias(){
+        return this.provincias.slice();        
+        //slice() proporciona una copia de los datos (para que los datos originales no se modifiquen)
+      }
 }

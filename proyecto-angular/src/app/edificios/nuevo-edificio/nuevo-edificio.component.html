@@ -1,3 +1,47 @@
-<p>
-  nuevo-edificio works!
-</p>
+<section>  
+  <div fxLayout="row" fxLayoutAlign="center">
+    <h3>Nuevo Edificio</h3>
+  </div>
+    <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+      <mat-form-field fxFlex="30%">
+        <input matInput  placeholder="Nombre">
+      </mat-form-field>
+      <mat-form-field fxFlex="20%">
+        <mat-select placeholder="Provincia">
+          <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">
+            {{ provincia.provincia }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+      <mat-form-field fxFlex="15%">
+        <input matInput  placeholder="Codº Vía">
+      </mat-form-field>
+      <mat-form-field fxFlex="15%">
+        <input matInput  placeholder="Nº Vía">
+      </mat-form-field>
+      <mat-form-field fxFlex="15%">
+        <input matInput  placeholder="Nombre de Vía">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+      <mat-form-field fxFlex="30%">
+          <input matInput  placeholder="Población">
+      </mat-form-field>
+      <mat-form-field fxFlex="15%">
+          <input matInput  placeholder="Código Postal">
+      </mat-form-field>
+      <mat-form-field fxFlex="15%">
+          <input matInput  placeholder="Titularidad">
+      </mat-form-field>
+    </div>
+    <br>
+    <div fxLayoutAlign="center">
+      <button type="submit" mat-raised-button color="accent">Aceptar</button>
+    </div>
+  </form>
+</section>
+

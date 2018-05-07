@@ -105,7 +105,7 @@ export class EdificioMockService{
             "nombre": "Sala 1",
             "descripcion": "Sala de reuniones nº 1",
             "capacidad": 10,
-            "localizacion": "string",
+            "localizacion": "SM-25",
             "tipo": {
             "id": 1111111,
             "nombre": "Sala de reunión"
@@ -122,7 +122,7 @@ export class EdificioMockService{
             "nombre": "Sala 2",
             "descripcion": "Sala de reuniones nº 2",
             "capacidad": 10,
-            "localizacion": "string",
+            "localizacion": "SM-30",
             "tipo": {
             "id": 1,
             "nombre": "Sala de reunión"
@@ -139,7 +139,7 @@ export class EdificioMockService{
             "nombre": "Sala 3",
             "descripcion": "Sala de reuniones nº 3",
             "capacidad": 10,
-            "localizacion": "string",
+            "localizacion": "SM-15",
             "tipo": {
             "id": 1,
             "nombre": "Sala de reunión"

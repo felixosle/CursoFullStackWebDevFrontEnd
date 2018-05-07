@@ -17,21 +17,23 @@
    </div>
 </div>
 <mat-dialog-content>  
-  <div fxLayout="row" fxLayoutAlign="space-around center">
+  <div fxLayout="row">
     <mat-form-field fxFlex="60%">
       <input matInput [(ngModel)]="this.datosPasados.nombre" placeholder="Nombre" required>
-    </mat-form-field>        
-    <mat-form-field fxFlex="35%">
-      <input matInput [(ngModel)]="this.datosPasados.descripcion" placeholder="Código Postal">
+    </mat-form-field>
+  </div>
+  <div fxLayout="row">
+    <mat-form-field fxFlex="90%">
+      <input matInput [(ngModel)]="this.datosPasados.descripcion" placeholder="Descripción">
     </mat-form-field>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="space-around center">
-    <mat-form-field fxFlex="25%">
-      <input matInput [(ngModel)]="this.datosPasados.capacidad" placeholder="Titularidad">
+    <mat-form-field fxFlex="20%">
+      <input matInput [(ngModel)]="this.datosPasados.capacidad" placeholder="Capacidad">
     </mat-form-field>
     <mat-form-field fxFlex="70%">
-      <input matInput [(ngModel)]="this.datosPasados.localizacion" placeholder="Población">
+      <input matInput [(ngModel)]="this.datosPasados.localizacion" placeholder="Localización">
     </mat-form-field>
   </div>    
 

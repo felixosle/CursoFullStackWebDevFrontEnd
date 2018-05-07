@@ -1,35 +1,37 @@
-<section>
-  <div fxFlex="90%" fxLayoutAlign="center" mat-dialog-title>Nueva Reserva</div>
-  <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
-    
-    <mat-form-field fxFlex="25%">
-      <mat-select placeholder="Provincia">
-        <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">
-          {{ provincia.provincia }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    
-    <mat-form-field fxFlex="35%">
-        <input matInput  placeholder="Edificio">
-    </mat-form-field>
+<section fxLayout="column" fxLayoutAlign="center center">  
+  <h3>Nueva Reserva</h3>
+    <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div fxLayout="column">
+      <mat-form-field fxFlex="25%">
+        <mat-select placeholder="Provincia">
+          <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">
+            {{ provincia.provincia }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field fxFlex="35%">
+          <input matInput  placeholder="Edificio">
+      </mat-form-field>
 
-    <mat-form-field fxFlex="35%">
+      <mat-form-field fxFlex="35%">
         <input matInput  placeholder="Sala">
       </mat-form-field>
 
-    <mat-form-field fxFlex="35%">
-      <input
-        matInput        
-        placeholder="Fecha de la Reserva"
-        [matDatepicker]="picker"
-        [min]="minDate">
-      <mat-datepicker-toggle
-        matSuffix
-        [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <button type="submit" mat-raised-button color="accent">Aceptar</button>
+      <mat-form-field fxFlex="35%">
+        <input
+          matInput        
+          placeholder="Fecha de la Reserva"
+          [matDatepicker]="picker"
+          [min]="minDate">
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div fxLayoutAlign="center">
+      <button type="submit" mat-raised-button color="accent">Aceptar</button>
+    </div>
   </form>
 </section>

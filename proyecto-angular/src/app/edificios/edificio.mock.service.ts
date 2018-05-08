@@ -166,10 +166,10 @@ export class EdificioMockService{
     ];
 
     provincias = [
-        {id: 40, provincia: 'Valladolid'},
-        {id: 30, provincia: 'Palencia'},
-        {id: 20, provincia: 'León'},
-        {id: 10, provincia: 'Zamora'}
+        {provinciaId: 40, provincia: 'Valladolid'},
+        {provinciaId: 30, provincia: 'Palencia'},
+        {provinciaId: 20, provincia: 'León'},
+        {provinciaId: 10, provincia: 'Zamora'}
       ];
 
     getEdificios(){

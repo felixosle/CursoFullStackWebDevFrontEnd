@@ -16,9 +16,9 @@ export interface TipoSala {
     /**
      * Id de Tipo de Sala
      */
-    id: number;
+    tipoSalaId: number;
     /**
      * Nombre de Tipo de Sala
      */
-    nombre: string;
+    tipo: string;
 }

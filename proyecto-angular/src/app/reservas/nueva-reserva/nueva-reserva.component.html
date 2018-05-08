@@ -4,7 +4,7 @@
     <div fxLayout="column">
       <mat-form-field fxFlex="25%">
         <mat-select placeholder="Provincia">
-          <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">
+          <mat-option *ngFor="let provincia of provincias" [value]="provincia.provinciaId">
             {{ provincia.provincia }}
           </mat-option>
         </mat-select>

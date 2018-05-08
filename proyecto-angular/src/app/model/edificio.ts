@@ -10,35 +10,19 @@
  * Do not edit the class manually.
  */
 
-import { Poblacion } from './poblacion';
+import { Direccion } from './direccion';
 
 
 export interface Edificio {
     /**
      * Id del Edificio
      */
-    id: number;
+    edificioId: number;
     /**
      * Nombre del Edificio
      */
     nombre: string;
-    /**
-     * Código de vía
-     */
-    codVia?: string;
-    /**
-     * Nombre de vía
-     */
-    nombreVia?: string;
-    /**
-     * Número de vía
-     */
-    numeroVia?: string;
-    poblacion?: Poblacion;
-    /**
-     * Código postal del Edificio
-     */
-    codPostal?: string;
+    direccion?: Direccion;
     /**
      * Titularidad del Edificio
      */

@@ -17,7 +17,7 @@ export interface Poblacion {
     /**
      * Id de la Población
      */
-    id: number;
+    poblacionId: number;
     provincia?: Provincia;
     /**
      * Nombre de la Población

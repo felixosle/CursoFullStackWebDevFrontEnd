@@ -4,150 +4,163 @@ import { Sala } from '../model/sala';
 
 export class EdificioMockService{
     private edificios: Edificio[] = [
-        {   "id": 1,
+        {   "edificioId": 1,
             "nombre": "EUM 1",
-            "codVia": "CALLE",
-            "nombreVia": "FRANCESCO SCRIMIERI",
-            "numeroVia": "SN",
-            "poblacion": {
-                "id": 7467,
-                "poblacion": "Valladolid",
-                "latitud": "41.653363",
-                "longitud": "-4.728874",
-                "provincia": {
-                    "id": 40,
-                    "provincia": "Valladolid"
-                }
-            },          
-            "codPostal": "47014",
+            "direccion": {
+                "tipoVia": "CALLE",
+                "nombreVia": "FRANCESCO SCRIMIERI",
+                "numeroVia": "SN",
+                "codigoPostal": "47014",
+                "poblacion": {
+                    "poblacionId": 7467,
+                    "provincia": {
+                        "provinciaId": 40,
+                        "provincia": "Valladolid"
+                    },
+                    "poblacion": "Valladolid",
+                    "postal": "47001",
+                    "latitud": "41.653363",
+                    "longitud": "-4.728874"                    
+                },
+            },
+                "titularidad":"PR"
+        },
+        
+        {   "edificioId": 2,
+            "nombre": "EUM 2",
+            "direccion": {
+                "tipoVia": "CALLE",
+                "nombreVia": "RIGOBERTO CORTEJOSO",
+                "numeroVia": "14",
+                "codigoPostal": "47014",
+                "poblacion": {
+                    "poblacionId": 7467,
+                    "poblacion": "Valladolid",
+                    "provincia": {
+                        "provinciaId": 40,
+                        "provincia": "Valladolid",
+                    },                    
+                    "postal": "47001",
+                    "latitud": "41.653363",
+                    "longitud": "-4.728874",                    
+                },
+            },
+            "titularidad":"PR"
+        },
+
+        {   "edificioId": 3,
+            "nombre": "PRESIDENCIA",
+            "direccion": {
+                "tipoVia": "CALLE",
+                "nombreVia": "SANTIAGO ALBA",
+                "numeroVia": "1",
+                "codigoPostal": "47008",
+                "poblacion": {
+                    "poblacionId": 7467,
+                    "poblacion": "Valladolid",
+                    "provincia": {
+                        "provinciaId": 40,
+                        "provincia": "Valladolid",
+                    },
+                    "postal": "47001",
+                    "latitud": "41.653363",
+                    "longitud": "-4.728874",
+                },                
+            },
             "titularidad":"PR"
         },
         
-        {   "id": 2,
-            "nombre": "EUM 2",
-            "codVia": "CALLE",
-            "nombreVia": "RIGOBERTO CORTEJOSO",
-            "numeroVia": "14",
-            "poblacion": {
-                "id": 7467,
-                "poblacion": "Valladolid",
-                "latitud": "41.653363",
-                "longitud": "-4.728874",
-                "provincia": {
-                    "id": 40,
-                    "provincia": "Valladolid",
-                }
-            },          
-            "codPostal": "47014",
-            "titularidad":"PR"
-        },
-
-        {   "id": 3,
-            "nombre": "PRESIDENCIA",
-            "codVia": "CALLE",
-            "nombreVia": "SANTIAGO ALBA",
-            "numeroVia": "1",
-            "poblacion": {
-                "id": 7467,
-                "poblacion": "Valladolid",
-                "latitud": "41.653363",
-                "longitud": "-4.728874",
-                "provincia": {
-                    "id": 40,
-                    "provincia": "Valladolid",
-                }
-            },          
-            "codPostal": "47008",
-            "titularidad":"PR"
-        },
-        {   "id": 4,
+        {   "edificioId": 4,
             "nombre": "HOSPITAL MILITAR",
-            "codVia": "PASEO",
-            "nombreVia": "ZORRILLA",
-            "numeroVia": "1",
-            "poblacion": {
-                "id": 7467,
-                "poblacion": "Valladolid",
-                "latitud": "41.653363",
-                "longitud": "-4.728874",
-                "provincia": {
-                    "id": 40,
-                    "provincia": "Valladolid",
-                }
-            },          
-            "codPostal": "47008",
+            "direccion": {
+                "tipoVia": "PASEO",
+                "nombreVia": "ZORRILLA",
+                "numeroVia": "1",
+                "codigoPostal": "47008",
+                "poblacion": {
+                    "poblacionId": 7467,
+                    "poblacion": "Valladolid",
+                    "provincia": {
+                        "provinciaId": 40,
+                        "provincia": "Valladolid",
+                    },
+                    "postal": "47008",
+                    "latitud": "41.653363",
+                    "longitud": "-4.728874",
+                },
+            },
             "titularidad":"PR"
         },
 
-        {   "id": 5,
+        {   "edificioId": 5,
             "nombre": "EDUCACION",
-            "codVia": "AVENIDA",
-            "nombreVia": "MONASTERIO DEL PRADO",
-            "numeroVia": "SN",
-            "poblacion": {
-                "id": 7467,
-                "poblacion": "Valladolid",
-                "latitud": "41.653363",
-                "longitud": "-4.728874",
-                "provincia": {
-                    "id": 40,
-                    "provincia": "Valladolid",
-                }
-            },          
-            "codPostal": "47014",
+            "direccion": {
+                "tipoVia": "AVENIDA",
+                "nombreVia": "MONASTERIO DEL PRADO",
+                "numeroVia": "SN",
+                "codigoPostal": "47014",
+                "poblacion": {
+                    "poblacionId": 7467,
+                    "poblacion": "Valladolid",
+                    "provincia": {
+                        "provinciaId": 40,
+                        "provincia": "Valladolid",
+                    },
+                    "postal": "47014",
+                    "latitud": "41.653363",
+                    "longitud": "-4.728874",
+                },
+            },
             "titularidad":"PR"
         }
     ];
 
     private salas: Sala[] = [
         {
-            "id": 1,
+            "salaId": 1,
             "nombre": "Sala 1",
             "descripcion": "Sala de reuniones nº 1",
-            "capacidad": 10,
+            "capacidad": 20,
             "localizacion": "SM-25",
-            "tipo": {
-            "id": 1111111,
-            "nombre": "Sala de reunión"
-            
-        },
+            "tipoSala": {
+                "tipoSalaId": 1,
+                "tipo": "Sala de reunión"            
+            },
         "edificio": {
-            "id": 1111111,
+            "edificioId": 1,
             "nombre": "E.U.M. I"            
             }
         }, 
         
         {
-            "id": 2,
+            "salaId": 2,
             "nombre": "Sala 2",
             "descripcion": "Sala de reuniones nº 2",
             "capacidad": 10,
             "localizacion": "SM-30",
-            "tipo": {
-            "id": 1,
-            "nombre": "Sala de reunión"
-            
-        },
-        "edificio": {
-            "id": 1,
+            "tipoSala": {
+                "tipoSalaId": 1,
+                "tipo": "Sala de reunión"            
+            },
+            "edificio": {
+            "edificioId": 1,
             "nombre": "E.U.M. I"            
             }
         },
 
         {
-            "id": 3,
+            "salaId": 3,
             "nombre": "Sala 3",
             "descripcion": "Sala de reuniones nº 3",
-            "capacidad": 10,
+            "capacidad": 15,
             "localizacion": "SM-15",
-            "tipo": {
-            "id": 1,
-            "nombre": "Sala de reunión"
-            
-        },
+            "tipoSala": {
+                "tipoSalaId": 1,
+                "tipo": "Sala de reunión"                
+            },
         "edificio": {
-            "id": 1,
-            "nombre": "E.U.M. I"            
+            "edificioId": 2,
+            "nombre": "E.U.M. II"            
             }
         }
     ];
@@ -155,7 +168,8 @@ export class EdificioMockService{
     provincias = [
         {id: 40, provincia: 'Valladolid'},
         {id: 30, provincia: 'Palencia'},
-        {id: 20, provincia: 'León'}
+        {id: 20, provincia: 'León'},
+        {id: 10, provincia: 'Zamora'}
       ];
 
     getEdificios(){

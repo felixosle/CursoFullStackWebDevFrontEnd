@@ -16,7 +16,7 @@ export interface Provincia {
     /**
      * Id de la Provincia
      */
-    id: number;
+    provinciaId: number;
     /**
      * Nombre de la Provincia
      */

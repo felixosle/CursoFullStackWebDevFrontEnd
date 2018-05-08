@@ -46,7 +46,7 @@ export class ReservasComponent implements OnInit, AfterViewInit {
 
   onEdit(element){
     this.reservaSeleccionada = element;
-    console.log("Editando la reserva: " + this.reservaSeleccionada.id );
+    console.log("Editando la reserva: " + this.reservaSeleccionada.reservaId );
     const dialogRef = this.dialog.open(ReservaDetalleComponent, {
       data: this.reservaSeleccionada
     });

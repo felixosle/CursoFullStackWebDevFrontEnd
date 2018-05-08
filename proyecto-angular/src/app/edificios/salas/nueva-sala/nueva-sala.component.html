@@ -3,7 +3,7 @@
       <h3>Nueva Sala</h3>
     </div>
       <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
-      <div fxLayout="row" fxLayoutAlign="space-evenly center">
+      <div fxLayout="row" fxLayoutAlign="space-evenly">
         <mat-form-field fxFlex="20%">
           <input matInput  placeholder="Nombre">
         </mat-form-field>
@@ -12,19 +12,16 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row" fxLayoutAlign="space-evenly center">        
+      <div fxLayout="row" fxLayoutAlign="space-evenly">        
         <mat-form-field fxFlex="10%">
           <input matInput  placeholder="Capacidad">
         </mat-form-field>
+        <mat-form-field fxFlex="15%">
+            <input matInput  placeholder="Tipo de Sala">
+        </mat-form-field>  
         <mat-form-field fxFlex="35%">
           <input matInput  placeholder="Localización">
         </mat-form-field>
-      </div>
-  
-      <div fxLayout="row" fxLayoutAlign="space-evenly center">
-        <mat-form-field fxFlex="15%">
-            <input matInput  placeholder="Tipo de Sala">
-        </mat-form-field>                
       </div>
       <br>
       <div fxLayoutAlign="center">

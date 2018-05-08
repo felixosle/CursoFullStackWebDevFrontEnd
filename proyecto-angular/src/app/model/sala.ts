@@ -18,7 +18,7 @@ export interface Sala {
     /**
      * Id de la Sala
      */
-    id: number;
+    salaId: number;
     /**
      * Nombre de la Sala
      */
@@ -29,6 +29,6 @@ export interface Sala {
      * Localización de la sala
      */
     localizacion?: string;
-    tipo?: TipoSala;
+    tipoSala?: TipoSala;
     edificio?: Edificio;
 }

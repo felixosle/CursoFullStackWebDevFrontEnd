@@ -7,36 +7,13 @@ export class ReservaMockService{
   fechaHoy: Date = new Date();
   private reservas: Reserva[] = [      
     {
-      "id": 1,
+      "reservaId": 1,
       "sala": {
-        "id": 1,
+        "salaId": 1,
         "nombre": "Sala 1",
-        "descripcion": "Sala de reuniones nº 1",
-        "capacidad": 10,
-        "localizacion": "SM-15",
-        "tipo": {
-          "id": 1,
-          "nombre": "Sala de reunión"
-        },
         "edificio": {
-          "id": 1,
-          "nombre": "E.U.M. 1",
-          "codVia": "Calle",
-          "nombreVia": "FRANCESCO SCRIMIERI",
-          "numeroVia": "SN",
-          "poblacion": {
-            "id": 7467,
-            "provincia": {
-              "id": 40,
-              "provincia": "Valladolid"
-            },
-            "poblacion": "Valladolid",
-            "postal": "47001",
-            "latitud": "41.653363",
-            "longitud": "-4.728874"
-          },
-          "codPostal": "47014",
-          "titularidad": "PR"
+          "edificioId": 1,
+          "nombre": "E.U.M. I"
         }
       },
       "fechaReserva": this.fechaHoy,
@@ -44,73 +21,27 @@ export class ReservaMockService{
     },
 
     {
-      "id": 2,
+      "reservaId": 2,
       "sala": {
-        "id": 1,
-        "nombre": "Sala 1",
-        "descripcion": "Sala de reuniones nº 1",
-        "capacidad": 10,
-        "localizacion": "SM-12",
-        "tipo": {
-          "id": 1,
-          "nombre": "Sala de reunión"
-        },
-        "edificio": {
-          "id": 2,
-          "nombre": "E.U.M. 2",
-          "codVia": "Calle",
-          "nombreVia": "RIGOBERTO CORTEJOSO",
-          "numeroVia": "20",
-          "poblacion": {
-            "id": 7467,
-            "provincia": {
-              "id": 40,
-              "provincia": "Valladolid"
-            },
-            "poblacion": "Valladolid",
-            "postal": "47001",
-            "latitud": "41.653363",
-            "longitud": "-4.728874"
-          },
-          "codPostal": "47014",
-          "titularidad": "PR"
-        }
-      },
-      "fechaReserva": this.fechaHoy,
-      "usuario": "ferferfe"
-    },
-
-    {
-      "id": 3,
-      "sala": {
-        "id": 2,
+        "salaId": 2,
         "nombre": "Sala 2",
-        "descripcion": "Sala de reuniones nº 2",
-        "capacidad": 10,
-        "localizacion": "SM-24",
-        "tipo": {
-          "id": 1,
-          "nombre": "Sala de reunión"
-        },
         "edificio": {
-          "id": 2,
-          "nombre": "E.U.M. 2",
-          "codVia": "Calle",
-          "nombreVia": "RIGOBERTO CORTEJOSO",
-          "numeroVia": "20",
-          "poblacion": {
-            "id": 7467,
-            "provincia": {
-              "id": 40,
-              "provincia": "Valladolid"
-            },
-            "poblacion": "Valladolid",
-            "postal": "47001",
-            "latitud": "41.653363",
-            "longitud": "-4.728874"
-          },
-          "codPostal": "47014",
-          "titularidad": "PR"
+          "edificioId": 1,
+          "nombre": "E.U.M. I"
+        }
+      },
+      "fechaReserva": this.fechaHoy,
+      "usuario": "martintin"
+    },
+
+    {
+      "reservaId": 3,
+      "sala": {
+        "salaId": 1,
+        "nombre": "Sala 1",
+        "edificio": {
+          "edificioId": 1,
+          "nombre": "E.U.M. I"
         }
       },
       "fechaReserva": this.fechaHoy,
@@ -118,40 +49,33 @@ export class ReservaMockService{
     },
 
     {
-      "id": 4,
+      "reservaId": 4,
       "sala": {
-        "id": 1,
-        "nombre": "Sala 1",
-        "descripcion": "Sala de reuniones nº 1",
-        "capacidad": 10,
-        "localizacion": "SM-04",
-        "tipo": {
-          "id": 1,
-          "nombre": "Sala de reunión"
-        },
+        "salaId": 3,
+        "nombre": "Sala 3",
         "edificio": {
-          "id": 3,
-            "nombre": "PRESIDENCIA",
-            "codVia": "CALLE",
-            "nombreVia": "SANTIAGO ALBA",
-            "numeroVia": "1",
-            "poblacion": {
-                "id": 7467,
-                "poblacion": "Valladolid",
-                "latitud": "41.653363",
-                "longitud": "-4.728874",
-                "provincia": {
-                    "id": 40,
-                    "provincia": "Valladolid",
-                }
-            },          
-            "codPostal": "47008",
-            "titularidad":"PR"
+          "edificioId": 3,
+          "nombre": "E.U.M. II"
         }
       },
       "fechaReserva": this.fechaHoy,
-      "usuario": "ferferfe"
+      "usuario": "gomferma"
+    },
+
+    {
+      "reservaId": 5,
+      "sala": {
+        "salaId": 3,
+        "nombre": "Sala 3",
+        "edificio": {
+          "edificioId": 4,
+          "nombre": "E.U.M. II"
+        }
+      },
+      "fechaReserva": this.fechaHoy,
+      "usuario": "fermargo"
     }
+        
   ];
 
   getReservas(){

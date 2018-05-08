@@ -10,21 +10,25 @@
  * Do not edit the class manually.
  */
 
-import { Sala } from './sala';
+import { Poblacion } from './poblacion';
 
 
-export interface Reserva {
+export interface Direccion {
     /**
-     * Id de la Reserva
+     * Código de vía
      */
-    reservaId: number;
-    sala: Sala;
+    tipoVia?: string;
     /**
-     * Fecha de la Reserva
+     * Nombre de vía
      */
-    fechaReserva: Date;
+    nombreVia?: string;
     /**
-     * Usuario que realiza la reserva
+     * Número de vía
      */
-    usuario: string;
+    numeroVia?: string;
+    /**
+     * Código postal del Edificio
+     */
+    codigoPostal?: string;
+    poblacion?: Poblacion;
 }

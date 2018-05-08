@@ -1,3 +1,4 @@
+export * from './direccion';
 export * from './edificio';
 export * from './poblacion';
 export * from './provincia';

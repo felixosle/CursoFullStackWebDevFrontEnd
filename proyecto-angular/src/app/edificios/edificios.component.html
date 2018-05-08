@@ -1,4 +1,7 @@
 <section>
+  <h3 fxLayoutAlign="center center">
+    Listado de EDIFICIOS
+  </h3>
   <br>    
   <mat-form-field fxLayoutAlign="center">
     <input matInput type="text" (keyup)="filtrar($event.target.value)" placeholder="Filtro">
@@ -12,7 +15,7 @@
     
     <ng-container matColumnDef="codPostal">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Código Postal</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.codPostal }}</mat-cell>
+        <mat-cell *matCellDef="let element">{{ element.direccion.codigoPostal }}</mat-cell>
     </ng-container>
     
     <ng-container matColumnDef="titularidad">
@@ -22,7 +25,7 @@
   
     <ng-container matColumnDef="poblacion">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Población</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.poblacion.poblacion }}</mat-cell>
+      <mat-cell *matCellDef="let element">{{ element.direccion.poblacion.poblacion }}</mat-cell>
     </ng-container>
 
     <!-- columna "Ver Salas" -->

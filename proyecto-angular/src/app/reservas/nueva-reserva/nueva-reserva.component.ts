@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Reserva } from '../../model/reserva';
 import { Provincia } from '../../model/provincia';
-import { ReservaMockService } from '../reserva.mock.service'
+import { EdificioMockService } from '../../edificios/edificio.mock.service'
 
 @Component({
   selector: 'app-nueva-reserva',
@@ -14,10 +14,10 @@ export class NuevaReservaComponent implements OnInit {
   minDate;
 
 
-  constructor(private reservaMockService: ReservaMockService) { }
+  constructor(private edificioMockService: EdificioMockService) { }
 
   ngOnInit() {
-    this.provincias = this.reservaMockService.getProvincias();
+    this.provincias = this.edificioMockService.getProvincias();
     this.minDate = new Date();
   }
 

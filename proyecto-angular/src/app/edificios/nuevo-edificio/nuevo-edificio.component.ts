@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Edificio } from '../../model/edificio';
+import { Provincia } from '../../model/provincia';
+import { EdificioMockService } from '../edificio.mock.service'
 
 @Component({
   selector: 'app-nuevo-edificio',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nuevo-edificio.component.css']
 })
 export class NuevoEdificioComponent implements OnInit {
+  edificio: Edificio;
+  provincias: Provincia []=[];
 
-  constructor() { }
+
+  constructor(private edificioMockService: EdificioMockService) { }
 
   ngOnInit() {
+    this.provincias = this.edificioMockService.getProvincias();
   }
 
 }

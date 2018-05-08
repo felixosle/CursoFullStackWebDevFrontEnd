@@ -154,22 +154,8 @@ export class ReservaMockService{
     }
   ];
 
-  provincias = [
-    {id: 40, provincia: 'Valladolid'},
-    {id: 30, provincia: 'Palencia'},
-    {id: 20, provincia: 'León'}
-  ];
-
-    getReservas(){
-      return this.reservas.slice();        
-      //slice() proporciona una copia de los datos (para que los datos originales no se modifiquen)
-    }
-
-    getProvincias(){
-      return this.provincias.slice();        
-      //slice() proporciona una copia de los datos (para que los datos originales no se modifiquen)
-    }
-
-    
-    
+  getReservas(){
+    return this.reservas.slice();        
+    //slice() proporciona una copia de los datos (para que los datos originales no se modifiquen)
+  } 
 }

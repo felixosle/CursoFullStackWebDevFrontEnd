@@ -18,4 +18,7 @@ export class NuevaSalaComponent implements OnInit {
     this.edificios = this.edificioMockService.getEdificios();
   }
 
+  onSubmit(){
+    console.log("Pulsado Aceptar Nueva Sala");
+  }
 }

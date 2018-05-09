@@ -19,4 +19,7 @@ export class NuevoEdificioComponent implements OnInit {
     this.provincias = this.edificioMockService.getProvincias();
   }
 
+  onSubmit(){
+    console.log("Pulsado Aceptar Nuevo Elemento");
+  }
 }

@@ -20,5 +20,8 @@ export class NuevaReservaComponent implements OnInit {
     this.provincias = this.edificioMockService.getProvincias();
     this.minDate = new Date();
   }
-
+  
+  onSubmit(){
+    console.log("Pulsado Aceptar Nuevo Elemento");
+  }
 }

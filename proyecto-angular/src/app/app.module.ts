@@ -5,6 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { ApiModule } from './api.module';
 import { EdificioMockService } from './edificios/edificio.mock.service'
 import { ReservaMockService } from './reservas/reserva.mock.service'
+import { HttpClientModule } from '@angular/common/http';
+
+// Imports for loading & configuring the in-memory web api
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './edificios/in-memory-data.service';
 
 //Imports de Angular Material:
 import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,
@@ -64,7 +69,11 @@ import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.comp
     MatMomentDateModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule,
     MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, FlexLayoutModule,
     MatTableModule, MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+// The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+// and returns simulated server responses. Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false, delay:100 }),
   ],
   providers: [
     EdificioMockService,

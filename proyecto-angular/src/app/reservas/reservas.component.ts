@@ -5,6 +5,9 @@ import { Reserva } from '../model/reserva';
 import { ReservaDetalleComponent } from './reserva-detalle/reserva-detalle.component';
 import { ReservaMockService } from './reserva.mock.service'
 import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
+import { DefaultService } from '../api/default.service';
+import {DataSource} from '@angular/cdk/collections';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-reservas',
@@ -15,22 +18,20 @@ export class ReservasComponent implements OnInit, AfterViewInit {
   reservas: Reserva [] = [];
   reservaSeleccionada: Reserva = null;
   displayedColumns = ['id', 'sala', 'edificio', 'fecha', 'usuario', 'editar'];
-  dataSource = new MatTableDataSource<Reserva>();
+  dataSource = new ReservasDataSource(this.defaultService);
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
-  constructor(private reservaMockService: ReservaMockService, private dialog: MatDialog) { }
+  constructor(private reservaMockService: ReservaMockService, private defaultService: DefaultService, private dialog: MatDialog) { }
 
   ngAfterViewInit(){
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginador;
+    // this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginador;
   }
 
   ngOnInit() {
     this.reservas = this.reservaMockService.getReservas();
-    console.log(this.reservas);
-    this.dataSource.data = this.reservas;
     this.paginador._intl.itemsPerPageLabel = 'Registros por página';
     this.paginador._intl.nextPageLabel = 'Siguiente';
     this.paginador._intl.previousPageLabel = 'Anterior';
@@ -41,7 +42,7 @@ export class ReservasComponent implements OnInit, AfterViewInit {
   }
 
   filtrar(valorFiltro: string){
-    this.dataSource.filter = valorFiltro.trim().toLowerCase();
+    // this.dataSource.filter = valorFiltro.trim().toLowerCase();
   }
 
   onEdit(element){
@@ -59,4 +60,14 @@ export class ReservasComponent implements OnInit, AfterViewInit {
       }
     });
   }
+}
+
+export class ReservasDataSource extends DataSource<any> {
+  constructor(private defaultService: DefaultService) {
+    super();
+  }
+  connect(): Observable<Reserva[]> {
+    return this.defaultService.getReservas();
+  }
+  disconnect() {}
 }

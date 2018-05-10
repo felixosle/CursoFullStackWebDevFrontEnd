@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { ApiModule } from './api.module';
 import { EdificioMockService } from './edificios/edificio.mock.service';
 import { ReservaMockService } from './reservas/reserva.mock.service';
-import { ReservaService } from './reservas/reserva.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DefaultService } from './api/default.service';
 
@@ -72,7 +71,6 @@ import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.comp
   providers: [
     EdificioMockService,
     ReservaMockService,
-    ReservaService,
     DefaultService,
     {provide: MAT_DATE_LOCALE, useValue: 'es'},
   ],

@@ -7,12 +7,12 @@ export class ReservaMockService{
   fechaHoy: Date = new Date();
   private reservas: Reserva[] = [      
     {
-      "reservaId": 1,
+      "id": 1,
       "sala": {
-        "salaId": 1,
+        "id": 1,
         "nombre": "Sala 1",
         "edificio": {
-          "edificioId": 1,
+          "id": 1,
           "nombre": "E.U.M. I"
         }
       },
@@ -21,12 +21,12 @@ export class ReservaMockService{
     },
 
     {
-      "reservaId": 2,
+      "id": 2,
       "sala": {
-        "salaId": 2,
+        "id": 2,
         "nombre": "Sala 2",
         "edificio": {
-          "edificioId": 1,
+          "id": 1,
           "nombre": "E.U.M. I"
         }
       },
@@ -35,12 +35,12 @@ export class ReservaMockService{
     },
 
     {
-      "reservaId": 3,
+      "id": 3,
       "sala": {
-        "salaId": 1,
+        "id": 1,
         "nombre": "Sala 1",
         "edificio": {
-          "edificioId": 1,
+          "id": 1,
           "nombre": "E.U.M. I"
         }
       },
@@ -49,12 +49,12 @@ export class ReservaMockService{
     },
 
     {
-      "reservaId": 4,
+      "id": 4,
       "sala": {
-        "salaId": 3,
+        "id": 3,
         "nombre": "Sala 3",
         "edificio": {
-          "edificioId": 3,
+          "id": 3,
           "nombre": "E.U.M. II"
         }
       },
@@ -63,12 +63,12 @@ export class ReservaMockService{
     },
 
     {
-      "reservaId": 5,
+      "id": 5,
       "sala": {
-        "salaId": 3,
+        "id": 3,
         "nombre": "Sala 3",
         "edificio": {
-          "edificioId": 4,
+          "id": 4,
           "nombre": "E.U.M. II"
         }
       },

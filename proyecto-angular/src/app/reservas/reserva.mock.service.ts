@@ -1,7 +1,7 @@
 //Los servicios "mock" son para hacer pruebas con datos locales (cuando aún no tenemos servicios restful para probar)
-import { Edificio } from '../model/edificio';
-import { Sala } from '../model/sala';
-import { Reserva } from '../model/reserva';
+import { Edificio } from '../../api-rest/model/edificio';
+import { Sala } from '../../api-rest/model/sala';
+import { Reserva } from '../../api-rest/model/reserva';
 
 export class ReservaMockService{
   fechaHoy: Date = new Date();

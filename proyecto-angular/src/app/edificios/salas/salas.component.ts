@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { EdificioMockService } from '../edificio.mock.service'
-import { Sala } from '../../model/sala';
+import { Sala } from '../../../api-rest/model/sala';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { SalaDetalleComponent } from './sala-detalle/sala-detalle.component';

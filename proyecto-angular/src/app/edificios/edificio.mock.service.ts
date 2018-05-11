@@ -1,6 +1,6 @@
 //Los servicios "mock" son para hacer pruebas con datos locales (cuando aún no tenemos servicios restful para probar)
-import { Edificio } from '../model/edificio';
-import { Sala } from '../model/sala';
+import { Edificio } from '../../api-rest/model/edificio';
+import { Sala } from '../../api-rest/model/sala';
 
 export class EdificioMockService{
     private edificios: Edificio[] = [

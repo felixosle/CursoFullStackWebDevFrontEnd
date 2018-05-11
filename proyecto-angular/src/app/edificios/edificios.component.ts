@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EdificioMockService } from './edificio.mock.service'
-import { Edificio } from '../model/edificio';
+import { Edificio } from '../../api-rest/model/edificio';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { EdificioDetalleComponent } from './edificio-detalle/edificio-detalle.component';

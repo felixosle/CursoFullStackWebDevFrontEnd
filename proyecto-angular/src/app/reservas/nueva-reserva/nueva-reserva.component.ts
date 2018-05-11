@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Reserva } from '../../model/reserva';
-import { Provincia } from '../../model/provincia';
+import { Reserva } from '../../../api-rest/model/reserva';
+import { Provincia } from '../../../api-rest/model/provincia';
 import { EdificioMockService } from '../../edificios/edificio.mock.service'
 
 @Component({

@@ -2,11 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { ApiModule } from './api.module';
+import { ApiModule } from '../api-rest/api.module';
 import { EdificioMockService } from './edificios/edificio.mock.service';
 import { ReservaMockService } from './reservas/reserva.mock.service';
 import { HttpClientModule } from '@angular/common/http';
-import { DefaultService } from './api/default.service';
+import { DefaultService } from '../api-rest/api/default.service';
 
 //Imports de Angular Material:
 import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,

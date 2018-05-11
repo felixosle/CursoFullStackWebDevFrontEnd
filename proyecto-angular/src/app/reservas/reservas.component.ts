@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
-import { Reserva } from '../model/reserva';
+import { Reserva } from '../../api-rest/model/reserva';
 import { ReservaDetalleComponent } from './reserva-detalle/reserva-detalle.component';
 import { ReservaMockService } from './reserva.mock.service'
 import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
-import { DefaultService } from '../api/default.service';
+import { DefaultService } from '../../api-rest/api/default.service';
 import {DataSource} from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 

@@ -5,6 +5,7 @@ import { Edificio } from '../../api-rest/model/edificio';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { EdificioDetalleComponent } from './edificio-detalle/edificio-detalle.component';
+import { DefaultService } from '../../api-rest/api/default.service';
 
 @Component({
   selector: 'app-edificios',
@@ -20,11 +21,17 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
-  constructor(private edificioMockService: EdificioMockService, private dialog: MatDialog) { }
+  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.edificios = this.edificioMockService.getEdificios();
-    this.dataSource.data = this.edificios;
+    // this.edificios = this.edificioMockService.getEdificios();
+    // this.dataSource.data = this.edificios;
+    this.defaultService.getEdificio().subscribe(
+      data => {
+        this.dataSource.data = data;
+      }
+    )
+    
     this.paginador._intl.itemsPerPageLabel = 'Registros por página';
     this.paginador._intl.nextPageLabel = 'Siguiente';
     this.paginador._intl.previousPageLabel = 'Anterior';

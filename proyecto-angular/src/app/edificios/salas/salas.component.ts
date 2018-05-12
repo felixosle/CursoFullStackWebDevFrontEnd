@@ -4,6 +4,7 @@ import { Sala } from '../../../api-rest/model/sala';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { SalaDetalleComponent } from './sala-detalle/sala-detalle.component';
+import { DefaultService } from '../../../api-rest/api/default.service';
 
 @Component({
   selector: 'app-salas',
@@ -20,11 +21,16 @@ export class SalasComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
-  constructor(private edificioMockService: EdificioMockService, private dialog: MatDialog) { }
+  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.salas = this.edificioMockService.getSalas();
-    this.dataSource.data = this.salas;
+    // this.salas = this.edificioMockService.getSalas();
+    // this.dataSource.data = this.salas;
+    this.defaultService.getSalas(1).subscribe(
+      data => {
+        this.dataSource.data = data;
+      }
+    )
     this.paginador._intl.itemsPerPageLabel = 'Registros por página';
     this.paginador._intl.nextPageLabel = 'Siguiente';
     this.paginador._intl.previousPageLabel = 'Anterior';

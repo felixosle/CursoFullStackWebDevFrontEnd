@@ -6,8 +6,8 @@ import { ReservaDetalleComponent } from './reserva-detalle/reserva-detalle.compo
 import { ReservaMockService } from './reserva.mock.service'
 import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { DefaultService } from '../../api-rest/api/default.service';
-import {DataSource} from '@angular/cdk/collections';
-import { Observable } from 'rxjs/Observable';
+// import { DataSource } from '@angular/cdk/collections';
+// import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-reservas',
@@ -18,7 +18,7 @@ export class ReservasComponent implements OnInit, AfterViewInit {
   reservas: Reserva [] = [];
   reservaSeleccionada: Reserva = null;
   displayedColumns = ['id', 'sala', 'edificio', 'fecha', 'usuario', 'editar'];
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource<Reserva>();
 
   // dataSource = new ReservasDataSource(this.defaultService);
 
@@ -33,7 +33,7 @@ export class ReservasComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.reservas = this.reservaMockService.getReservas();
+    // this.reservas = this.reservaMockService.getReservas();
     this.defaultService.getReservas().subscribe(
       data => {
         this.dataSource.data = data;

@@ -18,7 +18,9 @@ export class ReservasComponent implements OnInit, AfterViewInit {
   reservas: Reserva [] = [];
   reservaSeleccionada: Reserva = null;
   displayedColumns = ['id', 'sala', 'edificio', 'fecha', 'usuario', 'editar'];
-  dataSource = new ReservasDataSource(this.defaultService);
+  dataSource = new MatTableDataSource();
+
+  // dataSource = new ReservasDataSource(this.defaultService);
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
@@ -26,12 +28,17 @@ export class ReservasComponent implements OnInit, AfterViewInit {
   constructor(private reservaMockService: ReservaMockService, private defaultService: DefaultService, private dialog: MatDialog) { }
 
   ngAfterViewInit(){
-    // this.dataSource.sort = this.sort;
-    // this.dataSource.paginator = this.paginador;
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginador;
   }
 
   ngOnInit() {
     this.reservas = this.reservaMockService.getReservas();
+    this.defaultService.getReservas().subscribe(
+      data => {
+        this.dataSource.data = data;
+      }
+    )
     this.paginador._intl.itemsPerPageLabel = 'Registros por página';
     this.paginador._intl.nextPageLabel = 'Siguiente';
     this.paginador._intl.previousPageLabel = 'Anterior';
@@ -42,7 +49,7 @@ export class ReservasComponent implements OnInit, AfterViewInit {
   }
 
   filtrar(valorFiltro: string){
-    // this.dataSource.filter = valorFiltro.trim().toLowerCase();
+    this.dataSource.filter = valorFiltro.trim().toLowerCase();
   }
 
   onEdit(element){
@@ -62,12 +69,12 @@ export class ReservasComponent implements OnInit, AfterViewInit {
   }
 }
 
-export class ReservasDataSource extends DataSource<any> {
-  constructor(private defaultService: DefaultService) {
-    super();
-  }
-  connect(): Observable<Reserva[]> {
-    return this.defaultService.getReservas();
-  }
-  disconnect() {}
-}
+// export class ReservasDataSource extends DataSource<any> {
+//   constructor(private defaultService: DefaultService) {
+//     super();
+//   }
+//   connect(): Observable<Reserva[]> {
+//     return this.defaultService.getReservas();
+//   }
+//   disconnect() {}
+// }

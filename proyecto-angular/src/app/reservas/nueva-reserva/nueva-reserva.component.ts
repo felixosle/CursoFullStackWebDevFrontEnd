@@ -12,7 +12,7 @@ import { DefaultService } from '../../../api-rest/api/default.service';
   styleUrls: ['./nueva-reserva.component.css']
 })
 export class NuevaReservaComponent implements OnInit {
-  reserva: Reserva;
+  reserva: Reserva = null;
   provincias: Provincia []=[];
   edificios: Edificio []=[];
   salas: Sala []=[];
@@ -23,10 +23,21 @@ export class NuevaReservaComponent implements OnInit {
   ngOnInit() {
     this.provincias = this.edificioMockService.getProvincias();
     this.minDate = new Date();
+    this.defaultService.getEdificio().subscribe(
+        data => {
+          this.edificios = data;
+        }
+      );
+
+    this.defaultService.getSalas(1).subscribe(
+      data => {
+        this.salas = data;
+      }
+    );
   }
   
   onSubmit(){
-    console.log("Pulsado Aceptar Nueva Reserva");
-    
+    console.log("Pulsado Aceptar Nueva Reserva. Reserva.sala= " + this.reserva.sala);
+    this.defaultService.agregarReserva(this.reserva).subscribe();
   }
 }

@@ -11,14 +11,22 @@
       </mat-form-field>
       
       <mat-form-field fxFlex="35%">
-          <input matInput  placeholder="Edificio">
+        <mat-select placeholder="Edificio">
+          <mat-option *ngFor="let edificio of edificios" [value]="edificio.id">
+            {{ edificio.nombre }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field fxFlex="35%">
-        <input matInput  placeholder="Sala">
+        <mat-select placeholder="Sala">
+          <mat-option *ngFor="let sala of salas" [value]="sala.id">
+            {{ sala.nombre }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
-      <mat-form-field fxFlex="35%">
+      <mat-form-field fxFlex="25%">
         <input
           matInput        
           placeholder="Fecha de la Reserva"

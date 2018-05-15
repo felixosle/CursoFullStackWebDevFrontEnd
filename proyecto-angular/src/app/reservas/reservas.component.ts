@@ -62,6 +62,7 @@ export class ReservasComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log("Pulsó Aceptar cambios de edición");
+        this.defaultService.actualizarReserva(this.reservaSeleccionada.id,this.reservaSeleccionada).subscribe();
       } else {
         console.log("Pulsó Cancelar cambios de edición");
       }

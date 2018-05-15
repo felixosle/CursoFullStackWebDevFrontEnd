@@ -17,12 +17,12 @@ export interface Reserva {
     /**
      * Id de la Reserva
      */
-    id: number;
+    id?: number;
     sala: Sala;
     /**
      * Fecha de la Reserva
      */
-    fechaReserva: Date;
+    fechaReserva: string;
     /**
      * Usuario que realiza la reserva
      */

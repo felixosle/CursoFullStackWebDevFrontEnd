@@ -17,7 +17,7 @@ export interface Edificio {
     /**
      * Id del Edificio
      */
-    id: number;
+    id?: number;
     /**
      * Nombre del Edificio
      */

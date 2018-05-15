@@ -18,7 +18,7 @@ export interface Sala {
     /**
      * Id de la Sala
      */
-    id: number;
+    id?: number;
     /**
      * Nombre de la Sala
      */

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
+import { DefaultService } from '../../../api-rest/api/default.service';
 
 @Component({
   selector: 'app-reserva-detalle',
@@ -10,7 +11,7 @@ import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-b
 export class ReservaDetalleComponent implements OnInit {
   minDate;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any, private dialog: MatDialog) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any, private dialog: MatDialog, private defaultService: DefaultService) { }
 
   ngOnInit() {
     this.minDate = new Date();

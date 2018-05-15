@@ -66,7 +66,7 @@ import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.comp
     MatMomentDateModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule,
     MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, FlexLayoutModule,
     MatTableModule, MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule,
-    FormsModule, HttpClientModule
+    FormsModule, HttpClientModule, ApiModule
   ],
   providers: [
     EdificioMockService,

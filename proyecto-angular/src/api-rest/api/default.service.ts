@@ -30,7 +30,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 @Injectable()
 export class DefaultService {
 
-    protected basePath = 'https://virtserver.swaggerhub.com/felixosle/ReservaSala/1.1.0';
+    protected basePath = 'http://127.0.0.123:8080';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

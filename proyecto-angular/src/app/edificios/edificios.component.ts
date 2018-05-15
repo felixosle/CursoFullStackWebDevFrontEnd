@@ -60,6 +60,7 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log("Pulsó Aceptar cambios de edición");
+        this.defaultService.actualizarEdificio(this.edificioSeleccionado.id,this.edificioSeleccionado).subscribe();
       } else {
         console.log("Pulsó Cancelar cambios de edición");
       }

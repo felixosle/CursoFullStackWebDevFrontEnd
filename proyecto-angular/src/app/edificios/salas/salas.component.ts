@@ -54,7 +54,8 @@ export class SalasComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("Pulsó Aceptar cambios de " + this.salaSeleccionada.nombre);        
+        console.log("Pulsó Aceptar cambios de " + this.salaSeleccionada.nombre);
+        this.defaultService.actualizarSala(this.salaSeleccionada.edificio.id,this.salaSeleccionada.id,this.salaSeleccionada).subscribe();
       } else {
         console.log("Pulsó Cancelar cambios de " + this.salaSeleccionada.nombre);
       }

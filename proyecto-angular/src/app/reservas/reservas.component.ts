@@ -65,8 +65,13 @@ export class ReservasComponent implements OnInit, AfterViewInit {
         this.defaultService.actualizarReserva(this.reservaSeleccionada.id,this.reservaSeleccionada).subscribe();
       } else {
         console.log("Pulsó Cancelar cambios de edición");
+        this.refresh();
       }
     });
+  }
+
+  refresh(){
+    window.location.reload();
   }
 }
 

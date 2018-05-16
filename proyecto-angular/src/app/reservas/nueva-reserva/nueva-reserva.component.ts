@@ -5,6 +5,8 @@ import { Edificio } from '../../../api-rest/model/edificio';
 import { Sala } from '../../../api-rest/model/sala';
 import { EdificioMockService } from '../../edificios/edificio.mock.service'
 import { DefaultService } from '../../../api-rest/api/default.service';
+import { NgForm } from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nueva-reserva',
@@ -12,17 +14,17 @@ import { DefaultService } from '../../../api-rest/api/default.service';
   styleUrls: ['./nueva-reserva.component.css']
 })
 export class NuevaReservaComponent implements OnInit {
-  reserva: Reserva = null;
-  provincias: Provincia []=[];
-  edificios: Edificio []=[];
-  salas: Sala []=[];
-  minDate;
+  private reserva: Reserva;
+  private provincias: Provincia []=[];
+  private edificios: Edificio []=[];
+  private salas: Sala []=[];
+  private minDate;
 
-  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService) { }
+  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private router: Router) { }
 
   ngOnInit() {
     this.provincias = this.edificioMockService.getProvincias();
-    this.minDate = new Date();
+    this.minDate = new Date(); //La fecha mínima a elegir es hoy
     this.defaultService.getEdificio().subscribe(
         data => {
           this.edificios = data;
@@ -36,8 +38,12 @@ export class NuevaReservaComponent implements OnInit {
     );
   }
   
-  onSubmit(){
-    console.log("Pulsado Aceptar Nueva Reserva. Reserva.sala= " + this.reserva.sala);
+  onSubmit(form: NgForm){
+    this.reserva = {id: null, sala:{ id:form.value.sala, nombre:"" } , fechaReserva: form.value.fechaReserva, usuario: form.value.usuario};
+    console.log ("reserva.sala.id: " + this.reserva.sala.id + " " + this.reserva.sala.nombre + " " + this.reserva.usuario);
+    console.log("Pulsado Aceptar Nueva Reserva. form.value.sala: " + form.value.sala + " Fecha: " + form.value.fechaReserva + " " );
+
     this.defaultService.agregarReserva(this.reserva).subscribe();
+    this.router.navigate(['reservas']);
   }
 }

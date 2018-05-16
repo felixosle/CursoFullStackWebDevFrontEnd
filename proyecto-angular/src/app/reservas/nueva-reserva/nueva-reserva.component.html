@@ -19,17 +19,18 @@
       </mat-form-field>
 
       <mat-form-field fxFlex="35%">
-        <mat-select placeholder="Sala">
+        <mat-select placeholder="Sala" ngModel name="sala" required>
           <mat-option *ngFor="let sala of salas" [value]="sala.id">
             {{ sala.nombre }}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field fxFlex="25%">
+      <mat-form-field fxFlex="25%" required>
         <input
           matInput        
           placeholder="Fecha de la Reserva"
+          ngModel name="fechaReserva"
           [matDatepicker]="picker"
           [min]="minDate">
         <mat-datepicker-toggle
@@ -37,9 +38,14 @@
           [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+
+      <mat-form-field fxFlex="20%">
+        <input matInput ngModel name="usuario" placeholder="Usuario" required>
+      </mat-form-field>
+
     </div>
     <div fxLayoutAlign="center">
-      <button type="submit" mat-raised-button color="accent">Aceptar</button>
+      <button type="submit" [disabled]="f.invalid" mat-raised-button color="accent">Aceptar</button>
     </div>
   </form>
 </section>

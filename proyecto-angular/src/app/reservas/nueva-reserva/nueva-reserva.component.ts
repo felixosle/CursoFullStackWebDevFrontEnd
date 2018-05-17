@@ -45,5 +45,10 @@ export class NuevaReservaComponent implements OnInit {
 
     this.defaultService.agregarReserva(this.reserva).subscribe();
     this.router.navigate(['reservas']);
+    this.refresh();
+  }
+
+  refresh(){
+    window.location.reload();
   }
 }

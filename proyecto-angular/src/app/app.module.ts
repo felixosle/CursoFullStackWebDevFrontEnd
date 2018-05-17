@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiModule } from '../api-rest/api.module';
 import { EdificioMockService } from './edificios/edificio.mock.service';
 import { ReservaMockService } from './reservas/reserva.mock.service';
@@ -12,7 +12,7 @@ import { DefaultService } from '../api-rest/api/default.service';
 import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,
   MatDatepickerModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule, 
   MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule, 
-  MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule} from '@angular/material';
+  MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule, MatAutocompleteModule} from '@angular/material';
 
   //Imports relacionados con moment.js:
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MatMomentDateModule} from '@angular/material-moment-adapter';
@@ -65,8 +65,8 @@ import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.comp
     MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, 
     MatMomentDateModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule,
     MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, FlexLayoutModule,
-    MatTableModule, MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule,
-    FormsModule, HttpClientModule, ApiModule
+    MatTableModule, MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule, MatAutocompleteModule,
+    FormsModule, ReactiveFormsModule, HttpClientModule, ApiModule
   ],
   providers: [
     EdificioMockService,

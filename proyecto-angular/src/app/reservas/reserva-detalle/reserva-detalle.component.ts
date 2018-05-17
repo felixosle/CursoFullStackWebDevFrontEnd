@@ -29,10 +29,15 @@ export class ReservaDetalleComponent implements OnInit {
         console.log("Pulsó Aceptar Borrar " + this.datosPasados.id);
         this.defaultService.borrarReservaPorID(this.datosPasados.id).subscribe();
         this.dialog.closeAll();
+        this.refresh();
       } else {
         console.log("Pulsó Cancelar Borrar "+ this.datosPasados.id);
       }
     });
+  }
+
+  refresh(){
+    window.location.reload();
   }
 
 }

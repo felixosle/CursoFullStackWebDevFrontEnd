@@ -4,43 +4,52 @@
   </div>
     <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
     <div fxLayout="row" fxLayoutAlign="space-evenly">
-      <mat-form-field fxFlex="30%">
-        <input matInput  placeholder="Nombre">
+      <mat-form-field fxFlex="40%">
+        <input matInput ngModel name="nombre" placeholder="Nombre" required>
       </mat-form-field>
-      <mat-form-field fxFlex="20%">
+      <!-- <mat-form-field fxFlex="20%">
         <mat-select placeholder="Provincia">
           <mat-option *ngFor="let provincia of provincias" [value]="provincia.provinciaId">
             {{ provincia.provincia }}
           </mat-option>
         </mat-select>
+      </mat-form-field> -->
+      <mat-form-field >
+        <input type="text" ngModel name="provincia" placeholder="Buscar Provincia" aria-label="Number" matInput [formControl]="provinciasCtrl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let provincia of provinciasFiltradas | async" [value]="provincia.id">
+            {{ provincia.provincia }}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
+
     </div>
     <div fxLayout="row" fxLayoutAlign="space-evenly">
-      <mat-form-field fxFlex="15%">
-        <input matInput  placeholder="Codº Vía">
+      <mat-form-field fxFlex="10%">
+        <input matInput ngModel name="tipoVia" placeholder="Tipo Vía">
       </mat-form-field>
-      <mat-form-field fxFlex="15%">
-        <input matInput  placeholder="Nº Vía">
+      <mat-form-field fxFlex="50%">
+        <input matInput ngModel name="nombreVia" required placeholder="Nombre de Vía">
       </mat-form-field>
-      <mat-form-field fxFlex="15%">
-        <input matInput  placeholder="Nombre de Vía">
+      <mat-form-field fxFlex="10%">
+        <input matInput ngModel name="numeroVia" required placeholder="Nº Vía">
       </mat-form-field>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="space-evenly">
-      <mat-form-field fxFlex="30%">
-          <input matInput  placeholder="Población">
+      <mat-form-field fxFlex="40%">
+          <input matInput ngModel name="poblacion" required placeholder="Población">
       </mat-form-field>
       <mat-form-field fxFlex="15%">
-          <input matInput  placeholder="Código Postal">
+          <input matInput ngModel name="codigoPostal" required placeholder="Código Postal">
       </mat-form-field>
       <mat-form-field fxFlex="15%">
-          <input matInput  placeholder="Titularidad">
+          <input matInput ngModel name="codigoPostal" placeholder="Titularidad">
       </mat-form-field>
     </div>
     <br>
     <div fxLayoutAlign="center">
-      <button type="submit" mat-raised-button color="accent">Aceptar</button>
+      <button type="submit" [disabled]="f.invalid" mat-raised-button color="accent">Aceptar</button>
     </div>
   </form>
 </section>

@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Edificio } from '../../../api-rest/model/edificio';
-import { Provincia } from '../../../api-rest/model/provincia';
+import { Edificio } from '../../../api-rest';
+import { Provincia } from '../../../api-rest';
+import { Poblacion } from '../../../api-rest';
 import { EdificioMockService } from '../edificio.mock.service';
 import { DefaultService } from '../../../api-rest/api/default.service';
 import { NgForm,FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
 import {Observable} from 'rxjs';
-import {map, startWith, debounceTime} from 'rxjs/operators';
+import {map, startWith} from 'rxjs/operators';
+import 'rxjs/add/operator/debounceTime';
+
 
 @Component({
   selector: 'app-nuevo-edificio',
@@ -15,17 +18,46 @@ import {map, startWith, debounceTime} from 'rxjs/operators';
 })
 
 export class NuevoEdificioComponent {
-  searchTerm : FormControl = new FormControl();
+  searchTermProvincia : FormControl = new FormControl();
+  searchTermPoblacion : FormControl = new FormControl();
 
-  searchResult: Provincia[] = [];
+  searchResultProvincia: Provincia[] = [];
+  searchResultPoblacion: Poblacion[] = [];
 
-  constructor(private defaultService: DefaultService){
-    this.searchTerm.valueChanges      
+  idProvincia: number = 1;
+  edificio: Edificio;
+  poblacion: Poblacion;
+  provinciaSeleccionada: Provincia= null;
+
+  constructor(private defaultService: DefaultService, private router: Router){
+    this.searchTermProvincia.valueChanges      
+      .debounceTime(400)  
       .subscribe(data => {
           this.defaultService.getProvincias(data).subscribe(response =>{
-              this.searchResult = response
+            console.log(response);
+            this.searchResultProvincia = response
           })
       })
+    this.searchTermPoblacion.valueChanges      
+    .debounceTime(400)  
+    .subscribe(data2 => {
+        this.defaultService.getPoblaciones(this.idProvincia,data2).subscribe(response =>{
+          console.log(response);
+          this.searchResultPoblacion = response
+        })
+    })
+  }
+  
+  onSubmit(form: NgForm){
+    this.edificio = {id: null, nombre:form.value.nombre, direccion:{ tipoVia: form.value.tipoVia, nombreVia: form.value.nombreVia, numeroVia:form.value.numeroVia, codigoPostal: form.value.codigoPostal, poblacion:{id: form.value.poblacion.id, poblacion:form.value.poblacion.poblacion}}, titularidad:form.value.titularidad };
+    console.log("Pulsado Aceptar Nuevo Edificio. Edificio.id: " + this.edificio.id + " " + this.edificio.nombre + " ");
+    this.defaultService.agregarEdificio(this.edificio).subscribe();
+    this.router.navigate(['edificios']);
+    this.refresh();
+  }
+
+  refresh(){
+    window.location.reload();
   }
 }
 // export class NuevoEdificioComponent implements OnInit {

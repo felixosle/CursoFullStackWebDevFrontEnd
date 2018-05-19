@@ -8,14 +8,13 @@
         <input matInput ngModel name="nombre" placeholder="Nombre" required>
       </mat-form-field>      
       <mat-form-field fxFlex="20%">
-        <input type="text" ngModel name="provincia" placeholder="Buscar Provincia" aria-label="Number" matInput [formControl]="searchTermProvincia" [matAutocomplete]="auto" required>
+        <input type="text" ngModel name="provincia" placeholder="Provincia" aria-label="Number" matInput [formControl]="searchTermProvincia" [matAutocomplete]="auto" required>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let prov of searchResultProvincia" [value]="prov.provincia">
             {{ prov.provincia }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <p> Provincia Seleccionada: {{provincia?.provincia}} </p>
 
     </div>
     <div fxLayout="row" fxLayoutAlign="space-evenly">
@@ -33,9 +32,9 @@
     <div fxLayout="row" fxLayoutAlign="space-evenly">
       <mat-form-field fxFlex="40%">
         <!-- <input matInput ngModel name="poblacion" required placeholder="Población"> -->
-        <input [disabled] type="text" ngModel name="poblacion" placeholder="Buscar Población" aria-label="Number" matInput [formControl]="searchTermPoblacion" [matAutocomplete]="auto2" required>
+        <input [disabled] type="text" ngModel name="poblacion" placeholder="Población" aria-label="Number" matInput [formControl]="searchTermPoblacion" [matAutocomplete]="auto2" required>
         <mat-autocomplete #auto2="matAutocomplete">
-          <mat-option *ngFor="let poblacion of searchResultPoblacion" [value]="poblacion">
+          <mat-option *ngFor="let poblacion of searchResultPoblacion" [value]="poblacion.poblacion">
             {{ poblacion.poblacion }}
           </mat-option>
         </mat-autocomplete>

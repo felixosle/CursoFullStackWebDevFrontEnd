@@ -24,7 +24,7 @@ export class NuevoEdificioComponent {
   searchResultProvincia: Provincia[] = [];
   searchResultPoblacion: Poblacion[] = [];
 
-  idProvincia: number = 1;
+  idProvincia: number = 0;
   edificio: Edificio;
   poblacion: Poblacion;
   provinciaSeleccionada: Provincia= null;
@@ -34,11 +34,13 @@ export class NuevoEdificioComponent {
       .debounceTime(400)  
       .subscribe(data => {
           this.defaultService.getProvincias(data).subscribe(response =>{
-            console.log(response);
-            this.searchResultProvincia = response
+            this.searchResultProvincia = response;
+            this.idProvincia = this.searchResultProvincia[0].id;
+            this.filtrarPoblaciones();
+            console.log("this.idProvincia: " + this.idProvincia);
           })
       })
-    this.searchTermPoblacion.valueChanges      
+    this.searchTermPoblacion.valueChanges
     .debounceTime(400)  
     .subscribe(data2 => {
         this.defaultService.getPoblaciones(this.idProvincia,data2).subscribe(response =>{
@@ -49,12 +51,30 @@ export class NuevoEdificioComponent {
   }
   
   onSubmit(form: NgForm){
-    this.edificio = {id: null, nombre:form.value.nombre, direccion:{ tipoVia: form.value.tipoVia, nombreVia: form.value.nombreVia, numeroVia:form.value.numeroVia, codigoPostal: form.value.codigoPostal, poblacion:{id: form.value.poblacion.id, poblacion:form.value.poblacion.poblacion}}, titularidad:form.value.titularidad };
+    this.edificio = {nombre:form.value.nombre, direccion:{ tipoVia: form.value.tipoVia, nombreVia: form.value.nombreVia, numeroVia:form.value.numeroVia, codigoPostal: form.value.codigoPostal, poblacion:{id: form.value.poblacion.id, poblacion:form.value.poblacion.poblacion}}, titularidad:form.value.titularidad };
     console.log("Pulsado Aceptar Nuevo Edificio. Edificio.id: " + this.edificio.id + " " + this.edificio.nombre + " ");
     this.defaultService.agregarEdificio(this.edificio).subscribe();
     this.router.navigate(['edificios']);
     this.refresh();
   }
+
+  filtrarPoblaciones(){
+    this.defaultService.getPoblaciones(this.idProvincia).subscribe(response =>{
+      console.log(response);
+      this.searchResultPoblacion = response
+    })
+  }
+
+
+
+  // seleccionarProvincia(idProvincia){
+  //   this.idProvincia = idProvincia;
+  //   console.log(idProvincia);
+  //   this.defaultService.getPoblaciones(this.idProvincia).subscribe(response =>{
+  //     console.log("Llamado seleccionarProvincia. Respuesta: " + response);
+  //     this.searchResultPoblacion = response
+  //   })
+  // }
 
   refresh(){
     window.location.reload();

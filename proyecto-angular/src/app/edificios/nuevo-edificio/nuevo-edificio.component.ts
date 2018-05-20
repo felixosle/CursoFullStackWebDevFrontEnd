@@ -25,6 +25,8 @@ export class NuevoEdificioComponent {
   searchResultPoblacion: Poblacion[] = [];
 
   idProvincia: number = 0;
+  idPoblacion: number= 0;
+  nombrePoblacion: string= "";
   edificio: Edificio;
   poblacion: Poblacion;
   provinciaSeleccionada: Provincia= null;
@@ -45,13 +47,18 @@ export class NuevoEdificioComponent {
     .subscribe(data2 => {
         this.defaultService.getPoblaciones(this.idProvincia,data2).subscribe(response =>{
           console.log(response);
-          this.searchResultPoblacion = response
+          this.searchResultPoblacion = response;
+          this.idPoblacion = this.searchResultPoblacion[0].id;
+          this.nombrePoblacion = this.searchResultPoblacion[0].poblacion;
+          console.log("this.idPoblacion: " + this.idPoblacion);
         })
     })
   }
   
   onSubmit(form: NgForm){
-    this.edificio = {nombre:form.value.nombre, direccion:{ tipoVia: form.value.tipoVia, nombreVia: form.value.nombreVia, numeroVia:form.value.numeroVia, codigoPostal: form.value.codigoPostal, poblacion:{id: form.value.poblacion.id, poblacion:form.value.poblacion.poblacion}}, titularidad:form.value.titularidad };
+    console.log(form.value.nombre, form.value.tipoVia, form.value.nombreVia, form.value.numeroVia, form.value.codigoPostal, form.value.titularidad, form.value.poblacion);
+    // , form.value.poblacion.id, form.value.poblacion.poblacion  );
+    this.edificio = {nombre:form.value.nombre, direccion:{ tipoVia: form.value.tipoVia, nombreVia: form.value.nombreVia, numeroVia:form.value.numeroVia, codigoPostal: form.value.codigoPostal, poblacion:{id: this.idPoblacion, poblacion: this.nombrePoblacion}}, titularidad:form.value.titularidad };
     console.log("Pulsado Aceptar Nuevo Edificio. Edificio.id: " + this.edificio.id + " " + this.edificio.nombre + " ");
     this.defaultService.agregarEdificio(this.edificio).subscribe();
     this.router.navigate(['edificios']);

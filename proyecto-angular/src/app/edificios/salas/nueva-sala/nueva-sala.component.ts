@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sala } from '../../../../api-rest';
 import { DefaultService } from '../../../../api-rest';
+import {Router} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
 // Librerías para formularios reactivos:
 import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
@@ -13,10 +14,10 @@ import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } 
 export class NuevaSalaComponent implements OnInit {
   sala = {} as Sala;
   idEdificio: number;  
-  salaForm: FormGroup;
+  private salaForm: FormGroup;
   errorMessage: string;
 
-  constructor(private defaultService: DefaultService,private fb: FormBuilder, private route: ActivatedRoute) { }
+  constructor(private defaultService: DefaultService,private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.idEdificio = this.route.snapshot.params['idEdificio'];
@@ -24,10 +25,11 @@ export class NuevaSalaComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.salaForm.value.nombre + this.salaForm.value.tipoSala);
-    this.sala ={ nombre: this.salaForm.value.nombre, tipoSala: {id: 1, tipo: this.salaForm.value.tipoSala} };
-    console.log('idEdificio: ' + this.sala.edificio.id + 'Formulario Nueva Sala enviado: ' + this.salaForm.value.toJson);
+    console.log(this.salaForm.value.nombre + this.salaForm.value.tipoSala.tipo);
+    this.sala ={ nombre: this.salaForm.value.nombre, descripcion: this.salaForm.value.descripcion, capacidad: this.salaForm.value.capacidad, localizacion: this.salaForm.value.localizacion , tipoSala: {id: 1, tipo: this.salaForm.value.tipoSala.tipo}, edificio: {id: this.salaForm.value.edificio.id, nombre: this.salaForm.value.edificio.nombre} };
+    // console.log('idEdificio: ' + this.sala.edificio.id + 'Formulario Nueva Sala enviado: ' + this.salaForm.value.toJson);
     this.defaultService.agregarSala(this.idEdificio, this.sala).subscribe();
+    this.router.navigate(['edificios']);
   }
 
   onCancel() {
@@ -47,8 +49,15 @@ export class NuevaSalaComponent implements OnInit {
       nombre: ['', [Validators.required, Validators.minLength(4)]],
       descripcion: ['', Validators.maxLength(50)],
       capacidad: ['',[Validators.maxLength(2), Validators.pattern(formatoCapacidad)]],
-      tipoSala: ['',],
-      localizacion:  ['', Validators.maxLength(50)]
+      localizacion:  ['', Validators.maxLength(50)],
+      tipoSala: this.fb.group({
+        id:['1'],
+        tipo:['']
+      }),
+      edificio: this.fb.group({
+        id:[this.idEdificio],
+        nombre:['xxx']
+      })      
     });
     this.salaForm.valueChanges
     .subscribe(data => this.onValueChanged(data));

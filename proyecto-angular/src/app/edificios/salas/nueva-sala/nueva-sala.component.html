@@ -5,13 +5,13 @@
       <form  [formGroup]="salaForm" (ngSubmit)="onSubmit(f)">
       <div fxLayout="row" fxLayoutAlign="space-evenly">
         <mat-form-field fxFlex="25%">
-          <input matInput formControlName="nombre" placeholder="Nombre">
+          <input matInput formControlName="nombre" placeholder="Nombre"  [(ngModel)]="sala.nombre" required>
           <mat-error *ngIf="formErrors.nombre">
             {{ formErrors.nombre }}
           </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="40%">
-          <input matInput formControlName="descripcion" placeholder="Descripción">
+          <input matInput formControlName="descripcion" placeholder="Descripción" [(ngModel)]="sala.descripcion">
           <mat-error *ngIf="formErrors.descripcion">
             {{ formErrors.descripcion }}
           </mat-error>
@@ -19,19 +19,16 @@
       </div>
       <div fxLayout="row" fxLayoutAlign="space-evenly">        
         <mat-form-field fxFlex="10%">
-          <input matInput formControlName="capacidad" placeholder="Capacidad">
+          <input matInput formControlName="capacidad" placeholder="Capacidad" [(ngModel)]="sala.capacidad">
           <mat-error *ngIf="formErrors.capacidad">
             {{ formErrors.capacidad }}
           </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="15%">
-            <input matInput formControlName="tipoSala" placeholder="Tipo de Sala">
-            <mat-error *ngIf="formErrors.tipoSala">
-              {{ formErrors.tipoSala }}
-            </mat-error>
-        </mat-form-field>  
+            <input matInput formControlName="tipoSala" placeholder="Tipo de Sala" [(ngModel)]="sala.tipoSala">
+        </mat-form-field>
         <mat-form-field fxFlex="35%">
-          <input matInput formControlName="localizacion" placeholder="Localización">
+          <input matInput formControlName="localizacion" placeholder="Localización" [(ngModel)]="sala.localizacion">
           <mat-error *ngIf="formErrors.localizacion">
             {{ formErrors.localizacion }}
           </mat-error>

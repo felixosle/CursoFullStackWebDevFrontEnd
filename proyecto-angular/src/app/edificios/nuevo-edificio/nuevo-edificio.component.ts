@@ -3,7 +3,7 @@ import { Edificio } from '../../../api-rest';
 import { Provincia } from '../../../api-rest';
 import { Poblacion } from '../../../api-rest';
 import { EdificioMockService } from '../edificio.mock.service';
-import { DefaultService } from '../../../api-rest/api/default.service';
+import { DefaultService } from '../../../api-rest';
 import { NgForm,FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
 import {Observable} from 'rxjs';

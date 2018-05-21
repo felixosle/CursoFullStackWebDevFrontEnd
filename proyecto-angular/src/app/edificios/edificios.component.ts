@@ -6,6 +6,7 @@ import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/m
 import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { EdificioDetalleComponent } from './edificio-detalle/edificio-detalle.component';
 import { DefaultService } from '../../api-rest/api/default.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edificios',
@@ -21,7 +22,7 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
-  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog) { }
+  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog, private router:Router) { }
 
   ngOnInit() {
     // this.edificios = this.edificioMockService.getEdificios();
@@ -87,6 +88,8 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
 
   onVerSalas(element){
     this.edificioSeleccionado = element;
+    console.log(this.edificioSeleccionado.id);
+    this.router.navigate(['/edificios/' + this.edificioSeleccionado.id + '/salas/']);
     console.log("Viendo salas del edificio: " + this.edificioSeleccionado.nombre);
     
     

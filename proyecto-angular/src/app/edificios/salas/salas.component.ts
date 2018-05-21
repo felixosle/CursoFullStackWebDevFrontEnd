@@ -5,6 +5,8 @@ import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/m
 import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { SalaDetalleComponent } from './sala-detalle/sala-detalle.component';
 import { DefaultService } from '../../../api-rest/api/default.service';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-salas',
@@ -12,7 +14,8 @@ import { DefaultService } from '../../../api-rest/api/default.service';
   styleUrls: ['./salas.component.css']
 })
 export class SalasComponent implements OnInit, AfterViewInit {
-
+  idEdificio: number;
+  nombreEdificio: string;
   salas: Sala []=[];
   salaSeleccionada: Sala=null;
   displayedColumns = ['nombre','tipo','localizacion','descripcion','capacidad','editar'];
@@ -21,12 +24,13 @@ export class SalasComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
-  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog) { }
+  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog, private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
     // this.salas = this.edificioMockService.getSalas();
     // this.dataSource.data = this.salas;
-    this.defaultService.getSalas(1).subscribe(
+    this.idEdificio = this.route.snapshot.params['idEdificio'];
+    this.defaultService.getSalas(this.idEdificio).subscribe(
       data => {
         this.dataSource.data = data;
       }
@@ -78,4 +82,7 @@ export class SalasComponent implements OnInit, AfterViewInit {
     });
   }
   
+  onAgregarSala(element){
+    this.router.navigate(['/edificios/' + this.idEdificio + '/nuevaSala/']);
+  }
 }

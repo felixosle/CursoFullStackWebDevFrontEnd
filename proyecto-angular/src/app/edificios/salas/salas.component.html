@@ -3,7 +3,7 @@
   <div fxLayout="row">
     <button type="button" mat-button matTooltip="Volver a Edificios" matTooltipPosition="right" fxFlex="10%" routerLink="/edificios"><mat-icon>arrow_back</mat-icon></button>
     <div fxFlex="30%"></div>
-    <h3 fxFlex="30%">Salas del Edificio X</h3>
+    <h3 fxFlex="30%">Salas del Edificio {{this.idEdificio}}:</h3>
     </div>
     <div >
     <mat-form-field fxLayoutAlign="center center">
@@ -63,7 +63,7 @@
   </div>
   
   <div fxLayoutAlign="end">
-    <button mat-fab color="primary" routerLink="/nuevaSala" matTooltip="Añadir Sala Nueva" matTooltipPosition="left"><mat-icon>add</mat-icon></button>
+    <button mat-fab color="primary" (click)="onAgregarSala()" matTooltip="Añadir Sala Nueva" matTooltipPosition="left"><mat-icon>add</mat-icon></button>
   </div>
 
 </section>

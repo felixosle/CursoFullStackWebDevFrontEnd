@@ -18,9 +18,9 @@ const routes: Routes = [
   { path: 'nuevaReserva', component: NuevaReservaComponent},
   { path: 'edificios', component: EdificiosComponent},
   { path: 'nuevoEdificio', component: NuevoEdificioComponent},
-  { path: 'salas', component: SalasComponent },
-  { path: 'logout', component: LogoutComponent},
-  { path: 'nuevaSala', component: NuevaSalaComponent}
+  { path: 'edificios/:idEdificio/salas', component: SalasComponent },
+  { path: 'edificios/:idEdificio/nuevaSala', component: NuevaSalaComponent},
+  { path: 'logout', component: LogoutComponent}
 ];
 
 @NgModule({

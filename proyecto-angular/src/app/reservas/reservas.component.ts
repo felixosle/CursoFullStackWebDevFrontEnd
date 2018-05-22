@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+//AfterViewInit lo usamos para la paginación y ordenación de mat-datatable
+//ChangeDetectorRef lo usamos para refrescar los datos de mat-datatable
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { Reserva } from '../../api-rest/model/reserva';
 import { ReservaDetalleComponent } from './reserva-detalle/reserva-detalle.component';
@@ -25,7 +26,7 @@ export class ReservasComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
-  constructor(private reservaMockService: ReservaMockService, private defaultService: DefaultService, private dialog: MatDialog) { }
+  constructor(private reservaMockService: ReservaMockService, private defaultService: DefaultService, private dialog: MatDialog, private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngAfterViewInit(){
     this.dataSource.sort = this.sort;
@@ -44,10 +45,6 @@ export class ReservasComponent implements OnInit, AfterViewInit {
     this.paginador._intl.previousPageLabel = 'Anterior';
   }
 
-  onSubmit(form: NgForm){
-  console.log(form);
-  }
-
   filtrar(valorFiltro: string){
     this.dataSource.filter = valorFiltro.trim().toLowerCase();
   }
@@ -62,15 +59,17 @@ export class ReservasComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log("Pulsó Aceptar cambios de edición");
-        this.defaultService.actualizarReserva(this.reservaSeleccionada.id,this.reservaSeleccionada).subscribe();
+        this.defaultService.actualizarReserva(this.reservaSeleccionada.id,this.reservaSeleccionada).subscribe();        
       } else {
         console.log("Pulsó Cancelar cambios de edición");        
-      }
+      };
+      this.refresh();
+      console.log("método refresh llamado");
     });
   }
 
   refresh(){
-    window.location.reload();
+    this.changeDetectorRefs.detectChanges();
   }
 }
 

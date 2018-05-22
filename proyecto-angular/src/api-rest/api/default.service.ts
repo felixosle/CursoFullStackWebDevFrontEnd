@@ -32,7 +32,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 @Injectable()
 export class DefaultService {
 
-    protected basePath = 'http://127.0.0.123:8080';
+    protected basePath = 'http://127.0.0.1:8080';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

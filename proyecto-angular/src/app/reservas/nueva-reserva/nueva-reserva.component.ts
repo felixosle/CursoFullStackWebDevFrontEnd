@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Reserva } from '../../../api-rest/model/reserva';
-import { Provincia } from '../../../api-rest/model/provincia';
-import { Edificio } from '../../../api-rest/model/edificio';
-import { Sala } from '../../../api-rest/model/sala';
-import { EdificioMockService } from '../../edificios/edificio.mock.service'
+import { Reserva } from '../../../api-rest/';
+import { Provincia } from '../../../api-rest/';
+import { Edificio } from '../../../api-rest/';
+import { Sala } from '../../../api-rest/';
+// import { EdificioMockService } from '../../edificios/edificio.mock.service'
 import { DefaultService } from '../../../api-rest/api/default.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'app-nueva-reserva',
@@ -20,16 +21,53 @@ export class NuevaReservaComponent implements OnInit {
   private salas: Sala []=[];
   private minDate;
 
-  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private router: Router) { }
+  searchTermProvincia : FormControl = new FormControl();
+  searchTermEdificio : FormControl = new FormControl();
+  searchResultProvincia: Provincia[] = [];
+  searchResultEdificio: Edificio[] = [];
 
-  ngOnInit() {
-    this.provincias = this.edificioMockService.getProvincias();
-    this.minDate = new Date(); //La fecha mínima a elegir es hoy
-    this.defaultService.getEdificio().subscribe(
-        data => {
-          this.edificios = data;
+  private nombreProvincia: string = "";
+  private nombreEdificio: string = "";
+  private idEdificio: number = 0;
+
+  constructor(private defaultService: DefaultService, private router: Router) { 
+    this.searchTermProvincia.valueChanges
+    .debounceTime(400)
+    .subscribe(data => {
+      this.defaultService.getProvincias(data).subscribe(
+        response =>{
+        this.searchResultProvincia = response;
+        this.nombreProvincia = this.searchResultProvincia[0].provincia;
+        this.filtrarEdificios();
+        console.log("this.nombreProvincia: " + this.nombreProvincia);
         }
       );
+    })
+
+    this.searchTermEdificio.valueChanges
+    .debounceTime(400)  
+    .subscribe(data2 => {
+        this.defaultService.getEdificio(data2).subscribe(
+          response =>{
+          console.log(response);
+          this.searchResultEdificio = response;
+          this.idEdificio = this.searchResultEdificio[0].id;
+          this.nombreEdificio = this.searchResultEdificio[0].nombre;
+          console.log("this.nombreEdificio: " + this.nombreEdificio);
+        })
+    })
+  }
+
+  ngOnInit() {
+    // Mock Service:
+    // this.provincias = this.edificioMockService.getProvincias();
+    // this.defaultService.getProvincias().subscribe( 
+    //   data => {
+    //     this.provincias = data;
+    //   }
+    // );
+    this.minDate = new Date(); //La fecha mínima a elegir es hoy
+    
 
     this.defaultService.getSalas(1).subscribe(
       data => {
@@ -48,6 +86,13 @@ export class NuevaReservaComponent implements OnInit {
     this.defaultService.agregarReserva(this.reserva).subscribe();
     this.router.navigate(['reservas']);
     this.refresh();
+  }
+
+  filtrarEdificios(){
+    this.defaultService.getEdificio(this.nombreProvincia).subscribe(response =>{
+      console.log(response);
+      this.searchResultEdificio = response;
+    })
   }
 
   refresh(){    

@@ -6,8 +6,6 @@ import { EdificioMockService } from '../edificio.mock.service';
 import { DefaultService } from '../../../api-rest';
 import { NgForm,FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
 import 'rxjs/add/operator/debounceTime';
 
 
@@ -20,22 +18,22 @@ import 'rxjs/add/operator/debounceTime';
 export class NuevoEdificioComponent {
   searchTermProvincia : FormControl = new FormControl();
   searchTermPoblacion : FormControl = new FormControl();
-
   searchResultProvincia: Provincia[] = [];
   searchResultPoblacion: Poblacion[] = [];
 
-  idProvincia: number = 0;
-  idPoblacion: number= 0;
-  nombrePoblacion: string= "";
-  edificio: Edificio;
-  poblacion: Poblacion;
-  provinciaSeleccionada: Provincia= null;
+  private idProvincia: number = 0;
+  private idPoblacion: number= 0;
+  private nombrePoblacion: string= "";
+  private edificio: Edificio;
+  private poblacion: Poblacion;
+  private provinciaSeleccionada: Provincia= null;
 
   constructor(private defaultService: DefaultService, private router: Router) {
     this.searchTermProvincia.valueChanges      
       .debounceTime(400)  
       .subscribe(data => {
-          this.defaultService.getProvincias(data).subscribe(response =>{
+          this.defaultService.getProvincias(data).subscribe(
+            response =>{
             this.searchResultProvincia = response;
             this.idProvincia = this.searchResultProvincia[0].id;
             this.filtrarPoblaciones();
@@ -45,7 +43,8 @@ export class NuevoEdificioComponent {
     this.searchTermPoblacion.valueChanges
     .debounceTime(400)  
     .subscribe(data2 => {
-        this.defaultService.getPoblaciones(this.idProvincia,data2).subscribe(response =>{
+        this.defaultService.getPoblaciones(this.idProvincia,data2).subscribe(
+          response =>{
           console.log(response);
           this.searchResultPoblacion = response;
           this.idPoblacion = this.searchResultPoblacion[0].id;

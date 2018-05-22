@@ -37,7 +37,7 @@ export class ReservaDetalleComponent implements OnInit {
   }
 
   refresh(){
-    window.location.reload();
+    // window.location.reload();
   }
 
 }

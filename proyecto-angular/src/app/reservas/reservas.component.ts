@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 //AfterViewInit lo usamos para la paginación y ordenación de mat-datatable
 //ChangeDetectorRef lo usamos para refrescar los datos de mat-datatable
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
@@ -26,7 +26,7 @@ export class ReservasComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
-  constructor(private reservaMockService: ReservaMockService, private defaultService: DefaultService, private dialog: MatDialog, private changeDetectorRefs: ChangeDetectorRef) { }
+  constructor(private reservaMockService: ReservaMockService, private defaultService: DefaultService, private dialog: MatDialog) { }
 
   ngAfterViewInit(){
     this.dataSource.sort = this.sort;
@@ -72,7 +72,7 @@ export class ReservasComponent implements OnInit, AfterViewInit {
   }
 
   refresh(){
-    this.changeDetectorRefs.detectChanges();
+    
   }
 }
 

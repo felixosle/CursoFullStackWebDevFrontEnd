@@ -51,15 +51,18 @@ export class ReservasComponent implements OnInit, AfterViewInit {
 
   onEdit(element){
     this.reservaSeleccionada = element;
+    
     console.log("Editando la reserva: " + this.reservaSeleccionada.id );
     const dialogRef = this.dialog.open(ReservaDetalleComponent, {
       data: this.reservaSeleccionada
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      let fechaFormateada:any = this.reservaSeleccionada.fechaReserva;
+      this.reservaSeleccionada.fechaReserva = fechaFormateada.format('YYYY-MM-DD');
       if (result) {
         console.log("Pulsó Aceptar cambios de edición");
-        this.defaultService.actualizarReserva(this.reservaSeleccionada.id,this.reservaSeleccionada).subscribe();        
+        this.defaultService.actualizarReserva(this.reservaSeleccionada.id, this.reservaSeleccionada).subscribe();        
       } else {
         console.log("Pulsó Cancelar cambios de edición");        
       };

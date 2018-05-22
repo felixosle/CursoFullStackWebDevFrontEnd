@@ -31,7 +31,7 @@ export class NuevoEdificioComponent {
   poblacion: Poblacion;
   provinciaSeleccionada: Provincia= null;
 
-  constructor(private defaultService: DefaultService, private router: Router){
+  constructor(private defaultService: DefaultService, private router: Router) {
     this.searchTermProvincia.valueChanges      
       .debounceTime(400)  
       .subscribe(data => {
@@ -61,8 +61,8 @@ export class NuevoEdificioComponent {
     this.edificio = {nombre:form.value.nombre, direccion:{ tipoVia: form.value.tipoVia, nombreVia: form.value.nombreVia, numeroVia:form.value.numeroVia, codigoPostal: form.value.codigoPostal, poblacion:{id: this.idPoblacion, poblacion: this.nombrePoblacion}}, titularidad:form.value.titularidad };
     console.log("Pulsado Aceptar Nuevo Edificio. Edificio.id: " + this.edificio.id + " " + this.edificio.nombre + " ");
     this.defaultService.agregarEdificio(this.edificio).subscribe();
+    // this.refresh();
     this.router.navigate(['edificios']);
-    this.refresh();
   }
 
   filtrarPoblaciones(){
@@ -84,7 +84,7 @@ export class NuevoEdificioComponent {
   // }
 
   refresh(){
-    window.location.reload();
+    // window.location.reload();
   }
 }
 // export class NuevoEdificioComponent implements OnInit {

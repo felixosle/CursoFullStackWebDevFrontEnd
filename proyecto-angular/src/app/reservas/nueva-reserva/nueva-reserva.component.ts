@@ -39,7 +39,9 @@ export class NuevaReservaComponent implements OnInit {
   }
   
   onSubmit(form: NgForm){
-    this.reserva = {id: null, sala:{ id:form.value.sala, nombre:"" } , fechaReserva: form.value.fechaReserva, usuario: form.value.usuario};
+    let fechaFormateada = form.value.fechaReserva.format('YYYY-MM-DD');
+    console.log(fechaFormateada);
+    this.reserva = {id: null, sala:{ id:form.value.sala, nombre:"" } , fechaReserva: fechaFormateada, usuario: form.value.usuario};
     console.log ("reserva.sala.id: " + this.reserva.sala.id + " " + this.reserva.sala.nombre + " " + this.reserva.usuario);
     console.log("Pulsado Aceptar Nueva Reserva. form.value.sala: " + form.value.sala + " Fecha: " + form.value.fechaReserva + " " );
 
@@ -48,7 +50,7 @@ export class NuevaReservaComponent implements OnInit {
     this.refresh();
   }
 
-  refresh(){
-    window.location.reload();
+  refresh(){    
+    // window.location.reload();
   }
 }

@@ -10,28 +10,14 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-        <!-- <mat-select placeholder="Provincia">
-          <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">
-            {{ provincia.provincia }}
-          </mat-option> 
-        </mat-select>
-      </mat-form-field> -->
-      <mat-form-field fxFlex="35%">
-      <input type="text" ngModel name="edificio" placeholder="Edificio" aria-label="Number" matInput [formControl]="searchTermEdificio" [matAutocomplete]="auto2" required>
-        <mat-autocomplete #auto2="matAutocomplete">
-          <mat-option *ngFor="let edificio of searchResultEdificio" [value]="edificio.nombre">
-              {{ edificio.nombre }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
 
-      <!-- <mat-form-field fxFlex="35%">
-        <mat-select placeholder="Edificio">
+      <mat-form-field fxFlex="35%">
+        <mat-select [formControl]="cambioEdificio" name="edificio" placeholder="Edificio">
           <mat-option *ngFor="let edificio of edificios" [value]="edificio.id">
             {{ edificio.nombre }}
           </mat-option>
         </mat-select>
-      </mat-form-field> -->
+      </mat-form-field>
 
       <mat-form-field fxFlex="35%">
         <mat-select placeholder="Sala" ngModel name="sala" required>

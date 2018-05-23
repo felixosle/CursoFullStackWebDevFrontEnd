@@ -15,20 +15,16 @@ import 'rxjs/add/operator/debounceTime';
   styleUrls: ['./nueva-reserva.component.css']
 })
 export class NuevaReservaComponent implements OnInit {
-  private reserva: Reserva;
-  private provincias: Provincia []=[];
+  private reserva: Reserva; 
   private edificios: Edificio []=[];
   private salas: Sala []=[];
   private minDate;
+  private idProvincia:  number = 0;
+  private idEdificio: number = 0;
 
   searchTermProvincia : FormControl = new FormControl();
-  searchTermEdificio : FormControl = new FormControl();
+  cambioEdificio: FormControl = new FormControl();
   searchResultProvincia: Provincia[] = [];
-  searchResultEdificio: Edificio[] = [];
-
-  private nombreProvincia: string = "";
-  private nombreEdificio: string = "";
-  private idEdificio: number = 0;
 
   constructor(private defaultService: DefaultService, private router: Router) { 
     this.searchTermProvincia.valueChanges
@@ -36,26 +32,24 @@ export class NuevaReservaComponent implements OnInit {
     .subscribe(data => {
       this.defaultService.getProvincias(data).subscribe(
         response =>{
-        this.searchResultProvincia = response;
-        this.nombreProvincia = this.searchResultProvincia[0].provincia;
-        this.filtrarEdificios();
-        console.log("this.nombreProvincia: " + this.nombreProvincia);
+          this.searchResultProvincia = response;
+          this.idProvincia = this.searchResultProvincia[0].id;
+          this.filtrarEdificiosPorProvincia();
+          console.log("this.idProvincia: " + this.idProvincia);
         }
       );
     })
 
-    this.searchTermEdificio.valueChanges
-    .debounceTime(400)  
-    .subscribe(data2 => {
-        this.defaultService.getEdificio(data2).subscribe(
-          response =>{
-          console.log(response);
-          this.searchResultEdificio = response;
-          this.idEdificio = this.searchResultEdificio[0].id;
-          this.nombreEdificio = this.searchResultEdificio[0].nombre;
-          console.log("this.nombreEdificio: " + this.nombreEdificio);
-        })
-    })
+    this.cambioEdificio.valueChanges
+    .debounceTime(400)
+    .subscribe(data => {
+      this.defaultService.getSalas(this.idEdificio).subscribe(
+        response =>{
+          this.salas = response;
+          console.log("this.salas: " + this.salas);
+        }
+      );
+    });
   }
 
   ngOnInit() {
@@ -68,12 +62,6 @@ export class NuevaReservaComponent implements OnInit {
     // );
     this.minDate = new Date(); //La fecha mínima a elegir es hoy
     
-
-    this.defaultService.getSalas(1).subscribe(
-      data => {
-        this.salas = data;
-      }
-    );
   }
   
   onSubmit(form: NgForm){
@@ -88,11 +76,17 @@ export class NuevaReservaComponent implements OnInit {
     this.refresh();
   }
 
-  filtrarEdificios(){
-    this.defaultService.getEdificio(this.nombreProvincia).subscribe(response =>{
-      console.log(response);
-      this.searchResultEdificio = response;
-    })
+  filtrarEdificiosPorProvincia(){
+    this.edificios= [];
+    this.defaultService.getEdificio().subscribe(response =>{
+      response.forEach( (edificio) => {
+        if (edificio.direccion.poblacion.provincia.id === this.idProvincia){
+          this.edificios.push(edificio);
+          this.idEdificio=this.edificios[0].id;
+        }
+      }      
+     )
+    });
   }
 
   refresh(){    

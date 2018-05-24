@@ -485,58 +485,6 @@ export class DefaultService {
     }
 
     /**
-     * Busca edificios
-     * Busqueda de edificios
-     * @param searchString Pasa una cadena opcional para buscar edificios
-     * @param skip Numero de registros que salta en cada paginacion
-     * @param limit Numero maximo de registros devueltos
-     */
-    public getEdificio(searchString?: string, skip?: number, limit?: number): Observable<Array<Edificio>> {
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (searchString !== undefined) {
-            queryParameters = queryParameters.set('searchString', <any>searchString);
-        }
-        if (skip !== undefined) {
-            queryParameters = queryParameters.set('skip', <any>skip);
-        }
-        if (limit !== undefined) {
-            queryParameters = queryParameters.set('limit', <any>limit);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (OAuth2) required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers = headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        let httpHeaderAcceptSelected: string = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set("Accept", httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        let consumes: string[] = [
-        ];
-
-        return this.httpClient.get<any>(`${this.basePath}/edificios`,
-            {
-                params: queryParameters,
-                headers: headers,
-                withCredentials: this.configuration.withCredentials,
-            }
-        );
-    }
-
-    /**
      * Busca edificio por ID
      * Devuelve un edificio por ID
      * @param idEdificio ID del edificio a recuperar
@@ -571,6 +519,62 @@ export class DefaultService {
 
         return this.httpClient.get<any>(`${this.basePath}/edificios/${encodeURIComponent(String(idEdificio))}`,
             {
+                headers: headers,
+                withCredentials: this.configuration.withCredentials,
+            }
+        );
+    }
+
+    /**
+     * Busca edificios
+     * Busqueda de edificios
+     * @param searchString Pasa una cadena opcional para buscar edificios
+     * @param idProvincia Busca los edificios de una provincia
+     * @param skip Numero de registros que salta en cada paginacion
+     * @param limit Numero maximo de registros devueltos
+     */
+    public getEdificios(searchString?: string, idProvincia?: number, skip?: number, limit?: number): Observable<Array<Edificio>> {
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (searchString !== undefined) {
+            queryParameters = queryParameters.set('searchString', <any>searchString);
+        }
+        if (idProvincia !== undefined) {
+            queryParameters = queryParameters.set('idProvincia', <any>idProvincia);
+        }
+        if (skip !== undefined) {
+            queryParameters = queryParameters.set('skip', <any>skip);
+        }
+        if (limit !== undefined) {
+            queryParameters = queryParameters.set('limit', <any>limit);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (OAuth2) required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        let httpHeaderAcceptSelected: string = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        return this.httpClient.get<any>(`${this.basePath}/edificios`,
+            {
+                params: queryParameters,
                 headers: headers,
                 withCredentials: this.configuration.withCredentials,
             }

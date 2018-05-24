@@ -36,7 +36,7 @@ export class NuevoEdificioComponent {
             response =>{
             this.searchResultProvincia = response;
             this.idProvincia = this.searchResultProvincia[0].id;
-            this.filtrarPoblaciones();
+            this.filtrarPoblacionesPorProvincia();
             console.log("this.idProvincia: " + this.idProvincia);
           })
       })
@@ -64,7 +64,7 @@ export class NuevoEdificioComponent {
     this.router.navigate(['edificios']);
   }
 
-  filtrarPoblaciones(){
+  filtrarPoblacionesPorProvincia(){
     this.defaultService.getPoblaciones(this.idProvincia).subscribe(response =>{
       console.log(response);
       this.searchResultPoblacion = response

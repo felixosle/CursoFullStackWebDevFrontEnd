@@ -23,10 +23,12 @@ export class NuevaReservaComponent implements OnInit {
   private idEdificio: number = 0;
 
   searchTermProvincia : FormControl = new FormControl();
-  cambioEdificio: FormControl = new FormControl();
+  searchTermEdificio: FormControl = new FormControl();
   searchResultProvincia: Provincia[] = [];
+  searchResultEdificio: Edificio[] = [];
 
   constructor(private defaultService: DefaultService, private router: Router) { 
+    
     this.searchTermProvincia.valueChanges
     .debounceTime(400)
     .subscribe(data => {
@@ -35,18 +37,18 @@ export class NuevaReservaComponent implements OnInit {
           this.searchResultProvincia = response;
           this.idProvincia = this.searchResultProvincia[0].id;
           this.filtrarEdificiosPorProvincia();
-          console.log("this.idProvincia: " + this.idProvincia);
         }
       );
     })
 
-    this.cambioEdificio.valueChanges
+    this.searchTermEdificio.valueChanges
     .debounceTime(400)
-    .subscribe(data => {
-      this.defaultService.getSalas(this.idEdificio).subscribe(
-        response =>{
-          this.salas = response;
-          console.log("this.salas: " + this.salas);
+    .subscribe(data2 => {
+      this.defaultService.getEdificios(data2,this.idProvincia).subscribe(
+        response2 =>{
+          this.searchResultEdificio = response2;
+          this.idEdificio = this.searchResultEdificio[0].id;
+          this.filtrarSalasPorEdificio();
         }
       );
     });
@@ -78,15 +80,30 @@ export class NuevaReservaComponent implements OnInit {
 
   filtrarEdificiosPorProvincia(){
     this.edificios= [];
-    this.defaultService.getEdificio().subscribe(response =>{
+    this.defaultService.getEdificios('',this.idProvincia).subscribe(response =>{
       response.forEach( (edificio) => {
         if (edificio.direccion.poblacion.provincia.id === this.idProvincia){
           this.edificios.push(edificio);
           this.idEdificio=this.edificios[0].id;
         }
-      }      
+      }
      )
+     this.searchResultEdificio=this.edificios;
     });
+  }
+
+  filtrarSalasPorEdificio(){
+    this.defaultService.getSalas(this.idEdificio).subscribe(
+      response =>{
+        this.salas = response;
+        console.log("this.salas: " + this.salas);
+      }
+    );
+  }
+
+  onCancel() {
+    console.log('Botón Cancelar pulsado');    
+    this.router.navigate(['reservas']);
   }
 
   refresh(){    

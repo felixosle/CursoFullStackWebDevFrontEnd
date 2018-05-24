@@ -37,12 +37,6 @@ export class NuevaSalaComponent implements OnInit {
     this.salaForm.reset();
   }
 
-  onClean() {
-    console.log('Botón Limpiar pulsado');
-    this.salaForm.reset();
-    this.ngOnInit();
-  }
-
   createForm() {
     const formatoCapacidad = '[1-9]+[0-9]*$'
     this.salaForm = this.fb.group({

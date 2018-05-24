@@ -12,17 +12,26 @@
       </mat-form-field>
 
       <mat-form-field fxFlex="35%">
-        <mat-select [formControl]="cambioEdificio" name="edificio" placeholder="Edificio">
+        <input type="text" ngModel name="edificio" placeholder="Edificio" aria-label="Number" matInput [formControl]="searchTermEdificio" [matAutocomplete]="auto2" required>
+        <mat-autocomplete #auto2="matAutocomplete">
+          <mat-option *ngFor="let edificio of searchResultEdificio" [value]="edificio.nombre">
+            {{ edificio.nombre }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <!-- <mat-form-field fxFlex="35%">
+        <mat-select [formControl]="searchTermEdificio" name="edificio" placeholder="Edificio">
           <mat-option *ngFor="let edificio of edificios" [value]="edificio.id">
             {{ edificio.nombre }}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
 
       <mat-form-field fxFlex="35%">
         <mat-select placeholder="Sala" ngModel name="sala" required>
-          <mat-option *ngFor="let sala of salas" [value]="sala.id">
-            {{ sala.nombre }}
+          <mat-option *ngFor="let sal of salas" [value]="sal.id">
+            {{ sal.nombre }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -45,8 +54,9 @@
       </mat-form-field>
 
     </div>
-    <div fxLayoutAlign="center">
+    <div fxLayoutAlign="center" fxLayoutGap="20px">
       <button type="submit" [disabled]="f.invalid" mat-raised-button color="accent">Aceptar</button>
+      <button type="button"  (click)="onCancel()" mat-raised-button color="warn">Cancelar</button>
     </div>
   </form>
 </section>

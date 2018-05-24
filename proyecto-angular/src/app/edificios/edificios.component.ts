@@ -27,7 +27,7 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     // this.edificios = this.edificioMockService.getEdificios();
     // this.dataSource.data = this.edificios;
-    this.defaultService.getEdificio().subscribe(
+    this.defaultService.getEdificios().subscribe(
       data => {
         this.dataSource.data = data;
       }

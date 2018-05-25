@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 //AfterViewInit lo usamos para la paginación y ordenación de mat-datatable
 //ChangeDetectorRef lo usamos para refrescar los datos de mat-datatable
 import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
@@ -23,7 +23,7 @@ export class ReservasComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
-  constructor(private reservaMockService: ReservaMockService, private defaultService: DefaultService, private dialog: MatDialog) { }
+  constructor(private reservaMockService: ReservaMockService, private defaultService: DefaultService, private dialog: MatDialog, private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngAfterViewInit(){
     this.dataSource.paginator = this.paginador;
@@ -60,15 +60,16 @@ export class ReservasComponent implements OnInit, AfterViewInit {
         this.reservaSeleccionada.fechaReserva = fechaFormateada.format('YYYY-MM-DD');
         this.defaultService.actualizarReserva(this.reservaSeleccionada.id, this.reservaSeleccionada).subscribe();        
       } else {
-        console.log("Pulsó Cancelar cambios de edición");        
-      };
-      this.refresh();
-      console.log("método refresh llamado");
+        console.log("Pulsó Cancelar cambios de edición");
+        this.refresh();
+      };      
     });
   }
 
   refresh(){
-    
+    console.log("método refresh llamado");
+    this.ngOnInit();
+    this.changeDetectorRefs.detectChanges();
   }
 }
 

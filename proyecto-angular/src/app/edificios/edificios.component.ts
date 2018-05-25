@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+//AfterViewInit lo usamos para la paginación y ordenación de mat-datatable
+//ChangeDetectorRef lo usamos para refrescar los datos de mat-datatable
 import { NgForm } from '@angular/forms';
 import { EdificioMockService } from './edificio.mock.service'
 import { Edificio } from '../../api-rest/model/edificio';
-import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { EdificioDetalleComponent } from './edificio-detalle/edificio-detalle.component';
 import { DefaultService } from '../../api-rest/api/default.service';
@@ -19,10 +21,9 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   displayedColumns = ['nombre', 'poblacion', 'codPostal', 'verSalas', 'titularidad', 'editar'];
   dataSource = new MatTableDataSource<Edificio>();
 
-  @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
-  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog, private router:Router) { }
+  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog, private router:Router, private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
     // this.edificios = this.edificioMockService.getEdificios();
@@ -39,16 +40,11 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-    this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginador;
   }
 
   onSubmit(form: NgForm){
     console.log(form);    
-  }
-
-  filtrar(valorFiltro: string){
-    this.dataSource.filter = valorFiltro.trim().toLowerCase();
   }
 
   onEdit(element){
@@ -64,6 +60,7 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
         this.defaultService.actualizarEdificio(this.edificioSeleccionado.id,this.edificioSeleccionado).subscribe();
       } else {
         console.log("Pulsó Cancelar cambios de edición");
+        this.refresh();
       }
     });
   }
@@ -91,7 +88,11 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
     console.log(this.edificioSeleccionado.id);
     this.router.navigate(['/edificios/' + this.edificioSeleccionado.id + '/salas/']);
     console.log("Viendo salas del edificio: " + this.edificioSeleccionado.nombre);
-    
-    
+  }
+
+  refresh(){
+    console.log("método refresh llamado");
+    this.ngOnInit();
+    this.changeDetectorRefs.detectChanges();
   }
 }

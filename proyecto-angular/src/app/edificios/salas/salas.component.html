@@ -5,25 +5,20 @@
     <div fxFlex="30%"></div>
     <h3 fxFlex="30%">Salas del Edificio {{this.idEdificio}}:</h3>
     </div>
-    <div >
-    <mat-form-field fxLayoutAlign="center center">
-      <input matInput type="text" (keyup)="filtrar($event.target.value)" placeholder="Filtro">
-    </mat-form-field>
-  </div>
 
   <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="nombre">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-header>Nombre</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.nombre}}</mat-cell>
     </ng-container>
     
     <ng-container matColumnDef="descripcion">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-header>Descripción</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.descripcion }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="capacidad">
-      <mat-header-cell fxLayoutAlign="center" *matHeaderCellDef mat-sort-header>Capacidad</mat-header-cell>
+      <mat-header-cell fxLayoutAlign="center" *matHeaderCellDef mat-header>Capacidad</mat-header-cell>
       <mat-cell fxLayoutAlign="center" *matCellDef="let element">{{ element.capacidad }}</mat-cell>
     </ng-container>
      
@@ -33,7 +28,7 @@
     </ng-container>
 
     <ng-container matColumnDef="localizacion">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Localización</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-header>Localización</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.localizacion }}</mat-cell>
     </ng-container>
 

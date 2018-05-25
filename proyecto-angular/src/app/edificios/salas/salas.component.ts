@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { EdificioMockService } from '../edificio.mock.service'
 import { Sala } from '../../../api-rest/model/sala';
-import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { SalaDetalleComponent } from './sala-detalle/sala-detalle.component';
 import { DefaultService } from '../../../api-rest/api/default.service';
@@ -21,7 +21,6 @@ export class SalasComponent implements OnInit, AfterViewInit {
   displayedColumns = ['nombre', 'localizacion','descripcion','capacidad','editar'];
   dataSource = new MatTableDataSource<Sala>();
 
-  @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
   constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog, private route: ActivatedRoute,private router:Router) { }
@@ -41,12 +40,7 @@ export class SalasComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-    this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginador;
-  }
-
-  filtrar(valorFiltro: string){
-    this.dataSource.filter = valorFiltro.trim().toLowerCase();
   }
 
   onEdit(element){

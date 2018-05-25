@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class ReservaDetalleComponent implements OnInit {
   minDate;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any, private dialog: MatDialog, private defaultService: DefaultService,private router:Router) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any, private dialog: MatDialog, private defaultService: DefaultService, private router:Router) { }
 
   ngOnInit() {
     this.minDate = new Date();

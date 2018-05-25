@@ -79,17 +79,10 @@ export class NuevaReservaComponent implements OnInit {
   }
 
   filtrarEdificiosPorProvincia(){
-    this.edificios= [];
-    this.defaultService.getEdificios('',this.idProvincia).subscribe(response =>{
-      response.forEach( (edificio) => {
-        if (edificio.direccion.poblacion.provincia.id === this.idProvincia){
-          this.edificios.push(edificio);
-          this.idEdificio=this.edificios[0].id;
-        }
-      }
-     )
-     this.searchResultEdificio=this.edificios;
-    });
+    
+    this.defaultService.getEdificios('',this.idProvincia).subscribe(edificios =>
+      this.searchResultEdificio = edificios.filter(edificio => edificio.direccion.poblacion.provincia.id === this.idProvincia)
+     );
   }
 
   filtrarSalasPorEdificio(){

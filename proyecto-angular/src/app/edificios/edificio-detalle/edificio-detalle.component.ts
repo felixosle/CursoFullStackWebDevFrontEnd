@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
+import { DefaultService } from '../../../api-rest/api/default.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edificio-detalle',
@@ -9,7 +11,7 @@ import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-b
 })
 export class EdificioDetalleComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any, private dialog: MatDialog) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any, private dialog: MatDialog, private defaultService: DefaultService, private router:Router) { }
   
   ngOnInit() {
   }
@@ -23,6 +25,8 @@ export class EdificioDetalleComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log("Pulsó Aceptar Borrar " + this.datosPasados.nombre);
+        this.defaultService.borrarEdificio(this.datosPasados.id).subscribe();
+        this.dialog.closeAll();
       } else {
         console.log("Pulsó Cancelar Borrar "+ this.datosPasados.nombre);
       }

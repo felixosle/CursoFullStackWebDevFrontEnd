@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 //AfterViewInit lo usamos para la paginación y ordenación de mat-datatable
 //ChangeDetectorRef lo usamos para refrescar los datos de mat-datatable
-import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { Reserva } from '../../api-rest/model/reserva';
 import { ReservaDetalleComponent } from './reserva-detalle/reserva-detalle.component';
 import { ReservaMockService } from './reserva.mock.service'
@@ -18,18 +18,14 @@ import { DefaultService } from '../../api-rest/api/default.service';
 export class ReservasComponent implements OnInit, AfterViewInit {  
   reservas: Reserva [] = [];
   reservaSeleccionada: Reserva = null;
-  displayedColumns = ['id', 'sala', 'edificio', 'fecha', 'usuario', 'editar'];
+  displayedColumns = ['id', 'provincia', 'edificio', 'sala', 'fecha', 'usuario', 'editar'];
   dataSource = new MatTableDataSource<Reserva>();
 
-  // dataSource = new ReservasDataSource(this.defaultService);
-
-  @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
   constructor(private reservaMockService: ReservaMockService, private defaultService: DefaultService, private dialog: MatDialog) { }
 
   ngAfterViewInit(){
-    this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginador;
   }
 
@@ -58,10 +54,10 @@ export class ReservasComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      let fechaFormateada:any = this.reservaSeleccionada.fechaReserva;
-      this.reservaSeleccionada.fechaReserva = fechaFormateada.format('YYYY-MM-DD');
       if (result) {
         console.log("Pulsó Aceptar cambios de edición");
+        let fechaFormateada:any = this.reservaSeleccionada.fechaReserva;
+        this.reservaSeleccionada.fechaReserva = fechaFormateada.format('YYYY-MM-DD');
         this.defaultService.actualizarReserva(this.reservaSeleccionada.id, this.reservaSeleccionada).subscribe();        
       } else {
         console.log("Pulsó Cancelar cambios de edición");        

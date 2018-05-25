@@ -18,7 +18,7 @@ export class SalasComponent implements OnInit, AfterViewInit {
   nombreEdificio: string;
   salas: Sala []=[];
   salaSeleccionada: Sala=null;
-  displayedColumns = ['nombre','tipo','localizacion','descripcion','capacidad','editar'];
+  displayedColumns = ['nombre', 'localizacion','descripcion','capacidad','editar'];
   dataSource = new MatTableDataSource<Sala>();
 
   @ViewChild(MatSort) sort: MatSort;

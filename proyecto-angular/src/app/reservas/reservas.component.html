@@ -2,35 +2,36 @@
   <h3 fxLayoutAlign="center center">
     Listado de reservas
   </h3>
+  <br>
 
-  <br>    
-  <mat-form-field fxLayoutAlign="center">
-    <input matInput type="text" (keyup)="filtrar($event.target.value)" placeholder="Filtro">
-  </mat-form-field>    
-
-  <mat-table [dataSource]="dataSource" matSort>
+  <mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-header>Id</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
     </ng-container>
-    
-    <ng-container matColumnDef="sala">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Sala</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.sala.nombre }}</mat-cell>
+
+    <ng-container matColumnDef="provincia">
+      <mat-header-cell *matHeaderCellDef mat-header>Provincia</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.sala.edificio.direccion.poblacion.provincia.provincia }}</mat-cell>
     </ng-container>
     
     <ng-container matColumnDef="edificio">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Edificio</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-header>Edificio</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.sala.edificio.nombre }}</mat-cell>
     </ng-container>
-  
+
+    <ng-container matColumnDef="sala">
+        <mat-header-cell *matHeaderCellDef mat-header>Sala</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.sala.nombre }}</mat-cell>
+    </ng-container>
+      
     <ng-container matColumnDef="fecha">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-header>Fecha</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.fechaReserva | date: "yyyy-MM-dd" }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="usuario">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-header>Usuario</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.usuario }}</mat-cell>
     </ng-container>
 
@@ -48,7 +49,7 @@
   </mat-table>
   
   <div fxLayoutAlign="center">
-    <mat-paginator [pageSize]="10" [pageSizeOptions]="[1, 5, 10, 20]"></mat-paginator>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
   </div>
 
   <div fxLayoutAlign="end">

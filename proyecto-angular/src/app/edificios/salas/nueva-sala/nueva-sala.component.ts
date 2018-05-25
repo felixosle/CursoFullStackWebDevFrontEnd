@@ -35,6 +35,7 @@ export class NuevaSalaComponent implements OnInit {
   onCancel() {
     console.log('Botón Cancelar Nueva sala pulsado');
     this.salaForm.reset();
+    this.router.navigate(['edificios/' + this.idEdificio + '/salas']);
   }
 
   createForm() {

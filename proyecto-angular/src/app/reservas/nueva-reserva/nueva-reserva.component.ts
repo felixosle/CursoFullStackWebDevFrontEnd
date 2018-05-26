@@ -8,6 +8,9 @@ import { DefaultService } from '../../../api-rest/api/default.service';
 import { NgForm, FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
 import 'rxjs/add/operator/debounceTime';
+// Práctica Angular Material:
+import { MatSnackBar } from '@angular/material'; 
+
 
 @Component({
   selector: 'app-nueva-reserva',
@@ -26,8 +29,9 @@ export class NuevaReservaComponent implements OnInit {
   searchTermEdificio: FormControl = new FormControl();
   searchResultProvincia: Provincia[] = [];
   searchResultEdificio: Edificio[] = [];
-
-  constructor(private defaultService: DefaultService, private router: Router) { 
+  
+  // Práctica Angular Material:
+  constructor(private defaultService: DefaultService, private router: Router, private snackBar: MatSnackBar) { 
     
     this.searchTermProvincia.valueChanges
     .debounceTime(400)
@@ -74,9 +78,14 @@ export class NuevaReservaComponent implements OnInit {
     console.log("Pulsado Aceptar Nueva Reserva. form.value.sala: " + form.value.sala + " Fecha: " + form.value.fechaReserva + " " );
 
     this.defaultService.agregarReserva(this.reserva).subscribe();
-    this.router.navigate(['reservas']);
-    this.refresh();
+    this.snackBar.open('Reserva creada correctamente', null, {
+      duration:3000
+    });
+    
+    // this.router.navigate(['reservas']);
+    // this.refresh();
   }
+  
 
   filtrarEdificiosPorProvincia(){
     
@@ -100,6 +109,6 @@ export class NuevaReservaComponent implements OnInit {
   }
 
   refresh(){    
-    // window.location.reload();
+    window.location.reload();
   }
 }

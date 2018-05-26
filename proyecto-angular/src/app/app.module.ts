@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DefaultService } from '../api-rest/api/default.service';
 
 //Imports de Angular Material:
-import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule,
+import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSnackBarModule,
   MatDatepickerModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule, 
   MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule, 
   MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule, MatAutocompleteModule} from '@angular/material';
@@ -63,7 +63,7 @@ import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.comp
     BrowserAnimationsModule,
     AppRoutingModule,
     MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, 
-    MatMomentDateModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule,
+    MatMomentDateModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule, MatSnackBarModule,
     MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, FlexLayoutModule,
     MatTableModule, MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule, MatAutocompleteModule,
     FormsModule, ReactiveFormsModule, HttpClientModule, ApiModule

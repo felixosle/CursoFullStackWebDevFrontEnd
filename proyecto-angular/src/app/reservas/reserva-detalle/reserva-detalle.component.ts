@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
-import { DefaultService } from '../../../api-rest/api/default.service';
+import { DefaultService } from '../../../api-rest/';
 import { Router } from '@angular/router';
 
 @Component({

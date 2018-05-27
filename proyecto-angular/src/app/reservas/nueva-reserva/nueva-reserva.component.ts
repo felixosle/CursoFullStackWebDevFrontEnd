@@ -4,7 +4,7 @@ import { Provincia } from '../../../api-rest/';
 import { Edificio } from '../../../api-rest/';
 import { Sala } from '../../../api-rest/';
 // import { EdificioMockService } from '../../edificios/edificio.mock.service'
-import { DefaultService } from '../../../api-rest/api/default.service';
+import { DefaultService } from '../../../api-rest/';
 import { NgForm, FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
 import 'rxjs/add/operator/debounceTime';
@@ -78,14 +78,15 @@ export class NuevaReservaComponent implements OnInit {
     console.log("Pulsado Aceptar Nueva Reserva. form.value.sala: " + form.value.sala + " Fecha: " + form.value.fechaReserva + " " );
 
     this.defaultService.agregarReserva(this.reserva).subscribe();
-    this.snackBar.open('Reserva creada correctamente', null, {
+    // Práctica Angular Material:
+    let snackBarRef =this.snackBar.open('Reserva creada correctamente', null, {
       duration:3000
     });
-    
-    // this.router.navigate(['reservas']);
-    // this.refresh();
+    snackBarRef.afterDismissed().subscribe(() => {
+      console.log('La snackbar se ha cerrado');
+      this.router.navigate(['reservas']);
+    });
   }
-  
 
   filtrarEdificiosPorProvincia(){
     
@@ -106,9 +107,5 @@ export class NuevaReservaComponent implements OnInit {
   onCancel() {
     console.log('Botón Cancelar pulsado');    
     this.router.navigate(['reservas']);
-  }
-
-  refresh(){    
-    window.location.reload();
   }
 }

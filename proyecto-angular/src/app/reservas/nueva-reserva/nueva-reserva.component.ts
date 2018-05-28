@@ -9,7 +9,7 @@ import { NgForm, FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
 import 'rxjs/add/operator/debounceTime';
 // Práctica Angular Material:
-import { MatSnackBar } from '@angular/material';
+// Alguien tiene que importar algo
 
 @Component({
   selector: 'app-nueva-reserva',
@@ -30,7 +30,8 @@ export class NuevaReservaComponent implements OnInit {
   searchResultEdificio: Edificio[] = [];
   
   // Práctica Angular Material:
-  constructor(private defaultService: DefaultService, private router: Router, private snackBar: MatSnackBar) { 
+  // Alguien tiene que inyectar algo
+  constructor(private defaultService: DefaultService, private router: Router) { 
     
     this.searchTermProvincia.valueChanges
     .debounceTime(400)
@@ -78,13 +79,12 @@ export class NuevaReservaComponent implements OnInit {
 
     this.defaultService.agregarReserva(this.reserva).subscribe();
     // Práctica Angular Material:
-    let snackBarRef = this.snackBar.open('Reserva creada correctamente', null, {
-      duration:3000
-    });
-    snackBarRef.afterDismissed().subscribe(() => {
-      console.log('La snackbar se ha cerrado');
-      this.router.navigate(['reservas']);
-    });
+    // Alguien tiene que usar un componente Snackbar para notificar
+    
+
+    // Práctica Angular Material (para nota):
+    // Alguien tiene que navegar a 'reservas' cuando la notificación se cierre
+    
   }
 
   filtrarEdificiosPorProvincia(){

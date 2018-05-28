@@ -7,7 +7,7 @@ import { DefaultService } from '../../../api-rest';
 import { NgForm,FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
 import 'rxjs/add/operator/debounceTime';
-
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-nuevo-edificio',
@@ -28,7 +28,7 @@ export class NuevoEdificioComponent {
   private poblacion: Poblacion;
   private provinciaSeleccionada: Provincia= null;
 
-  constructor(private defaultService: DefaultService, private router: Router) {
+  constructor(private defaultService: DefaultService, private router: Router, private snackBar: MatSnackBar) {
     this.searchTermProvincia.valueChanges      
       .debounceTime(400)  
       .subscribe(data => {
@@ -60,8 +60,14 @@ export class NuevoEdificioComponent {
     this.edificio = {nombre:form.value.nombre, direccion:{ tipoVia: form.value.tipoVia, nombreVia: form.value.nombreVia, numeroVia:form.value.numeroVia, codigoPostal: form.value.codigoPostal, poblacion:{id: this.idPoblacion, poblacion: this.nombrePoblacion}}, titularidad:form.value.titularidad };
     console.log("Pulsado Aceptar Nuevo Edificio. Edificio.id: " + this.edificio.id + " " + this.edificio.nombre + " ");
     this.defaultService.agregarEdificio(this.edificio).subscribe();
-    // this.refresh();
-    this.router.navigate(['edificios']);
+    let snackBarRef = this.snackBar.open('Edificio: ' + form.value.nombre + ' creado correctamente', null, {
+      duration:3000
+    });
+    snackBarRef.afterDismissed().subscribe(() => {
+      console.log('La snackbar se ha cerrado');
+      this.router.navigate(['edificios']);
+    });    
+    
   }
 
   filtrarPoblacionesPorProvincia(){
@@ -70,68 +76,4 @@ export class NuevoEdificioComponent {
       this.searchResultPoblacion = response
     })
   }
-
-
-
-  // seleccionarProvincia(idProvincia){
-  //   this.idProvincia = idProvincia;
-  //   console.log(idProvincia);
-  //   this.defaultService.getPoblaciones(this.idProvincia).subscribe(response =>{
-  //     console.log("Llamado seleccionarProvincia. Respuesta: " + response);
-  //     this.searchResultPoblacion = response
-  //   })
-  // }
-
-  refresh(){
-    // window.location.reload();
-  }
 }
-// export class NuevoEdificioComponent implements OnInit {
-  // private edificio: Edificio;
-  // private provinciasRecuperadas: Provincia []=[];
-  // provincias: Observable<any[]>;
-
-  // //Filtro de provincias:
-  // provinciasCtrl= new FormControl();
-  // provinciasFiltradas: Observable<any[]>;
-  
-  // constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private router: Router) { 
-  //   this.defaultService.getProvincias().subscribe(
-  //     data => {
-  //       this.provinciasRecuperadas = data;
-  //     }
-  //   )
-
-  //   this.provinciasFiltradas = this.provinciasCtrl.valueChanges
-  //   .startWith(null)
-  //   .debounceTime(200)
-  //   .distinctUntilChanged()
-  //   .switchMap(val => {
-  //     return this.filter(val || '')
-  // }) 
-  // }
-
-  // filter(val: string) {
-  //   return this.provincias
-  //     .map(response => response.filter(option => { 
-  //       return option.name.toLowerCase().indexOf(val.toLowerCase()) === 0
-  //     }));
-  // }
-
-//   ngOnInit() {
-//     this.provincias = this.edificioMockService.getProvincias();
-    
-//   }
-
-//   onSubmit(form: NgForm){
-//     this.edificio = {id: null, nombre:form.value.nombre, direccion:{ tipoVia: form.value.tipoVia, nombreVia: form.value.nombreVia, numeroVia:form.value.numeroVia, codigoPostal: form.value.codigoPostal, poblacion:{id:null, poblacion:form.value.poblacion}}, titularidad:form.value.titularidad };
-//     console.log("Pulsado Aceptar Nuevo Edificio. Edificio.id: " + this.edificio.id + " " + this.edificio.nombre + " ");
-//     this.defaultService.agregarEdificio(this.edificio).subscribe();
-//     this.router.navigate(['edificios']);
-//     this.refresh();
-//   }
-
-//   refresh(){
-//     window.location.reload();
-//   }
-// }

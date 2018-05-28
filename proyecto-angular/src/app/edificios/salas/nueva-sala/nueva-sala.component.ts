@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Sala } from '../../../../api-rest';
 import { DefaultService } from '../../../../api-rest';
-import {Router} from "@angular/router";
-import { ActivatedRoute } from '@angular/router';
+import {Router, ActivatedRoute} from "@angular/router";
 // Librerías para formularios reactivos:
 import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-nueva-sala',
@@ -17,7 +17,7 @@ export class NuevaSalaComponent implements OnInit {
   private salaForm: FormGroup;
   errorMessage: string;
 
-  constructor(private defaultService: DefaultService,private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
+  constructor(private defaultService: DefaultService,private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.idEdificio = this.route.snapshot.params['idEdificio'];
@@ -29,7 +29,13 @@ export class NuevaSalaComponent implements OnInit {
     this.sala ={ nombre: this.salaForm.value.nombre, descripcion: this.salaForm.value.descripcion, capacidad: this.salaForm.value.capacidad, localizacion: this.salaForm.value.localizacion , tipoSala: {id: 1, tipo: this.salaForm.value.tipoSala.tipo}, edificio: {id: this.salaForm.value.edificio.id, nombre: this.salaForm.value.edificio.nombre} };
     // console.log('idEdificio: ' + this.sala.edificio.id + 'Formulario Nueva Sala enviado: ' + this.salaForm.value.toJson);
     this.defaultService.agregarSala(this.idEdificio, this.sala).subscribe();
-    this.router.navigate(['edificios']);
+    let snackBarRef = this.snackBar.open('Sala: ' + this.salaForm.value.nombre + ' creada correctamente', null, {
+      duration:3000
+    });
+    snackBarRef.afterDismissed().subscribe(() => {
+      console.log('La snackbar se ha cerrado');
+      this.router.navigate(['edificios/' + this.idEdificio + '/salas']);
+    });
   }
 
   onCancel() {

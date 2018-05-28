@@ -9,8 +9,7 @@ import { NgForm, FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
 import 'rxjs/add/operator/debounceTime';
 // Práctica Angular Material:
-import { MatSnackBar } from '@angular/material'; 
-
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-nueva-reserva',
@@ -79,7 +78,7 @@ export class NuevaReservaComponent implements OnInit {
 
     this.defaultService.agregarReserva(this.reserva).subscribe();
     // Práctica Angular Material:
-    let snackBarRef =this.snackBar.open('Reserva creada correctamente', null, {
+    let snackBarRef = this.snackBar.open('Reserva creada correctamente', null, {
       duration:3000
     });
     snackBarRef.afterDismissed().subscribe(() => {

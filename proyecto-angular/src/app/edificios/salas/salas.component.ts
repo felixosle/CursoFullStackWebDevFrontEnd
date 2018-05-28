@@ -59,22 +59,6 @@ export class SalasComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
-  onDelete(element){
-    this.salaSeleccionada = element;
-    console.log("Borrando elemento " + this.salaSeleccionada.nombre);
-    const dialogRef = this.dialog.open(DialogoConfirmacionComponent, {
-      data: this.salaSeleccionada
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log("Pulsó Aceptar borrar "+ this.salaSeleccionada.nombre);
-      } else {
-        console.log("Pulsó Cancelar borrar "+ this.salaSeleccionada.nombre);
-      }
-    });
-  }
   
   onAgregarSala(element){
     this.router.navigate(['/edificios/' + this.idEdificio + '/nuevaSala/']);

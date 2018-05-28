@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// Practica form:
+// Alguien debería importar un módulo de formularios Angular aquí:
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiModule } from '../api-rest/api.module';
 import { EdificioMockService } from './edificios/edificio.mock.service';
@@ -66,6 +68,8 @@ import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.comp
     MatMomentDateModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule, MatSnackBarModule,
     MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, FlexLayoutModule,
     MatTableModule, MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule, MatAutocompleteModule,
+    // Practica form:
+    // Alguien debería importar un módulo de formularios Angular aquí:
     FormsModule, ReactiveFormsModule, HttpClientModule, ApiModule
   ],
   providers: [

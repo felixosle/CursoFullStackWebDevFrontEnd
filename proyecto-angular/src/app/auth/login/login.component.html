@@ -5,7 +5,9 @@
       <mat-card-title>Inicio de sesión</mat-card-title>
       <mat-card-content>
         <mat-form-field fxLayoutAlign="center">
-          <input type="email" 
+           <!-- Practica form: -->
+           <!-- Alguien debería rellenar el input con algo de ng-form aquí -->
+          <input type="text" 
             matInput placeholder="Correo electrónico" 
             ngModel name="email"
             email
@@ -15,17 +17,21 @@
           <mat-error *ngIf="!emailInput.hasError('required')">Formato de email incorrecto</mat-error>
         </mat-form-field>
         <mat-form-field hintLabel="Mínimo 6 caracteres">
-            <input type="password" 
-            matInput placeholder="Contraseña" 
-            ngModel name="password"
-            required
-            minlength="6"
-            #pwInput="ngModel">
-            <mat-hint align="end">{{ pwInput.value?.length}} / 6</mat-hint>
-          </mat-form-field>
-          <br>
+          <!-- Practica form: -->
+          <!-- Alguien debería rellenar el password con algo de ng-form aquí -->
+          <input type="password" 
+          matInput placeholder="Contraseña" 
+          ngModel name="password"
+          required
+          minlength="6"
+          #pwInput="ngModel">
+          <mat-hint align="end">{{ pwInput.value?.length}} / 6</mat-hint>
+        </mat-form-field>
+        <br>
       </mat-card-content>
       <mat-card-actions>
+        <!-- Practica form: -->
+        <!-- Alguien debería convertir este botón en un botón de Material Design y deshabilitarlo cuando el formulario es inválido -->
         <button type="submit" mat-raised-button color="accent" [disabled]="f.invalid"><mat-icon>home</mat-icon>Aceptar</button>
       </mat-card-actions>
   </mat-card>

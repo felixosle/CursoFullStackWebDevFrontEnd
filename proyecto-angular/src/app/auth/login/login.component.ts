@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// Practica form:
+// Alguien debería importar un módulo para formularios Angular aquí:
 import { NgForm } from '@angular/forms';
 
 @Component({

@@ -50,10 +50,8 @@ export class NuevaSalaComponent implements OnInit {
     this.salaForm = this.fb.group({
       // Práctica 4: Formulario Reactive:
       // Alguien debería declarar los campos del formulario aquí:
-      nombre: ['', [Validators.required, Validators.minLength(4)]],
-      descripcion: ['', Validators.maxLength(50)],
-      capacidad: ['',[Validators.maxLength(2), Validators.pattern(formatoCapacidad)]],
-      localizacion:  ['', Validators.maxLength(50)],
+      
+
       tipoSala: this.fb.group({
         id:['1'],
         tipo:['']
@@ -98,18 +96,16 @@ export class NuevaSalaComponent implements OnInit {
     // Práctica 4: Formulario Reactive:
     // Alguien debería declarar los mensajes de validación del formulario aquí:
     'nombre': {
-      'required': 'Nombre es obligatorio',
-      'minlength': 'Nombre debe tener mínimo 4 letras',
+      
     },
     'descripcion': {
-      'maxlength': 'La descripción no puede tener más de 50 caracteres',
+      
     },
     'capacidad': {
-      'maxlength': 'Capacidad no puede tener más de 2 números',
-      'pattern': 'Capacidad sólo admite números',
+      
     },    
     'localizacion': {
-      'maxlength': 'La localización no puede tener más de 50 caracteres',
+      
     }
   };
 

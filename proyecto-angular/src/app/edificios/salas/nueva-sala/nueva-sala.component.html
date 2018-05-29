@@ -8,13 +8,13 @@
         <mat-form-field fxFlex="25%">
           <!-- Práctica 4: Formulario Reactive:
             Alguien debería declarar los campos del formulario en los <inputs>: -->
-          <input matInput formControlName="nombre" placeholder="Nombre"   required>
+          <input matInput  placeholder="Nombre"   required>
           <mat-error *ngIf="formErrors.nombre">
             {{ formErrors.nombre }}
           </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="40%">
-          <input matInput formControlName="descripcion" placeholder="Descripción" >
+          <input matInput  placeholder="Descripción" >
           <mat-error *ngIf="formErrors.descripcion">
             {{ formErrors.descripcion }}
           </mat-error>
@@ -22,18 +22,18 @@
       </div>
       <div fxLayout="row" fxLayoutAlign="space-evenly">        
         <mat-form-field fxFlex="10%">
-          <input matInput formControlName="capacidad" placeholder="Capacidad" >
+          <input matInput  placeholder="Capacidad" >
           <mat-error *ngIf="formErrors.capacidad">
             {{ formErrors.capacidad }}
           </mat-error>
         </mat-form-field>
         <div formGroupName="tipoSala" fxFlex="15%">
           <mat-form-field >
-            <input matInput formControlName="tipo" placeholder="Tipo de Sala" required>
+            <input matInput  placeholder="Tipo de Sala" required>
           </mat-form-field>
         </div>
         <mat-form-field fxFlex="35%">
-          <input matInput formControlName="localizacion" placeholder="Localización" >
+          <input matInput  placeholder="Localización" >
           <mat-error *ngIf="formErrors.localizacion">
             {{ formErrors.localizacion }}
           </mat-error>

@@ -6,6 +6,8 @@
       <form  [formGroup]="salaForm" (ngSubmit)="onSubmit(f)">
       <div fxLayout="row" fxLayoutAlign="space-evenly">
         <mat-form-field fxFlex="25%">
+          <!-- Práctica 4: Formulario Reactive:
+            Alguien debería declarar los campos del formulario en los <inputs>: -->
           <input matInput formControlName="nombre" placeholder="Nombre"   required>
           <mat-error *ngIf="formErrors.nombre">
             {{ formErrors.nombre }}

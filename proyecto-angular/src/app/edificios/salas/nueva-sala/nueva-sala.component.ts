@@ -4,7 +4,7 @@ import { Sala } from '../../../../api-rest';
 import { DefaultService } from '../../../../api-rest';
 import {Router, ActivatedRoute} from "@angular/router";
 // Librerías para formularios reactivos:
-import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -48,6 +48,8 @@ export class NuevaSalaComponent implements OnInit {
   createForm() {
     const formatoCapacidad = '[1-9]+[0-9]*$'
     this.salaForm = this.fb.group({
+      // Práctica 4: Formulario Reactive:
+      // Alguien debería declarar los campos del formulario aquí:
       nombre: ['', [Validators.required, Validators.minLength(4)]],
       descripcion: ['', Validators.maxLength(50)],
       capacidad: ['',[Validators.maxLength(2), Validators.pattern(formatoCapacidad)]],
@@ -93,6 +95,8 @@ export class NuevaSalaComponent implements OnInit {
   };
 
   validationMessages = {
+    // Práctica 4: Formulario Reactive:
+    // Alguien debería declarar los mensajes de validación del formulario aquí:
     'nombre': {
       'required': 'Nombre es obligatorio',
       'minlength': 'Nombre debe tener mínimo 4 letras',

@@ -96,7 +96,7 @@ export class NuevaSalaComponent implements OnInit {
 
   validationMessages = {
     // Práctica 4: Formulario Reactive:
-    // Alguien debería declarar los mensajes de validación del formulario aquí:
+    // Alguien debería declarar los mensajes de validación de cada campo del formulario aquí:
     'nombre': {
       'required': 'Nombre es obligatorio',
       'minlength': 'Nombre debe tener mínimo 4 letras',

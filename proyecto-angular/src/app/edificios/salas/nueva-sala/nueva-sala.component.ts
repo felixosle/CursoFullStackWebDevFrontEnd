@@ -4,7 +4,7 @@ import { Sala } from '../../../../api-rest';
 import { DefaultService } from '../../../../api-rest';
 import {Router, ActivatedRoute} from "@angular/router";
 // Librerías para formularios reactivos:
-import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
 @Component({

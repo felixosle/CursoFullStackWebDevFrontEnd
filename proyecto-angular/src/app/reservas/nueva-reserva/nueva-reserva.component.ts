@@ -79,10 +79,14 @@ export class NuevaReservaComponent implements OnInit {
 
     this.defaultService.agregarReserva(this.reserva).subscribe();
     // Práctica Angular Material:
-    // Alguien tiene que usar una snackBar aquí
+    // Alguien tiene que usar un componente Snackbar para notificar
+
     let snackBarRef = this.snackBar.open('Reserva creada correctamente', null, {
       duration:3000
     });
+    
+    // Práctica Angular Material (para nota):
+    // Alguien tiene que navegar a 'reservas' cuando la notificación se cierre
     snackBarRef.afterDismissed().subscribe(() => {
       console.log('La snackbar se ha cerrado');
       this.router.navigate(['reservas']);

@@ -79,6 +79,7 @@ export class NuevaReservaComponent implements OnInit {
 
     this.defaultService.agregarReserva(this.reserva).subscribe();
     // Práctica Angular Material:
+    // Alguien tiene que usar una snackBar aquí
     let snackBarRef = this.snackBar.open('Reserva creada correctamente', null, {
       duration:3000
     });

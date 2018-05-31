@@ -1,11 +1,13 @@
 // Ejemplo de Formulario Angular Reactivo (Reactive Form)
 import { Component, OnInit } from '@angular/core';
 import { Sala } from '../../../../api-rest';
-import { TipoSala } from '../../../../api-rest/';
+// Práctica mock:
+// Alguien debería importar la interfaz TipoSala de api-rest models
+
 import { DefaultService } from '../../../../api-rest';
 // Práctica mock:
 // Alguien debería importar el servicio Mock
-import { SalasMockService } from '../../../edificios/salas/salas.mock.service';
+
 import {Router, ActivatedRoute} from "@angular/router";
 // Librerías para formularios reactivos:
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
@@ -25,10 +27,10 @@ export class NuevaSalaComponent implements OnInit {
 
   // Práctica mock:
   // Alguien debería instanciar en el constructor el servicio Mock
-  constructor(private salasMockService: SalasMockService, private defaultService: DefaultService,private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar) { 
+  constructor(          private defaultService: DefaultService,private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar) { 
     // Práctica mock:
     // Alguien debería hacer una llamada al servicio Mock y guardar la respuesta en tiposSalas
-    this.tiposSalas = this.salasMockService.getTiposSalas();
+    
   }
 
   ngOnInit() {

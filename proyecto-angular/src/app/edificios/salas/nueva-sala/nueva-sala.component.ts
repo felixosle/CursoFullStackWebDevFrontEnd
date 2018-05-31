@@ -1,6 +1,8 @@
 // Ejemplo de Formulario Angular Reactivo (Reactive Form)
 import { Component, OnInit } from '@angular/core';
 import { Sala } from '../../../../api-rest';
+// Práctica mock:
+// Alguien debería importar la interfaz TipoSala de api-rest 
 import { TipoSala } from '../../../../api-rest/';
 import { DefaultService } from '../../../../api-rest';
 // Práctica mock:

@@ -27,7 +27,11 @@
         </mat-form-field>
         <div formGroupName="tipoSala" fxFlex="15%">
           <mat-form-field >
-            <input matInput formControlName="tipo" placeholder="Tipo de Sala" required>
+            <mat-select placeholder="Tipo de Sala" ngModel name="tipo" required>
+              <mat-option *ngFor="let sal of tiposSalas" [value]="sal.id">
+                {{ sal.nombre }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <mat-form-field fxFlex="35%">

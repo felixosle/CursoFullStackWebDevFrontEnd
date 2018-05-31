@@ -7,6 +7,7 @@ import { EdificioMockService } from './edificios/edificio.mock.service';
 import { ReservaMockService } from './reservas/reserva.mock.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DefaultService } from '../api-rest/api/default.service';
+import { SalasMockService } from './edificios/salas/salas.mock.service';
 
 //Imports de Angular Material:
 import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSnackBarModule,
@@ -69,6 +70,7 @@ import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.comp
     FormsModule, ReactiveFormsModule, HttpClientModule, ApiModule
   ],
   providers: [
+    SalasMockService,
     EdificioMockService,
     ReservaMockService,
     DefaultService,

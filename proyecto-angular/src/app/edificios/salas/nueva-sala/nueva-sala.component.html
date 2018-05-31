@@ -26,8 +26,12 @@
           </mat-error>
         </mat-form-field>
         <div formGroupName="tipoSala" fxFlex="15%">
-          <mat-form-field >
-            <input matInput formControlName="tipo" placeholder="Tipo de Sala" required>
+          <mat-form-field>
+            <mat-select formControlName="id" placeholder="Tipo de Sala"  required>
+              <mat-option *ngFor="let tipo of tiposSalas" [value]="tipo.id">
+                {{ tipo.tipo }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <mat-form-field fxFlex="35%">

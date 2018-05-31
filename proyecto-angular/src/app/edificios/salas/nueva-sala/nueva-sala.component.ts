@@ -58,7 +58,7 @@ export class NuevaSalaComponent implements OnInit {
       capacidad: ['',[Validators.maxLength(2), Validators.pattern(formatoCapacidad)]],
       localizacion:  ['', Validators.maxLength(50)],
       tipoSala: this.fb.group({
-        id:[''],
+        id:['', Validators.required],
         tipo:['']
       }),
       edificio: this.fb.group({

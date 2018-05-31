@@ -25,11 +25,11 @@
             {{ formErrors.capacidad }}
           </mat-error>
         </mat-form-field>
-        <div  fxFlex="15%">
-          <mat-form-field >
-            <mat-select placeholder="Tipo de Sala" formGroupName="tipoSala" required>
-              <mat-option *ngFor="let sal of tiposSalas" [value]="sal.id">
-                {{ sal.tipo }}
+        <div formGroupName="tipoSala" fxFlex="15%">
+          <mat-form-field>
+            <mat-select formControlName="id" placeholder="Tipo de Sala"  required>
+              <mat-option *ngFor="let tipo of tiposSalas" [value]="tipo.id">
+                {{ tipo.tipo }}
               </mat-option>
             </mat-select>
           </mat-form-field>

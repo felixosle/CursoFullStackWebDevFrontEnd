@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Sala } from '../../../../api-rest';
 import { TipoSala } from '../../../../api-rest/';
 import { DefaultService } from '../../../../api-rest';
+// Práctica mock:
+// Alguien debería importar el servicio Mock
 import { SalasMockService } from '../../../edificios/salas/salas.mock.service';
 import {Router, ActivatedRoute} from "@angular/router";
 // Librerías para formularios reactivos:
@@ -21,7 +23,11 @@ export class NuevaSalaComponent implements OnInit {
   private salaForm: FormGroup;
   errorMessage: string;
 
+  // Práctica mock:
+  // Alguien debería instanciar en el constructor el servicio Mock
   constructor(private salasMockService: SalasMockService, private defaultService: DefaultService,private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar) { 
+    // Práctica mock:
+    // Alguien debería hacer una llamada al servicio Mock y guardar la respuesta en tiposSalas
     this.tiposSalas = this.salasMockService.getTiposSalas();
   }
 

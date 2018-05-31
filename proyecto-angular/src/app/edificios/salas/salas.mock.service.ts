@@ -6,8 +6,8 @@ import { TipoSala } from '../../../api-rest/';
 export class SalasMockService {
     private tipos: TipoSala[] = [
         {"id":1, "tipo":'Auditorio'},
-        {"id":2,"tipo":'Sala de reuniones'},
-        {"id":3,"tipo":'Despacho'}
+        {"id":2, "tipo":'Sala de reuniones'},
+        {"id":3, "tipo":'Despacho'}
     ];
 
     getTiposSalas(){

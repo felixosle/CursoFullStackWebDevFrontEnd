@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TipoSala } from '../../../api-rest/';
+import {Observable} from 'rxjs';
 
 @Injectable()
 
@@ -11,6 +12,8 @@ export class SalasMockService {
     ];
 
     getTiposSalas(){
-        return this.tipos;
+        // Utilizamos Observable.of porque ya tenemos el tipo de datos y los datos
+        
+        return Observable.of(this.tipos).delay(2000);
     }
 }

@@ -4,6 +4,7 @@ import { Sala } from '../../../../api-rest';
 import { TipoSala } from '../../../../api-rest/';
 import { DefaultService } from '../../../../api-rest';
 import { SalasMockService } from '../../../edificios/salas/salas.mock.service';
+import {Observable} from 'rxjs/Observable';
 import {Router, ActivatedRoute} from "@angular/router";
 // Librerías para formularios reactivos:
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
@@ -22,7 +23,11 @@ export class NuevaSalaComponent implements OnInit {
   errorMessage: string;
 
   constructor(private salasMockService: SalasMockService, private defaultService: DefaultService,private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar) { 
-    this.tiposSalas = this.salasMockService.getTiposSalas();
+    this.salasMockService.getTiposSalas().subscribe(
+      response => {
+        this.tiposSalas = response;
+      }
+    );
   }
 
   ngOnInit() {

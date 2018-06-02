@@ -4,6 +4,8 @@ import { Sala } from '../../../../api-rest';
 import { TipoSala } from '../../../../api-rest/';
 import { DefaultService } from '../../../../api-rest';
 import { SalasMockService } from '../../../edificios/salas/salas.mock.service';
+// Práctica Observable:
+// Alguien debería importar Observable de rxjs aquí:
 import {Observable} from 'rxjs/Observable';
 import {Router, ActivatedRoute} from "@angular/router";
 // Librerías para formularios reactivos:
@@ -23,6 +25,8 @@ export class NuevaSalaComponent implements OnInit {
   errorMessage: string;
 
   constructor(private salasMockService: SalasMockService, private defaultService: DefaultService,private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar) { 
+    // Práctica Observable:
+    // Alguien debería suscribirse al servicio y asignar la respuesta a this.tipoSalas:
     this.salasMockService.getTiposSalas().subscribe(
       response => {
         this.tiposSalas = response;

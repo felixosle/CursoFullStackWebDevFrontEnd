@@ -14,6 +14,6 @@ export class SalasMockService {
     getTiposSalas(){
         // Utilizamos Observable.of porque ya tenemos el tipo de datos y los datos
         
-        return Observable.of(this.tipos).delay(2000);
+        return Observable.of(this.tipos);
     }
 }

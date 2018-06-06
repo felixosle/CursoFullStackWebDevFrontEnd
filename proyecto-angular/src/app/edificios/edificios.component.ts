@@ -3,7 +3,8 @@ import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '
 //ChangeDetectorRef lo usamos para refrescar los datos de mat-datatable
 import { NgForm } from '@angular/forms';
 import { EdificioMockService } from './edificio.mock.service'
-import { Edificio } from '../../api-rest/model/edificio';
+import { Edificio } from '../../api-rest/';
+import { Provincia } from '../../api-rest';
 import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { EdificioDetalleComponent } from './edificio-detalle/edificio-detalle.component';
@@ -16,14 +17,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./edificios.component.css']
 })
 export class EdificiosComponent implements OnInit, AfterViewInit {
-  edificios: Edificio []=[];
+  edificios: Edificio [] = [];
   edificioSeleccionado: Edificio=null;
+  provincias: Provincia [] = [];
+  provinciaSeleccionada: Provincia = null;
   displayedColumns = ['nombre', 'poblacion', 'codPostal', 'verSalas', 'titularidad', 'editar'];
   dataSource = new MatTableDataSource<Edificio>();
 
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
-  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog, private router:Router, private changeDetectorRefs: ChangeDetectorRef) { }
+  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog, private router:Router, private changeDetectorRefs: ChangeDetectorRef) {
+    this.defaultService.getProvincias().subscribe(
+      response => {
+        this.provincias = response;
+      }
+    );
+   }
 
   ngOnInit() {
     // this.edificios = this.edificioMockService.getEdificios();
@@ -88,6 +97,14 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
     console.log(this.edificioSeleccionado.id);
     this.router.navigate(['/edificios/' + this.edificioSeleccionado.id + '/salas/']);
     console.log("Viendo salas del edificio: " + this.edificioSeleccionado.nombre);
+  }
+
+  onFiltrar(){
+    this.defaultService.getEdificios('',40).subscribe(
+      data => {
+        this.dataSource.data = data;
+      }
+    )
   }
 
   refresh(){

@@ -1,9 +1,17 @@
 <section>
   <h3 fxLayoutAlign="center center">
     Listado de EDIFICIOS
-  </h3>
-  <br>
-
+  </h3>  
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field>
+      <mat-select placeholder="Filtrar provincia">
+        <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">
+          {{ provincia.provincia }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button type="button" (click)="onFiltrar()" mat-raised-button>Filtrar</button>
+  </div>
   <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="nombre">
       <mat-header-cell *matHeaderCellDef mat-header>Nombre</mat-header-cell>

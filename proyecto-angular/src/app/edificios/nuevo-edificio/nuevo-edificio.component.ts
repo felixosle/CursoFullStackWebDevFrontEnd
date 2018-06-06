@@ -5,7 +5,7 @@ import { Poblacion } from '../../../api-rest';
 import { EdificioMockService } from '../edificio.mock.service';
 // Práctica 4.4: Usar API Swagger: Create
 // Alguien debería incluir el servicio DefaultService:
-import { DefaultService } from '../../../api-rest';
+
 import { NgForm,FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
 import 'rxjs/add/operator/debounceTime';
@@ -32,7 +32,7 @@ export class NuevoEdificioComponent {
 
 // Práctica 4.4: Usar API Swagger: Create
 // Alguien debería añadir un servicio tipo DefaultService en el constructor:
-  constructor(private defaultService: DefaultService, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private router: Router, private snackBar: MatSnackBar) {
     this.searchTermProvincia.valueChanges      
       .debounceTime(400)  
       .subscribe(data => {
@@ -65,7 +65,7 @@ export class NuevoEdificioComponent {
     console.log("Pulsado Aceptar Nuevo Edificio. Edificio.id: " + this.edificio.id + " " + this.edificio.nombre + " ");
     // Práctica 4.4: Usar API Swagger: Create
     // Alguien debería invocar un método del servicio DefaultService:
-    this.defaultService.agregarEdificio(this.edificio).subscribe();
+    
     // Práctica 4.4: Usar API Swagger: Create
     // Alguien debería descomentar el snackbar para notificar al usuario y navegar a 'edificios':
     

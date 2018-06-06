@@ -69,7 +69,10 @@ import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.comp
     MatMomentDateModule, MatSidenavModule, MatToolbarModule, MatListModule, MatTabsModule, MatSnackBarModule,
     MatCardModule, MatSelectModule, MatProgressSpinnerModule, MatDialogModule, FlexLayoutModule,
     MatTableModule, MatSortModule, MatPaginatorModule, MatTooltipModule, MatMenuModule, MatAutocompleteModule,
-    FormsModule, ReactiveFormsModule, HttpClientModule, ApiModule
+    FormsModule, ReactiveFormsModule, HttpClientModule, 
+    // Práctica 4.3: Importar API Swagger
+    // Alguien debería incluir el módulo de Swagger (api.module) en imports:
+    ApiModule
   ],
   providers: [
     // Práctica 4.3: Importar API Swagger

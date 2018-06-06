@@ -2,11 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// Práctica 4.3: Importar API Swagger
+// Alguien debería importar el módulo de Swagger (api.module) y el servicio default.service:
 import { ApiModule } from '../api-rest/api.module';
+import { DefaultService } from '../api-rest/api/default.service';
 import { EdificioMockService } from './edificios/edificio.mock.service';
 import { ReservaMockService } from './reservas/reserva.mock.service';
 import { HttpClientModule } from '@angular/common/http';
-import { DefaultService } from '../api-rest/api/default.service';
 import { SalasMockService } from './edificios/salas/salas.mock.service';
 
 //Imports de Angular Material:
@@ -70,10 +72,12 @@ import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.comp
     FormsModule, ReactiveFormsModule, HttpClientModule, ApiModule
   ],
   providers: [
+    // Práctica 4.3: Importar API Swagger
+    // Alguien debería declarar el servicio default.service como proveedor:
+    DefaultService,
     SalasMockService,
     EdificioMockService,
     ReservaMockService,
-    DefaultService,
     {provide: MAT_DATE_LOCALE, useValue: 'es'},
   ],
   bootstrap: [AppComponent],

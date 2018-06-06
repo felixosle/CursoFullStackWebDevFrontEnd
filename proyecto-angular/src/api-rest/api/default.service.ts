@@ -530,10 +530,8 @@ export class DefaultService {
      * Busqueda de edificios
      * @param searchString Pasa una cadena opcional para buscar edificios
      * @param idProvincia Busca los edificios de una provincia
-     * @param skip Numero de registros que salta en cada paginacion
-     * @param limit Numero maximo de registros devueltos
      */
-    public getEdificios(searchString?: string, idProvincia?: number, skip?: number, limit?: number): Observable<Array<Edificio>> {
+    public getEdificios(searchString?: string, idProvincia?: number): Observable<Array<Edificio>> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (searchString !== undefined) {
@@ -541,12 +539,6 @@ export class DefaultService {
         }
         if (idProvincia !== undefined) {
             queryParameters = queryParameters.set('idProvincia', <any>idProvincia);
-        }
-        if (skip !== undefined) {
-            queryParameters = queryParameters.set('skip', <any>skip);
-        }
-        if (limit !== undefined) {
-            queryParameters = queryParameters.set('limit', <any>limit);
         }
 
         let headers = this.defaultHeaders;
@@ -586,10 +578,10 @@ export class DefaultService {
      * Busqueda de poblaciones
      * @param idProvincia ID de la provincia para recuperar sus poblaciones
      * @param searchString Pasa una cadena opcional para buscar poblaciones
-     * @param skip numero de registros que salta en cada paginacion
+     * @param offset numero de registros que salta en cada paginacion
      * @param limit Numero maximo de registros devueltos
      */
-    public getPoblaciones(idProvincia: number, searchString?: string, skip?: number, limit?: number): Observable<Array<Poblacion>> {
+    public getPoblaciones(idProvincia: number, searchString?: string, offset?: number, limit?: number): Observable<Array<Poblacion>> {
         if (idProvincia === null || idProvincia === undefined) {
             throw new Error('Required parameter idProvincia was null or undefined when calling getPoblaciones.');
         }
@@ -598,8 +590,8 @@ export class DefaultService {
         if (searchString !== undefined) {
             queryParameters = queryParameters.set('searchString', <any>searchString);
         }
-        if (skip !== undefined) {
-            queryParameters = queryParameters.set('skip', <any>skip);
+        if (offset !== undefined) {
+            queryParameters = queryParameters.set('offset', <any>offset);
         }
         if (limit !== undefined) {
             queryParameters = queryParameters.set('limit', <any>limit);
@@ -641,20 +633,12 @@ export class DefaultService {
      * Busca provincias
      * Busqueda de provincias
      * @param searchString Pasa una cadena opcional para buscar provincias
-     * @param skip Numero de registros que salta en cada paginacion
-     * @param limit Numero maximo de registros devueltos
      */
-    public getProvincias(searchString?: string, skip?: number, limit?: number): Observable<Array<Provincia>> {
+    public getProvincias(searchString?: string): Observable<Array<Provincia>> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (searchString !== undefined) {
             queryParameters = queryParameters.set('searchString', <any>searchString);
-        }
-        if (skip !== undefined) {
-            queryParameters = queryParameters.set('skip', <any>skip);
-        }
-        if (limit !== undefined) {
-            queryParameters = queryParameters.set('limit', <any>limit);
         }
 
         let headers = this.defaultHeaders;
@@ -733,22 +717,8 @@ export class DefaultService {
     /**
      * Busca reservas
      * Busqueda de reservas
-     * @param searchString Pasa una cadena opcional para buscar reservas
-     * @param offset Numero de registros que salta en cada paginacion
-     * @param limit Numero máximo de registros devueltos
      */
-    public getReservas(searchString?: string, offset?: number, limit?: number): Observable<Array<Reserva>> {
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (searchString !== undefined) {
-            queryParameters = queryParameters.set('searchString', <any>searchString);
-        }
-        if (offset !== undefined) {
-            queryParameters = queryParameters.set('offset', <any>offset);
-        }
-        if (limit !== undefined) {
-            queryParameters = queryParameters.set('limit', <any>limit);
-        }
+    public getReservas(): Observable<Array<Reserva>> {
 
         let headers = this.defaultHeaders;
 
@@ -775,7 +745,6 @@ export class DefaultService {
 
         return this.httpClient.get<any>(`${this.basePath}/reservas`,
             {
-                params: queryParameters,
                 headers: headers,
                 withCredentials: this.configuration.withCredentials,
             }
@@ -831,24 +800,10 @@ export class DefaultService {
      * Buscar salas
      * Busqueda de salas
      * @param idEdificio ID del edificio a recuperar
-     * @param searchString Pasa una cadena opcional para buscar salas
-     * @param skip numero de registros que salta en cada paginacion
-     * @param limit Numero maximo de registros devueltos
      */
-    public getSalas(idEdificio: number, searchString?: string, skip?: number, limit?: number): Observable<Array<Sala>> {
+    public getSalas(idEdificio: number): Observable<Array<Sala>> {
         if (idEdificio === null || idEdificio === undefined) {
             throw new Error('Required parameter idEdificio was null or undefined when calling getSalas.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (searchString !== undefined) {
-            queryParameters = queryParameters.set('searchString', <any>searchString);
-        }
-        if (skip !== undefined) {
-            queryParameters = queryParameters.set('skip', <any>skip);
-        }
-        if (limit !== undefined) {
-            queryParameters = queryParameters.set('limit', <any>limit);
         }
 
         let headers = this.defaultHeaders;
@@ -876,7 +831,6 @@ export class DefaultService {
 
         return this.httpClient.get<any>(`${this.basePath}/edificios/${encodeURIComponent(String(idEdificio))}/salas`,
             {
-                params: queryParameters,
                 headers: headers,
                 withCredentials: this.configuration.withCredentials,
             }

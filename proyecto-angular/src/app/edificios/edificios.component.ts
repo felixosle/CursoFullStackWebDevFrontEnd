@@ -20,7 +20,7 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   edificios: Edificio [] = [];
   edificioSeleccionado: Edificio=null;
   provincias: Provincia [] = [];
-  provinciaSeleccionada: Provincia = null;
+  provinciaSeleccionada: number = null;
   displayedColumns = ['nombre', 'poblacion', 'codPostal', 'verSalas', 'titularidad', 'editar'];
   dataSource = new MatTableDataSource<Edificio>();
 
@@ -100,11 +100,13 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   }
 
   onFiltrar(){
-    this.defaultService.getEdificios('',40).subscribe(
-      data => {
-        this.dataSource.data = data;
-      }
-    )
+    if (this.provinciaSeleccionada){
+      this.defaultService.getEdificios('',this.provinciaSeleccionada).subscribe(
+        data => {
+          this.dataSource.data = data;
+        }
+      )
+    }
   }
 
   refresh(){

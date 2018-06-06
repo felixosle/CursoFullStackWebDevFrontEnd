@@ -8,7 +8,6 @@ import { DefaultService } from '../../../api-rest/';
 import { NgForm, FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
 import 'rxjs/add/operator/debounceTime';
-// Práctica Angular Material:
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -28,8 +27,7 @@ export class NuevaReservaComponent implements OnInit {
   searchTermEdificio: FormControl = new FormControl();
   searchResultProvincia: Provincia[] = [];
   searchResultEdificio: Edificio[] = [];
-  
-  // Práctica Angular Material:
+ 
   constructor(private defaultService: DefaultService, private router: Router, private snackBar: MatSnackBar) { 
     
     this.searchTermProvincia.valueChanges
@@ -77,7 +75,6 @@ export class NuevaReservaComponent implements OnInit {
     console.log("Pulsado Aceptar Nueva Reserva. form.value.sala: " + form.value.sala + " Fecha: " + form.value.fechaReserva + " " );
 
     this.defaultService.agregarReserva(this.reserva).subscribe();
-    // Práctica Angular Material:
     let snackBarRef = this.snackBar.open('Reserva creada correctamente', null, {
       duration:3000
     });

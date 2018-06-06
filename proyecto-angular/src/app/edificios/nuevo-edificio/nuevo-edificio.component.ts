@@ -3,6 +3,8 @@ import { Edificio } from '../../../api-rest';
 import { Provincia } from '../../../api-rest';
 import { Poblacion } from '../../../api-rest';
 import { EdificioMockService } from '../edificio.mock.service';
+// Práctica 4.4: Usar API Swagger: Create
+// Alguien debería incluir el servicio DefaultService:
 import { DefaultService } from '../../../api-rest';
 import { NgForm,FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
@@ -28,6 +30,8 @@ export class NuevoEdificioComponent {
   private poblacion: Poblacion;
   private provinciaSeleccionada: Provincia= null;
 
+// Práctica 4.4: Usar API Swagger: Create
+// Alguien debería añadir un servicio tipo DefaultService en el constructor:
   constructor(private defaultService: DefaultService, private router: Router, private snackBar: MatSnackBar) {
     this.searchTermProvincia.valueChanges      
       .debounceTime(400)  
@@ -59,14 +63,19 @@ export class NuevoEdificioComponent {
     // , form.value.poblacion.id, form.value.poblacion.poblacion  );
     this.edificio = {nombre:form.value.nombre, direccion:{ tipoVia: form.value.tipoVia, nombreVia: form.value.nombreVia, numeroVia:form.value.numeroVia, codigoPostal: form.value.codigoPostal, poblacion:{id: this.idPoblacion, poblacion: this.nombrePoblacion}}, titularidad:form.value.titularidad };
     console.log("Pulsado Aceptar Nuevo Edificio. Edificio.id: " + this.edificio.id + " " + this.edificio.nombre + " ");
+    // Práctica 4.4: Usar API Swagger: Create
+    // Alguien debería invocar un método del servicio DefaultService:
     this.defaultService.agregarEdificio(this.edificio).subscribe();
-    let snackBarRef = this.snackBar.open('Edificio: ' + form.value.nombre + ' creado correctamente', null, {
-      duration:3000
-    });
-    snackBarRef.afterDismissed().subscribe(() => {
-      console.log('La snackbar se ha cerrado');
-      this.router.navigate(['edificios']);
-    });    
+    // Práctica 4.4: Usar API Swagger: Create
+    // Alguien debería descomentar el snackbar para notificar al usuario y navegar a 'edificios':
+    
+    // let snackBarRef = this.snackBar.open('Edificio: ' + form.value.nombre + ' creado correctamente', null, {
+    //   duration:3000
+    // });
+    // snackBarRef.afterDismissed().subscribe(() => {
+    //   console.log('La snackbar se ha cerrado');
+    //   this.router.navigate(['edificios']);
+    // });    
     
   }
 

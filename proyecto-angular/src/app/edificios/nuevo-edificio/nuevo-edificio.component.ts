@@ -69,13 +69,13 @@ export class NuevoEdificioComponent {
     // Práctica 4.4: Usar API Swagger: Create
     // Alguien debería descomentar el snackbar para notificar al usuario y navegar a 'edificios':
     
-    // let snackBarRef = this.snackBar.open('Edificio: ' + form.value.nombre + ' creado correctamente', null, {
-    //   duration:3000
-    // });
-    // snackBarRef.afterDismissed().subscribe(() => {
-    //   console.log('La snackbar se ha cerrado');
-    //   this.router.navigate(['edificios']);
-    // });    
+    let snackBarRef = this.snackBar.open('Edificio: ' + form.value.nombre + ' creado correctamente', null, {
+      duration:3000
+    });
+    snackBarRef.afterDismissed().subscribe(() => {
+      console.log('La snackbar se ha cerrado');
+      this.router.navigate(['edificios']);
+    });    
     
   }
 

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Práctica 4.3: Importar API Swagger
-// Alguien debería importar el módulo de Swagger (api.module):
+// Alguien debería importar el módulo de Swagger:
 import { ApiModule } from '../api-rest/api.module';
 import { EdificioMockService } from './edificios/edificio.mock.service';
 import { ReservaMockService } from './reservas/reserva.mock.service';
@@ -72,7 +72,7 @@ import { NuevaSalaComponent } from './edificios/salas/nueva-sala/nueva-sala.comp
   ],
   providers: [
     // Práctica 4.3: Importar API Swagger
-    // Alguien debería declarar el módulo de Swagger (api.module) como proveedor:
+    // Alguien debería declarar el módulo de Swagger como proveedor:
     ApiModule,
     SalasMockService,
     EdificioMockService,

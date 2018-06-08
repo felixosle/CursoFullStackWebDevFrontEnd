@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../../../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 // Práctica 4.6: Usar API Swagger: Update
 // Alguien debería importar el servicio DefaultService:
-import { DefaultService } from '../../../../api-rest/';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class SalaDetalleComponent implements OnInit {
   // Práctica 4.6: Usar API Swagger: Update
   // Alguien debería instanciar un servicio de tipo DefaultService:
-  constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any, private dialog: MatDialog, private defaultService: DefaultService, private router:Router) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public datosPasados: any, private dialog: MatDialog,             private router:Router) { }
 
   ngOnInit() {
   }
@@ -30,7 +30,7 @@ export class SalaDetalleComponent implements OnInit {
         console.log("Confirmó Borrar " + this.datosPasados.nombre);
         // Práctica 4.6: Usar API Swagger: Update
         // Alguien debería suscribirse al método que borra edificios pasádole los argumentos necesarios:
-        this.defaultService.borrarSala(this.datosPasados.edificio.id, this.datosPasados.id).subscribe();
+        
         this.dialog.closeAll();
         this.router.navigate(['/edificios/']);
       } else {

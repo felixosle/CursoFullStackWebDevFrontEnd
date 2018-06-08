@@ -19,6 +19,10 @@ import { Router } from '@angular/router';
 export class EdificiosComponent implements OnInit, AfterViewInit {
   edificios: Edificio [] = [];
   edificioSeleccionado: Edificio=null;
+  // Práctica 4.5: Usar API Swagger: Read
+  // Alguien debería declarar las propiedades:
+  // - provincias (tipo Provincia) para recoger las provincias del servicio restful
+  // - provinciaSeleccionada (tipo number) para recoger el id de la provincia seleccionada
   provincias: Provincia [] = [];
   provinciaSeleccionada: number = null;
   displayedColumns = ['nombre', 'poblacion', 'codPostal', 'verSalas', 'titularidad', 'editar'];
@@ -27,6 +31,9 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginador:MatPaginator;
 
   constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog, private router:Router, private changeDetectorRefs: ChangeDetectorRef) {
+    // Práctica 4.5: Usar API Swagger: Read
+    // Alguien debería suscribirse al servicio que proporciona todas las provincias 
+    // y asignar la respuesta a la propiedad provincias:
     this.defaultService.getProvincias().subscribe(
       response => {
         this.provincias = response;
@@ -100,6 +107,10 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   }
 
   onFiltrar(){
+    // Práctica 4.5: Usar API Swagger: Read
+    // Alguien debería suscribirse al servicio que proporciona todos los edificios 
+    // (indicando que sólo quiere los de la provinciaSeleccionada) 
+    // y asignar la respuesta al datasource.data:
     if (this.provinciaSeleccionada){
       this.defaultService.getEdificios('',this.provinciaSeleccionada).subscribe(
         data => {

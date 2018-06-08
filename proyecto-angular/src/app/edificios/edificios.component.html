@@ -4,12 +4,17 @@
   </h3>  
   <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
     <mat-form-field>
+      <!--  Práctica 4.5: Usar API Swagger: Read
+            Alguien debería añadir un desplegable <mat-select> que muestre todas las provincias 
+            y que vincule el valor seleccionado a provinciaSeleccionada -->
       <mat-select [(value)]="provinciaSeleccionada" placeholder="Filtrar provincia">
         <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">
           {{ provincia.provincia }}
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <!--  Práctica 4.5: Usar API Swagger: Read
+          Alguien debería añadir un botón Filtrar vinculado al método onFiltrar() -->
     <button type="button" (click)="onFiltrar()" mat-raised-button>Filtrar</button>
   </div>
   <mat-table [dataSource]="dataSource" matSort>

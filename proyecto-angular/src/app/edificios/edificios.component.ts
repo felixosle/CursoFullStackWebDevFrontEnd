@@ -9,7 +9,7 @@ import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borr
 import { EdificioDetalleComponent } from './edificio-detalle/edificio-detalle.component';
 // Práctica 4.6: Usar API Swagger: Update
 // Alguien debería importar el servicio DefaultService
-import { DefaultService } from '../../api-rest/api/default.service';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,7 +28,7 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginador:MatPaginator;
   // Práctica 4.6: Usar API Swagger: Update
   // Alguien debería instanciar un servicio de tipo DefaultService:
-  constructor(private defaultService: DefaultService, private dialog: MatDialog, private router:Router, private changeDetectorRefs: ChangeDetectorRef) {
+  constructor(private dialog: MatDialog, private router:Router, private changeDetectorRefs: ChangeDetectorRef) {
     this.defaultService.getProvincias().subscribe(
       response => {
         this.provincias = response;
@@ -68,7 +68,7 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
         console.log("Pulsó Aceptar cambios de edición");
         // Práctica 4.6: Usar API Swagger: Update
         // Alguien debería suscribirse al método que actualiza edificios:
-        this.defaultService.actualizarEdificio(this.edificioSeleccionado.id,this.edificioSeleccionado).subscribe();
+        
       } else {
         console.log("Pulsó Cancelar cambios de edición");
         this.refresh();

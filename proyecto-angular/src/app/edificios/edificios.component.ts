@@ -2,12 +2,13 @@ import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '
 //AfterViewInit lo usamos para la paginación y ordenación de mat-datatable
 //ChangeDetectorRef lo usamos para refrescar los datos de mat-datatable
 import { NgForm } from '@angular/forms';
-import { EdificioMockService } from './edificio.mock.service'
 import { Edificio } from '../../api-rest/';
 import { Provincia } from '../../api-rest';
 import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { DialogoConfirmacionComponent } from '../comun/dialogo-confirmacion-borrar/dialogo-confirmacion-borrar.component';
 import { EdificioDetalleComponent } from './edificio-detalle/edificio-detalle.component';
+// Práctica 4.6: Usar API Swagger: Update
+// Alguien debería importar el servicio DefaultService
 import { DefaultService } from '../../api-rest/api/default.service';
 import { Router } from '@angular/router';
 
@@ -25,8 +26,9 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Edificio>();
 
   @ViewChild(MatPaginator) paginador:MatPaginator;
-
-  constructor(private edificioMockService: EdificioMockService, private defaultService: DefaultService, private dialog: MatDialog, private router:Router, private changeDetectorRefs: ChangeDetectorRef) {
+  // Práctica 4.6: Usar API Swagger: Update
+  // Alguien debería instanciar un servicio de tipo DefaultService:
+  constructor(private defaultService: DefaultService, private dialog: MatDialog, private router:Router, private changeDetectorRefs: ChangeDetectorRef) {
     this.defaultService.getProvincias().subscribe(
       response => {
         this.provincias = response;
@@ -35,8 +37,6 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit() {
-    // this.edificios = this.edificioMockService.getEdificios();
-    // this.dataSource.data = this.edificios;
     this.defaultService.getEdificios().subscribe(
       data => {
         this.dataSource.data = data;
@@ -66,6 +66,8 @@ export class EdificiosComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log("Pulsó Aceptar cambios de edición");
+        // Práctica 4.6: Usar API Swagger: Update
+        // Alguien debería suscribirse al método que actualiza edificios:
         this.defaultService.actualizarEdificio(this.edificioSeleccionado.id,this.edificioSeleccionado).subscribe();
       } else {
         console.log("Pulsó Cancelar cambios de edición");
